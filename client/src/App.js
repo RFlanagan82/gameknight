@@ -3,7 +3,6 @@ import Axios from "axios";
 import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-
 function App() {
   useEffect(() => {
     console.log("Make an API call");
