@@ -2,5 +2,5 @@
 
 module.exports = {
     Event: require("./Event"),
-    User: require("./User")
+    User: require("./User"),
   };
