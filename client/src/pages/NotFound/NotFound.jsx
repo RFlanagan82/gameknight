@@ -6,15 +6,14 @@ import Row from "../../components/Row/Row";
 
 
 const NotFound = () => {
-  const location = useLocation;
 
   return (
     <Container>
       <Row>
-        <div className="col-sm-12 imgdiv"></div>
+        <div className="col-sm-12 "></div>
       </Row>
       <Row>
-        <div className="col-sm-12">
+        <div className="col-sm-12 imgdiv mt-5">
           <div className="card errcard">
             <div className="card-header">
               404 - Page Not Found My Good Knight!
@@ -33,7 +32,7 @@ const NotFound = () => {
                 </footer>
               </blockquote>
             </div>
-            <Link to="/" role="button" className="btn btn-dark">
+            <Link to="/" role="button" className="btn btn-dark errbtn">
               Return to Safety
             </Link>
           </div>

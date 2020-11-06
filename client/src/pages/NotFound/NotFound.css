@@ -1,12 +1,20 @@
 .imgdiv {
-    background-image: url('https://fastly.syfy.com/sites/syfy/files/2018/08/monty_python_and_the_holy_grail.jpg');
-    background-size: 100%;
+    background-repeat: no-repeat;
     background-size: cover;
-    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://fastly.syfy.com/sites/syfy/files/2018/08/monty_python_and_the_holy_grail.jpg');
+    height: 500px;
 }
 
 .errcard {
     justify-content: center;
     border: 2px;
     border-color: goldenrod;
+}
+
+.errbtn {
+    background-color: goldenrod!important;
+    color: white;
 }
