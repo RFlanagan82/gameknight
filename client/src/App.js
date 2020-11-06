@@ -9,6 +9,7 @@ import Profile from "./pages/Profile/Profile";
 import NotFound from "./pages/NotFound/NotFound";
 import About from "./pages/About/About";
 import Events from "./pages/Events/Events";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   useEffect(() => {
@@ -36,6 +37,7 @@ function App() {
           <Route exact path="/profile/:userId" component={Profile} />
           <Route path="/" component={NotFound} />
         </Switch>
+        <Footer />
       </div>
     </Router>
   );
