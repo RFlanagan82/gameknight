@@ -1,0 +1,12 @@
+.imgdiv {
+    background-image: url('https://fastly.syfy.com/sites/syfy/files/2018/08/monty_python_and_the_holy_grail.jpg');
+    background-size: 100%;
+    background-size: cover;
+    width: auto;
+}
+
+.errcard {
+    justify-content: center;
+    border: 2px;
+    border-color: goldenrod;
+}

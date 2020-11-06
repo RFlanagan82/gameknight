@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container-fluid">
         <div className="row">
           <span className="col-sm-12 text-white text-center my-auto">
-            Copyright&copy; 2020 Esler, Flanagan, Polk, & Walsh
+            Copyright&copy; 2020 - Templars of Palladium
           </span>
         </div>
       </div>
