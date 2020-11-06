@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Axios from "axios";
+import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Index from "./pages/Index/Index";
 import CreateAccount from "./pages/CreateAccount/CreateAccount";
@@ -26,6 +27,7 @@ function App() {
   return (
     <Router>
       <div className="d-flex flex-column min-vh-100">
+        <Navbar />
         <Switch>
           <Route exact path="/" component={Index} />
           <Route exact path="/about" component={About} />
@@ -40,6 +42,8 @@ function App() {
         <Footer />
       </div>
     </Router>
+
+  
   );
 }
 
