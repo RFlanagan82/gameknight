@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import About from "./pages/About/About";
 import Events from "./pages/Events/Events";
 import Footer from "./components/Footer/Footer";
+import Jumbotron from "./components/Jumbotron/Jumbotron";
 
 function App() {
   useEffect(() => {
@@ -28,6 +29,7 @@ function App() {
     <Router>
       <div className="d-flex flex-column min-vh-100">
         <Navbar />
+        <Jumbotron />
         <Switch>
           <Route exact path="/" component={Index} />
           <Route exact path="/about" component={About} />
