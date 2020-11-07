@@ -1,6 +1,6 @@
 import React from "react";
 import "./NotFound.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Container from "../../components/Container/Container";
 import Row from "../../components/Row/Row";
 
