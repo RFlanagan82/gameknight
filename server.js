@@ -7,6 +7,8 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
+const EventController = require("./controllers/eventController");
+
 app.use(express.static("client/build"));
 
 app.use(express.urlencoded({ extended: true }));
@@ -38,6 +40,8 @@ app.get("/api/config", (req, res) => {
     success: true,
   });
 });
+
+app.use("/api/events", EventController);
 
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "./client/build/index.html"));
