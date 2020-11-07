@@ -11,7 +11,6 @@ import NotFound from "./pages/NotFound/NotFound";
 import About from "./pages/About/About";
 import Events from "./pages/Events/Events";
 import Footer from "./components/Footer/Footer";
-import Jumbotron from "./components/Jumbotron/Jumbotron";
 
 function App() {
   useEffect(() => {
@@ -29,7 +28,6 @@ function App() {
     <Router>
       <div className="d-flex flex-column min-vh-100">
         <Navbar />
-        <Jumbotron />
         <Switch>
           <Route exact path="/" component={Index} />
           <Route exact path="/about" component={About} />
@@ -38,7 +36,7 @@ function App() {
           <Route exact path="/edit-event" component={CreateEditEvent} />
           <Route exact path="/events" component={Events} />
           <Route exact path="/events/:userId" component={MyEvents} />
-          <Route exact path="/profile/:userId" component={Profile} />
+          <Route exact path="/profile" component={Profile} />
           <Route path="/" component={NotFound} />
         </Switch>
         <Footer />
