@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Container from "../../components/Container/Container";
 import Row from "../../components/Row/Row";
 import Jumbotron from "../../components/Jumbotron/Jumbotron";
+import "./CreateAccount.css";
 
 const CreateAccount = () => {
+  const [loginDisplay, setLoginDisplay] = useState("col-sm-6 my-4 show");
+  const [newUserDisplay, setNewUserDisplay] = useState("col-sm-6 my-4 hide");
+
   const showNewUserForm = function () {
-    console.log("Show new user form");
+    setLoginDisplay("col-sm-6 my-4 hide");
+    setNewUserDisplay("col-sm-6 my-4 show");
+  };
+  const showLoginForm = function () {
+    setLoginDisplay("col-sm-6 my-4 show");
+    setNewUserDisplay("col-sm-6 my-4 hide");
   };
 
   return (
@@ -14,7 +23,8 @@ const CreateAccount = () => {
       <Jumbotron />
       <Container>
         <Row>
-          <div className="col-sm-6 my-4">
+          <div className="col-sm-3"></div>
+          <div className={loginDisplay}>
             <form>
               <h1>Login</h1>
               <div className="form-group mt-4">
@@ -31,7 +41,7 @@ const CreateAccount = () => {
                 <input type="password" className="form-control" id="password" />
               </div>
               <div className="form-group">
-                <Link to="/create-account" onClick={showNewUserForm}>
+                <Link onClick={showNewUserForm}>
                   Don't have an account? Create one here!
                 </Link>
               </div>
@@ -40,9 +50,9 @@ const CreateAccount = () => {
               </button>
             </form>
           </div>
-          <div className="col-sm-6 my-4">
-            <h1>Create Account</h1>
+          <div className={newUserDisplay}>
             <form>
+              <h1>Create Account</h1>
               <div className="form-group mt-4">
                 <label for="username">Username</label>
                 <input type="text" className="form-control" id="username" />
@@ -100,6 +110,11 @@ const CreateAccount = () => {
                 <label className="form-check-label" for="ageCheck">
                   I confirm that I am at least 13 years old.
                 </label>
+              </div>
+              <div className="form-group">
+                <Link onClick={showLoginForm}>
+                  Already have an account? Login here!
+                </Link>
               </div>
               <button type="submit" className="btn btn-primary">
                 Submit
