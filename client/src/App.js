@@ -35,8 +35,8 @@ function App() {
           <Route exact path="/create-event" component={CreateEditEvent} />
           <Route exact path="/edit-event" component={CreateEditEvent} />
           <Route exact path="/events" component={Events} />
-          <Route exact path="/events/:userId" component={MyEvents} />
-          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/events/1" component={MyEvents} />
+          <Route exact path="/profile/:userId" component={Profile} />
           <Route path="/" component={NotFound} />
         </Switch>
         <Footer />

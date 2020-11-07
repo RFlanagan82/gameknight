@@ -1,5 +1,4 @@
 import React from 'react';
-
 const MyEvents = () => {
     return (
         <div>
@@ -7,5 +6,4 @@ const MyEvents = () => {
         </div>
     );
 };
-
 export default MyEvents;
