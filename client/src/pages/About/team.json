@@ -1,0 +1,41 @@
+[
+    {
+        "id": 1,
+        "name": "Aimee Esler",
+        "img": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fimgflip.com%2Fmemetemplate%2F13751015%2FJeff-Goldblum&psig=AOvVaw3dfRO9Zs3bj7jIMrabvpo3&ust=1604804324010000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOCuv5G47-wCFQAAAAAdAAAAABAP",
+        "alt": "Aimeepic",
+        "linkedinUrl": "https://www.linkedin.com/in/aimee-esler-3bb31288/",
+        "github": "https://github.com/aimeecesler",
+        "email": "mailto: aimeecesler@gmail.com" ,
+        "bio": "Do you have any idea how long it takes those cups to decompose. Yeah, but John, if The Pirates of the Caribbean breaks down, the pirates don’t eat the tourists. What do they got in there? King Kong? You know what? It is beets. I've crashed into a beet truck."
+    },
+    {
+        "id": 2,
+        "name": "Aubrey Polk",
+        "img": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fjeffsum.com%2F&psig=AOvVaw3dfRO9Zs3bj7jIMrabvpo3&ust=1604804324010000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOCuv5G47-wCFQAAAAAdAAAAABAD",
+        "alt": "Aubreypic",
+        "linkedinUrl": "https://www.linkedin.com/in/aubrey-polk-70886456/",
+        "email": "mailto: aubstacle3@gmail.com",
+        "github": "https://github.com/aubstacle",
+        "bio": "Must go faster... go, go, go, go, go! Life finds a way. Eventually, you do plan to have dinosaurs on your dinosaur tour, right? Remind me to thank John for a lovely weekend. Did he just throw my cat out of the window? God help us, we're in the hands of engineers."
+    },
+    {
+        "id": 3,
+        "name": "Thomas Walsh",
+        "img": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fjeffsum.com%2F&psig=AOvVaw3dfRO9Zs3bj7jIMrabvpo3&ust=1604804324010000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOCuv5G47-wCFQAAAAAdAAAAABAJ",
+        "alt": "Danepic",
+        "linkedinUrl": "https://www.linkedin.com/in/thomasdwj/",
+        "email": "mailto: thomas.walsh736@gmail.com" ,
+        "bio": "Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should. Hey, you know how I'm, like, always trying to save the planet? Here's my chance. God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs."
+    },
+    {
+        "id": 4,
+        "name": "Ryan Flanagan",
+        "img": "../../images/Ryan_Flanagan_picture.jpg",
+        "alt": "Ryanpic",
+        "linkedinUrl": "https://www.linkedin.com/in/ryanflanagan82/",
+        "github": "https://github.com/RFlanagan82",
+        "email": "mailto: flanagan.ryan@gmail.com",
+        "bio": "Full-stack engineer leveraging product, marketing, and tech-startup entrepreneurship experience to create digital experiences that delight and inspire. Recently enrolled in the Georgia Tech Full-Stack Coding Bootcamp, Fall 2020 cohort; I have an array of new technical skills to include: HTML, CSS, JavaScript, jQuery, Node.js, AJAX, MySQL, Express-Handlebars, and JSON."
+    }
+]
