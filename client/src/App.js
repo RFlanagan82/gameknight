@@ -3,7 +3,7 @@ import Axios from "axios";
 import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Index from "./pages/Index/Index";
-import CreateAccount from "./pages/CreateAccount/CreateAccount";
+import LoginCreateAccount from "./pages/LoginCreateAccount/LoginCreateAccount";
 import CreateEditEvent from "./pages/CreateEditEvent/CreateEditEvent";
 import MyEvents from "./pages/MyEvents/MyEvents";
 import Profile from "./pages/Profile/Profile";
@@ -31,7 +31,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Index} />
           <Route exact path="/about" component={About} />
-          <Route exact path="/create-account" component={CreateAccount} />
+          <Route exact path="/login" component={LoginCreateAccount} />
           <Route exact path="/create-event" component={CreateEditEvent} />
           <Route exact path="/edit-event" component={CreateEditEvent} />
           <Route exact path="/events" component={Events} />

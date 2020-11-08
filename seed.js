@@ -14,7 +14,7 @@ const userSeed = [
   {
     _id: 1,
     userName: "The Bat",
-    ageRange: 1,
+    ageRange: "13-18",
     bio:
       "Batman is a superhero who appears in American comic books published by DC Comics. Batman was created by artist Bob Kane and writer Bill Finger, and debuted in the 27th issue of the comic book Detective Comics on March 30, 1939.",
     email: "fakecake@email.com",
@@ -25,7 +25,7 @@ const userSeed = [
   {
     _id: 2,
     userName: "The Rat",
-    ageRange: 1,
+    ageRange: "13-18",
     bio:
       "Ratman is a superhero who appears in American comic books published by DC Comics. Batman was created by artist Bob Kane and writer Bill Finger, and debuted in the 27th issue of the comic book Detective Comics on March 30, 1939.",
     email: "fakecake@email.com",
@@ -36,7 +36,7 @@ const userSeed = [
   {
     _id: 3,
     userName: "The Cat",
-    ageRange: 1,
+    ageRange: "13-18",
     bio:
       "Catman is a superhero who appears in American comic books published by DC Comics. Batman was created by artist Bob Kane and writer Bill Finger, and debuted in the 27th issue of the comic book Detective Comics on March 30, 1939.",
     email: "fakecake@email.com",
@@ -47,7 +47,7 @@ const userSeed = [
   {
     _id: 4,
     userName: "The Hat",
-    ageRange: 1,
+    ageRange: "13-18",
     bio:
       "Hatman is a superhero who appears in American comic books published by DC Comics. Batman was created by artist Bob Kane and writer Bill Finger, and debuted in the 27th issue of the comic book Detective Comics on March 30, 1939.",
     email: "fakecake@email.com",
@@ -58,7 +58,7 @@ const userSeed = [
   {
     _id: 5,
     userName: "The Fat",
-    ageRange: 1,
+    ageRange: "13-18",
     bio:
       "Fatman is a superhero who appears in American comic books published by DC Comics. Batman was created by artist Bob Kane and writer Bill Finger, and debuted in the 27th issue of the comic book Detective Comics on March 30, 1939.",
     email: "fakecake@email.com",
