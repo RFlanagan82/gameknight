@@ -20,4 +20,19 @@ router.get("/", (req, res) => {
   
 });
 
+router.post("/", (req, res) => {
+  db.Event.create(req.body)
+    .then((NewEvent) => {
+      res.json(NewEvent);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: true,
+        data: null,
+        message: "Failed to add new event.",
+      });
+    });
+});
+
 module.exports = router;
