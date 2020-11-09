@@ -14,12 +14,13 @@ const Index = () => {
       <Container>
         <Row>
           <div className="col-sm-12 text-center my-5">
-            <h1>Stuck at home and bored?</h1>
-            <h1>Don't make it a lame night, make it a Game Knight!</h1>
+            <h1 className="knight-font">Stuck at home and bored?</h1>
+            <h1 className="knight-font">Don't make it a lame night, make it a Game Knight!</h1>
           </div>
         </Row>
         <Row>
           <div className="col-sm-6 text-center mb-5">
+            {/* TODO: add functionality to go to host event page if logged in */}
             <Link to="/login">
               <div className="card bg-dark">
                 <img src={hostImg} className="card-img" alt="monopoly" />
