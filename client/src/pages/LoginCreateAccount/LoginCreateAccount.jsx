@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Container from "../../components/Container/Container";
 import Row from "../../components/Row/Row";
 import Jumbotron from "../../components/Jumbotron/Jumbotron";
 import "./LoginCreateAccount.css";
 import axios from "axios";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const CreateAccount = () => {
   const [loginDisplay, setLoginDisplay] = useState("col-sm-6 my-4 show");
   const [newUserDisplay, setNewUserDisplay] = useState("col-sm-6 my-4 hide");
-  
+  const [loginValidated, setLoginValidated] = useState(false);
+  const [createValidated, setCreateValidated] = useState(false);
+
+  useEffect(() => {
+    setLoginDisplay("col-sm-6 my-4 show");
+    setNewUserDisplay("col-sm-6 my-4 hide");
+  }, []);
 
   const showNewUserForm = function () {
     setLoginDisplay("col-sm-6 my-4 hide");
@@ -20,34 +28,46 @@ const CreateAccount = () => {
     setNewUserDisplay("col-sm-6 my-4 hide");
   };
 
-  const loginUser = function(e) {
-    e.preventDefault();
-    console.log("Login clicked")
-    // TODO: add login functionality once user validation is added
-  }
+  const loginUser = function (e) {
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setLoginValidated(true);
+    if (form.checkValidity() === true) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log("USER LOGIN");
+      // TODO: add login functionality once user validation is added
+    }
+  };
 
   const createNewUser = function (e) {
-    e.preventDefault();
-    let newUser = {
-      userName: e.target.username.value,
-      ageRange: e.target.ageRange.value,
-      bio: e.target.bio.value,
-      email: e.target.newEmail.value,
-      password: e.target.newPassword.value,
-      image: e.target.profileImage.value,
-      location: e.target.location.value,
-    };
-    console.log(e.target.ageCheck.value);
-    if (e.target.ageCheck.value === "on") {
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setCreateValidated(true);
+    if (form.checkValidity() === true) {
+      e.preventDefault();
+      e.stopPropagation();
+      let newUser = {
+        userName: form.username.value,
+        ageRange: form.ageRange.value,
+        bio: form.bio.value,
+        email: form.newEmail.value,
+        password: form.newPassword.value,
+        image: form.profileImage.value,
+        location: form.location.value,
+      };
       axios
         .post("/api/users", newUser)
         .then((res) => {
           console.log(res.data);
         })
         .catch((err) => console.log(err));
-    } else {
-      // TODO: add some kind of validation to throw an alert/modal if the user does not check box
-      
     }
   };
 
@@ -58,68 +78,66 @@ const CreateAccount = () => {
         <Row>
           <div className="col-sm-3"></div>
           <div className={loginDisplay}>
-            <form onSubmit={(e) => loginUser(e)}>
-              <h1>Login</h1>
-              <div className="form-group mt-4">
-                <label htmlFor="email">Email address</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  aria-describedby="emailHelp"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input type="password" className="form-control" id="password" />
-              </div>
-              <div className="form-group">
+            <h1>Login</h1>
+            <Form noValidate validated={loginValidated} onSubmit={loginUser}>
+              <Form.Group controlId="email">
+                <Form.Label>Email</Form.Label>
+                <Form.Control required type="email" placeholder="Email" />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+              </Form.Group>
+              <Form.Group controlId="password">
+                <Form.Label>Password</Form.Label>
+                <Form.Control required type="text" placeholder="Password" />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+              </Form.Group>
+              <Form.Group>
                 <Link to="/login" onClick={showNewUserForm}>
                   Don't have an account? Create one here!
                 </Link>
-              </div>
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>
-            </form>
+              </Form.Group>
+              <Button type="submit">Submit</Button>
+            </Form>
           </div>
           <div className={newUserDisplay}>
-            <form onSubmit={(e) => createNewUser(e)}>
-              <h1>Create Account</h1>
-              <div className="form-group mt-4">
-                <label htmlFor="username">Username</label>
-                <input type="text" className="form-control" id="username" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="newEmail">Email address</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="newEmail"
-                  aria-describedby="emailHelp"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="newPassword">Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="newPassword"
-                />
-              </div>
-              <div className="form-group mt-4">
-                <label htmlFor="location">Location (City, State)</label>
-                <input type="text" className="form-control" id="location" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="profileImage">
+            <h1>Create Account</h1>
+            <Form noValidate validated={createValidated} onSubmit={createNewUser}>
+              <Form.Group controlId="username">
+                <Form.Label>Username</Form.Label>
+                <Form.Control required type="text" placeholder="Username" />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+              </Form.Group>
+              <Form.Group controlId="newEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control required type="email" placeholder="Email" />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+              </Form.Group>
+              <Form.Group controlId="newPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control required type="text" placeholder="Password" />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+              </Form.Group>
+              <Form.Group controlId="location">
+                <Form.Label>Location</Form.Label>
+                <Form.Control type="text" placeholder="City, State" required />
+                <Form.Control.Feedback type="invalid">
+                  Please provide a valid location.
+                </Form.Control.Feedback>
+              </Form.Group>
+              {/* <Form.File
+                    id="custom-file"
+                    label="Custom file input"
+                    custom
+                  /> */}
+              <Form.Group controlId="profileImage">
+                <Form.Label>
                   Want to add a profile image? Enter the link here!
-                </label>
-                <input type="text" className="form-control" id="profileImage" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="ageRange">Age Range</label>
-                <select className="form-control" id="ageRange">
+                </Form.Label>
+                <Form.Control required type="text" placeholder="Enter URL" />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+              </Form.Group>
+              <Form.Group controlId="ageRange">
+                <Form.Label>Age</Form.Label>
+                <Form.Control required as="select" custom>
                   <option value="" className="disabled">
                     Choose your age range
                   </option>
@@ -128,40 +146,30 @@ const CreateAccount = () => {
                   <option value="25-39">25-39</option>
                   <option value="40-54">40-54</option>
                   <option value="55+">55+</option>
-                </select>
-              </div>
-              <div className="form-group">
-                <label htmlFor="bio">About Me</label>
-                <textarea className="form-control" id="bio" rows="3"></textarea>
-              </div>
-              <div className="form-group form-check">
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  id="ageCheck"
+                </Form.Control>
+                <Form.Control.Feedback type="invalid">
+                  Please select an age range.
+                </Form.Control.Feedback>
+              </Form.Group>
+              <Form.Group controlId="bio">
+                <Form.Label>About Me</Form.Label>
+                <Form.Control required as="textarea" rows={3} />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+              </Form.Group>
+              <Form.Group>
+                <Form.Check
+                  required
+                  label="I confirm that I am at least 13 years old."
+                  feedback="You must confirm before submitting."
                 />
-                <label className="form-check-label" htmlFor="ageCheck">
-                  I confirm that I am at least 13 years old.
-                </label>
-              </div>
-              <div className="form-group">
+              </Form.Group>
+              <Form.Group>
                 <Link to="/login" onClick={showLoginForm}>
                   Already have an account? Login here!
                 </Link>
-              </div>
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>
-              {/* CODE FOR FILE UPLOAD BELOW FOR FUTURE USE */}
-              {/* <div className="form-group">
-                <label htmlFor="profileImage">Upload your profile image</label>
-                <input
-                  type="file"
-                  className="form-control-file"
-                  id="profileImage"
-                />
-              </div> */}
-            </form>
+              </Form.Group>
+              <Button type="submit">Submit</Button>
+            </Form>
           </div>
         </Row>
       </Container>
