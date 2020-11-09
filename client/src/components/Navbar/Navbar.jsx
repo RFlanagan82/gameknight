@@ -5,8 +5,8 @@ import "./Navbar.css";
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg">
-      <Link to="/" className="navbar-brand">
-        GameKnight
+      <Link to="/" className="navbar-brand knight-font">
+        Game Knight
       </Link>
       <button
         className="navbar-toggler"
