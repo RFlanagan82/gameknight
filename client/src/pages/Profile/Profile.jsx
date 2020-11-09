@@ -11,18 +11,22 @@ const Profile = () => {
   return (
     <Container>
       <Row>
-        <Card className="w-500 profile">
+        <Card className="mx-auto" style={{width: "40rem"}}>
           <Card.Header as="h5" className="text-center">
-            Your Profile
+            My Profile
           </Card.Header>
           <Card.Body className="text-center">
             <Row>
-            <Image className="avatar" src="https://lh3.googleusercontent.com/proxy/ZkzLeYQkqwNAVzattS_UfOEXo9QAID1-753a7oNCtv7bZO2tUciptjoMf0PPnQw_7O4mZzEBhHOyu1XdtMzSBy_DupuhLKubqPDAGvM0XFvSHs-33kmBJ5mH" thumbnail />
-              <h1 className="username text-center">Username</h1>
+                <Image
+                  className="avatar justify-content-md-center"
+                  src="https://images.complex.com/complex/images/c_fill,dpr_auto,f_auto,q_90,w_1400/fl_lossy,pg_1/gxdr5aesylxo7pixbdfx/venom-you-die"
+                  thumbnail
+                />
             </Row>
-            <Card.Text>Age Range: XX-XX</Card.Text>
+            <h1 className="username">Username</h1>
+            <Card.Text><b>Age Range:</b> XX-XX</Card.Text>
             <Card.Text>
-              Bio: The path of the righteous man is beset on all sides by the
+              <b>Bio:</b> The path of the righteous man is beset on all sides by the
               inequities of the selfish and the tyranny of evil men. Blessed is
               he who, in the name of charity and good will, shepherds the weak
               through the valley of the darkness. For he is truly his brother’s
