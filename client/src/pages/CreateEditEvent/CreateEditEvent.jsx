@@ -7,25 +7,26 @@ import DatePick from "../../components/DatePick/DatePick"
 
 const createNewEvent = function (e) {
   e.preventDefault();
+  console.log(e.target.date.value)
   let newUser = {
-    userName: e.target.username.value,
-    ageRange: e.target.ageRange.value,
-    bio: e.target.bio.value,
-    email: e.target.newEmail.value,
-    password: e.target.newPassword.value,
-    image: e.target.profileImage.value,
-    location: e.target.location.value,
+    eventName: e.target.eventName.value,
+    date: e.target.date.value,
+    gameCategory: e.target.gameCategory.value,
+    gameName: e.target.gameName.value,
+    description: e.target.description.value,
+    eventLink: e.target.eventLink.value,
+    maxAttendees: e.target.maxAttendees.value,
   };
   if (e.target.ageCheck.value === "on") {
     axios
-      .post("/api/users", newUser)
+      .post("/api/events", newUser)
       .then((res) => {
         console.log(res.data);
       })
       .catch((err) => console.log(err));
   } else {
     // TODO: add some kind of validation to throw an alert/modal if the user does not check box
-  }
+  } 
 };
 
 const CreateEditEvent = () => {
@@ -38,48 +39,38 @@ const CreateEditEvent = () => {
           <form onSubmit={(e) => createNewEvent(e)}>
             <h1>Create New Event</h1>
             <div className="form-group mt-4">
-              <label htmlFor="username">Event Name</label>
+              <label htmlFor="eventName">Event Name</label>
               <input type="text" className="form-control" id="eventName" />
             </div>
             <div className="form-group">
-              <label htmlFor="newEmail">Event Date:</label>
-              
-              <DatePick />
+              <label htmlFor="date">Event Date:</label>
+              <DatePick id="date"/>
             </div>
             <div className="form-group">
-              <label htmlFor="newPassword">Category</label>
+              <label htmlFor="gameCategory">Category</label>
               <input
-                type="password"
+                type="text"
                 className="form-control"
-                id="newPassword"
+                id="gameCategory"
               />
             </div>
             <div className="form-group mt-4">
-              <label htmlFor="location">Game</label>
-              <input type="text" className="form-control" id="location" />
+              <label htmlFor="gameName">Game</label>
+              <input type="text" className="form-control" id="gameName" />
             </div>
             <div className="form-group">
-              <label htmlFor="profileImage">
+              <label htmlFor="eventLink">
                 Add a link to your virtual event here!
               </label>
-              <input type="text" className="form-control" id="profileImage" />
+              <input type="text" className="form-control" id="eventLink" />
             </div>
             <div className="form-group">
-              <label htmlFor="ageRange">Max attendees</label>
-              <select className="form-control" id="ageRange">
-                <option value="" className="disabled">
-                  What is the max number of attendees you would like
-                </option>
-                <option value="13-18">13-18</option>
-                <option value="19-25">19-25</option>
-                <option value="25-39">25-39</option>
-                <option value="40-54">40-54</option>
-                <option value="55+">55+</option>
-              </select>
+              <label htmlFor="maxAttendees">Max attendees</label>
+              <input type="number" className="form-control" id="maxAttendees" />
             </div>
             <div className="form-group">
-              <label htmlFor="bio">Description</label>
-              <textarea className="form-control" id="bio" rows="3"></textarea>
+              <label htmlFor="description">Description</label>
+              <textarea className="form-control" id="description" rows="3"></textarea>
             </div>
             <div className="form-group form-check">
               <input
