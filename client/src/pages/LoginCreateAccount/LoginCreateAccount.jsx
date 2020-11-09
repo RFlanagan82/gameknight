@@ -9,6 +9,7 @@ import axios from "axios";
 const CreateAccount = () => {
   const [loginDisplay, setLoginDisplay] = useState("col-sm-6 my-4 show");
   const [newUserDisplay, setNewUserDisplay] = useState("col-sm-6 my-4 hide");
+  
 
   const showNewUserForm = function () {
     setLoginDisplay("col-sm-6 my-4 hide");
@@ -36,6 +37,7 @@ const CreateAccount = () => {
       image: e.target.profileImage.value,
       location: e.target.location.value,
     };
+    console.log(e.target.ageCheck.value);
     if (e.target.ageCheck.value === "on") {
       axios
         .post("/api/users", newUser)
@@ -45,6 +47,7 @@ const CreateAccount = () => {
         .catch((err) => console.log(err));
     } else {
       // TODO: add some kind of validation to throw an alert/modal if the user does not check box
+      
     }
   };
 
