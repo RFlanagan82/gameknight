@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Container from "../../components/Container/Container";
-import Row from "../../components/Row/Row";
+import EventListing from "../../components/EventListing/EventListing";
+import Accordion from 'react-bootstrap/Accordion';
 
 function Events() {
   const [events, setEvents] = useState([]);
@@ -22,6 +22,24 @@ function Events() {
 
   return (
     <>
+
+    <Accordion>
+    {events.map((eventaroo, index) => (
+    <EventListing 
+    key={index}
+    eventName={eventaroo.eventName}
+    date={eventaroo.date}
+    gameName={eventaroo.gameName}
+    category={eventaroo.gameCategory}
+    description={eventaroo.description}
+    maxAttendees={eventaroo.maxAttendees}
+    eventLink={eventaroo.eventLink}/>
+    ))}
+      
+    </Accordion>
+
+
+{/*       
       {events.map((eventaroo) => (
         <Container>
           <Row>
@@ -47,7 +65,7 @@ function Events() {
           </Row>
           
         </Container>
-      ))}
+      ))} */}
     </>
   );
 }
