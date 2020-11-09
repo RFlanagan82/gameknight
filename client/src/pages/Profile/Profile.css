@@ -1,12 +1,14 @@
 .avatar {
   height: 200px;
   width: 200px;
-  margin-left: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.username {
+/* .username {
     margin-top: 35px;
     margin-left: 250px;
 
-}
+} */
 
