@@ -84,6 +84,21 @@ const eventSeed = [
       "4",
     ],
   },
+  {
+    eventName: "Archaniacs Unite",
+    date: Date.now(),
+    gameCategory: "Multiplayer RPG",
+    gameName: "Legends of Archania",
+    description: "Wert Wert Wert Wert Wert.",
+    eventLink: "https://www.google.com",
+    maxAttendees: 7,
+    hostID: "1",
+    attendees: [
+      "2",
+      "3",
+      "4",
+    ],
+  },
 ];
 
 db.User.remove({})
