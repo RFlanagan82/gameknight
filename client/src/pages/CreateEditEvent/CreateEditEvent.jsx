@@ -42,8 +42,8 @@ const CreateEditEvent = () => {
             <h1>Create New Event</h1>
             <div className="form-group mt-4">
               <label htmlFor="eventName">Event Name</label>
+              <div><span style={{color: "red", fontSize: 10}}>WERE DOBIS PR</span></div>
               <input type="text" className="form-control" id="eventName" />
-              <span style={{color: "red"}}>WERE DOBIS PR</span>
             </div>
             <div className="form-group">
               <label htmlFor="date">Event Date:</label>
@@ -55,6 +55,7 @@ const CreateEditEvent = () => {
             </div>
             <div className="form-group">
               <label htmlFor="gameCategory">Category</label>
+              <div><span style={{color: "red", fontSize: 10}}>WERE DOBIS PR</span></div>
               <input
                 type="text"
                 className="form-control"
@@ -63,20 +64,23 @@ const CreateEditEvent = () => {
             </div>
             <div className="form-group mt-4">
               <label htmlFor="gameName">Game</label>
+              <div><span style={{color: "red", fontSize: 10}}>WERE DOBIS PR</span></div>
               <input type="text" className="form-control" id="gameName" />
             </div>
             <div className="form-group">
               <label htmlFor="eventLink">
                 Add a link to your virtual event here!
               </label>
+              <div><span style={{color: "red", fontSize: 10}}>WERE DOBIS PR</span></div>
               <input type="text" className="form-control" id="eventLink" />
             </div>
             <div className="form-group">
               <label htmlFor="maxAttendees">Max attendees</label>
-              <input type="number" className="form-control" id="maxAttendees" />
+              <input type="number" className="form-control" id="maxAttendees" min="1" />
             </div>
             <div className="form-group">
               <label htmlFor="description">Description</label>
+              <div><span style={{color: "red", fontSize: 10}}>WERE DOBIS PR</span></div>
               <textarea className="form-control" id="description" rows="3"></textarea>
             </div>
             <div className="form-group form-check">
