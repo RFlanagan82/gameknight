@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import Container from "../../components/Container/Container";
 import Row from "../../components/Row/Row";
-import Jumbotron from "../../components/Jumbotron/Jumbotron";
 import DatePick from "../../components/DatePick/DatePick"
 import TimePick from "../../components/TimePick/TimePick"
 
@@ -34,7 +33,6 @@ const createNewEvent = function (e) {
 const CreateEditEvent = () => {
   return (
     <>
-      <Jumbotron />
       <Container>
         <Row>
           <div className="col-sm-3"></div>
