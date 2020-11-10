@@ -12,6 +12,7 @@ function EventListing(props) {
               <h3 className="eventName">Event Title: {props.eventName}</h3>
               <h5 className="gameName">Game Name: {props.gameName}</h5>
               <p className="date">Event Date: {props.date}</p>
+              <p className="date">Event Time: {props.gameTime}</p>
             <Accordion.Toggle as={Button} variant="link" eventKey={props.eventkey}>
               Learn More!
             </Accordion.Toggle>

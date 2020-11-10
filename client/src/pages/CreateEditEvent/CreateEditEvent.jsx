@@ -4,6 +4,7 @@ import Container from "../../components/Container/Container";
 import Row from "../../components/Row/Row";
 import Jumbotron from "../../components/Jumbotron/Jumbotron";
 import DatePick from "../../components/DatePick/DatePick"
+import TimePick from "../../components/TimePick/TimePick"
 
 const createNewEvent = function (e) {
   e.preventDefault();
@@ -13,6 +14,7 @@ const createNewEvent = function (e) {
     date: e.target.date.value,
     gameCategory: e.target.gameCategory.value,
     gameName: e.target.gameName.value,
+    gameTime: e.target.gameTime.value,
     description: e.target.description.value,
     eventLink: e.target.eventLink.value,
     maxAttendees: e.target.maxAttendees.value,
@@ -45,6 +47,10 @@ const CreateEditEvent = () => {
             <div className="form-group">
               <label htmlFor="date">Event Date:</label>
               <DatePick id="date"/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="gameTime">Event Time:</label>
+              <TimePick id="gameTime"/>
             </div>
             <div className="form-group">
               <label htmlFor="gameCategory">Category</label>
