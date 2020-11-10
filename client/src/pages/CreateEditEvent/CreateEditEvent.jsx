@@ -49,8 +49,8 @@ const CreateEditEvent = () => {
               <DatePick id="date"/>
             </div>
             <div className="form-group">
-              <label htmlFor="time">Event Time:</label>
-              <TimePick id="time"/>
+              <label htmlFor="gameTime">Event Time:</label>
+              <TimePick id="gameTime"/>
             </div>
             <div className="form-group">
               <label htmlFor="gameCategory">Category</label>

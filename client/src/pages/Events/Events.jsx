@@ -31,6 +31,7 @@ function Events() {
           eventkey={eventaroo._id}
           eventName={eventaroo.eventName}
           date={eventaroo.date}
+          gameTime={eventaroo.gameTime}
           gameName={eventaroo.gameName}
           category={eventaroo.gameCategory}
           description={eventaroo.description}
@@ -46,8 +47,8 @@ function Events() {
     key={index}
     eventName={eventaroo.eventName}
     date={eventaroo.date}
-    gameName={eventaroo.gameName}
     gameTime={eventaroo.gameTime}
+    gameName={eventaroo.gameName}
     category={eventaroo.gameCategory}
     description={eventaroo.description}
     maxAttendees={eventaroo.maxAttendees}
