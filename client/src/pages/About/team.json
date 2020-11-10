@@ -2,17 +2,17 @@
     {
         "id": 1,
         "name": "Aimee Esler",
-        "img": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fimgflip.com%2Fmemetemplate%2F13751015%2FJeff-Goldblum&psig=AOvVaw3dfRO9Zs3bj7jIMrabvpo3&ust=1604804324010000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOCuv5G47-wCFQAAAAAdAAAAABAP",
+        "img": "/images/aimee.jpg",
         "alt": "Aimeepic",
         "linkedinUrl": "https://www.linkedin.com/in/aimee-esler-3bb31288/",
         "github": "https://github.com/aimeecesler",
         "email": "mailto: aimeecesler@gmail.com" ,
-        "bio": "Do you have any idea how long it takes those cups to decompose. Yeah, but John, if The Pirates of the Caribbean breaks down, the pirates don’t eat the tourists. What do they got in there? King Kong? You know what? It is beets. I've crashed into a beet truck."
+        "bio": "Full stack web developer with diversified work experience that allows for a wide knowledge of various industries and their consumers. Recently earned a certificate in full stack development from the Georgia Institute of Technology with strong skills in Javascript and responsive web design and a passion for creating a beautiful and enjoyable UX."
     },
     {
         "id": 2,
         "name": "Aubrey Polk",
-        "img": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fjeffsum.com%2F&psig=AOvVaw3dfRO9Zs3bj7jIMrabvpo3&ust=1604804324010000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOCuv5G47-wCFQAAAAAdAAAAABAD",
+        "img": "/images/ryan.jpg",
         "alt": "Aubreypic",
         "linkedinUrl": "https://www.linkedin.com/in/aubrey-polk-70886456/",
         "email": "mailto: aubstacle3@gmail.com",
@@ -22,7 +22,7 @@
     {
         "id": 3,
         "name": "Thomas Walsh",
-        "img": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fjeffsum.com%2F&psig=AOvVaw3dfRO9Zs3bj7jIMrabvpo3&ust=1604804324010000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOCuv5G47-wCFQAAAAAdAAAAABAJ",
+        "img": "/images/ryan.jpg",
         "alt": "Danepic",
         "linkedinUrl": "https://www.linkedin.com/in/thomasdwj/",
         "email": "mailto: thomas.walsh736@gmail.com" ,
@@ -31,7 +31,7 @@
     {
         "id": 4,
         "name": "Ryan Flanagan",
-        "img": "../../images/Ryan_Flanagan_picture.jpg",
+        "img": "/images/ryan.jpg",
         "alt": "Ryanpic",
         "linkedinUrl": "https://www.linkedin.com/in/ryanflanagan82/",
         "github": "https://github.com/RFlanagan82",
