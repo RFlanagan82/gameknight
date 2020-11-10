@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Container from "../../components/Container/Container";
 import Row from "../../components/Row/Row";
-import Jumbotron from "../../components/Jumbotron/Jumbotron";
 import "./LoginCreateAccount.css";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
@@ -86,7 +85,6 @@ const CreateAccount = () => {
 
   return (
     <>
-      <Jumbotron />
       <Container>
         <Row>
           <div className="col-sm-3"></div>
@@ -108,7 +106,7 @@ const CreateAccount = () => {
                   Don't have an account? Create one here!
                 </Link>
               </Form.Group>
-              <Button type="submit">Submit</Button>
+              <Button type="submit" id="submitbtn">Submit</Button>
             </Form>
           </div>
           <div className={newUserDisplay}>
@@ -185,7 +183,7 @@ const CreateAccount = () => {
                   Already have an account? Login here!
                 </Link>
               </Form.Group>
-              <Button type="submit">Submit</Button>
+              <Button type="submit" id="submitbtn">Submit</Button>
             </Form>
           </div>
         </Row>

@@ -1,3 +1,7 @@
 .logo-img {
     max-width: 300px;
 }
+
+.home-jumbotron {
+    background-image: url("../../images/map-1.jpg");
+}
