@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Container from "../../components/Container/Container";
 import Row from "../../components/Row/Row";
@@ -6,12 +6,15 @@ import "./LoginCreateAccount.css";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import AuthContext from "../../context/AuthContext";
 
 const CreateAccount = () => {
   const [loginDisplay, setLoginDisplay] = useState("col-sm-6 my-4 show");
   const [newUserDisplay, setNewUserDisplay] = useState("col-sm-6 my-4 hide");
   const [loginValidated, setLoginValidated] = useState(false);
   const [createValidated, setCreateValidated] = useState(false);
+
+  const { setJwt } = useContext(AuthContext);
 
   useEffect(() => {
     setLoginDisplay("col-sm-6 my-4 show");
@@ -36,9 +39,18 @@ const CreateAccount = () => {
     setLoginValidated(true);
     if (form.checkValidity() === true) {
       e.preventDefault();
-      e.stopPropagation();
-      console.log("USER LOGIN");
-      // TODO: add login functionality once user validation is added
+      axios
+        .post("/api/login", {
+          email: form.email.value,
+          password: form.password.value,
+        })
+        .then((res) => {
+          console.log(res.data);
+          setJwt(res.data.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
 
@@ -62,9 +74,10 @@ const CreateAccount = () => {
         location: form.location.value,
       };
       axios
-        .post("/api/users", newUser)
+        .post("/api/signup", newUser)
         .then((res) => {
           console.log(res.data);
+          setJwt(res.data.data);
         })
         .catch((err) => console.log(err));
     }
@@ -85,7 +98,7 @@ const CreateAccount = () => {
               </Form.Group>
               <Form.Group controlId="password">
                 <Form.Label>Password</Form.Label>
-                <Form.Control required type="text" placeholder="Password" />
+                <Form.Control required type="password" placeholder="Password" />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
@@ -98,7 +111,11 @@ const CreateAccount = () => {
           </div>
           <div className={newUserDisplay}>
             <h1>Create Account</h1>
-            <Form noValidate validated={createValidated} onSubmit={createNewUser}>
+            <Form
+              noValidate
+              validated={createValidated}
+              onSubmit={createNewUser}
+            >
               <Form.Group controlId="username">
                 <Form.Label>Username</Form.Label>
                 <Form.Control required type="text" placeholder="Username" />
@@ -111,7 +128,7 @@ const CreateAccount = () => {
               </Form.Group>
               <Form.Group controlId="newPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control required type="text" placeholder="Password" />
+                <Form.Control required type="password" placeholder="Password" />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="location">
