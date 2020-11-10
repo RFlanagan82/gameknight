@@ -12,17 +12,17 @@
     {
         "id": 2,
         "name": "Aubrey Polk",
-        "img": "/images/ryan.jpg",
+        "img": "/images/aubrey.png",
         "alt": "Aubreypic",
         "linkedinUrl": "https://www.linkedin.com/in/aubrey-polk-70886456/",
         "email": "mailto: aubstacle3@gmail.com",
         "github": "https://github.com/aubstacle",
-        "bio": "Must go faster... go, go, go, go, go! Life finds a way. Eventually, you do plan to have dinosaurs on your dinosaur tour, right? Remind me to thank John for a lovely weekend. Did he just throw my cat out of the window? God help us, we're in the hands of engineers."
+        "bio": "Full stack web developer with extensive experience in video production, graphic design, digital media and brand management. Recently completed a full stack development program at the Georgia Institute of Technology, learning and strengthening skills in multiple coding languages including: HTML, CSS, JavaScript, JQuery, Node.js, AJAX, MySQL, Mongo, Express and React."
     },
     {
         "id": 3,
         "name": "Thomas Walsh",
-        "img": "/images/ryan.jpg",
+        "img": "https://i3.cpcache.com/merchandise/631_550x550_Front_Color-White.jpg?Size=3x3&AttributeValue=NA&c=True&region={%22name%22:%22FrontCenter%22,%22width%22:2.9953501,%22height%22:0.855,%22alignment%22:%22MiddleCenter%22,%22orientation%22:0,%22dpi%22:200,%22crop_x%22:0,%22crop_y%22:0,%22crop_h%22:200,%22crop_w%22:600,%22scale%22:0,%22template%22:{%22id%22:81484668,%22params%22:{}}}",
         "alt": "Danepic",
         "linkedinUrl": "https://www.linkedin.com/in/thomasdwj/",
         "email": "mailto: thomas.walsh736@gmail.com" ,
