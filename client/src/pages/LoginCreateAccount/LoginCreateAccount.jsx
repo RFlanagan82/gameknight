@@ -53,9 +53,8 @@ const CreateAccount = () => {
     setLoginValidated(true);
     if (form.checkValidity() === true) {
       e.preventDefault();
-      e.stopPropagation();
       axios
-        .post("/api/login", loginUser)
+        .post("/api/login", login)
         .then((res) => {
           console.log(res.data);
           setJwt(res.data.data);
@@ -125,9 +124,7 @@ const CreateAccount = () => {
                   Don't have an account? Create one here!
                 </Link>
               </Form.Group>
-              <Button type="submit" id="submitbtn">
-                Submit
-              </Button>
+              <Button type="submit">Submit</Button>
             </Form>
           </div>
           <div className={newUserDisplay}>
@@ -260,9 +257,7 @@ const CreateAccount = () => {
                   Already have an account? Login here!
                 </Link>
               </Form.Group>
-              <Button type="submit" id="submitbtn">
-                Submit
-              </Button>
+              <Button type="submit">Submit</Button>
             </Form>
           </div>
         </Row>

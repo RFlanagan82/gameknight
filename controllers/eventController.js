@@ -56,6 +56,8 @@ router.post("/", (req, res) => {
 
 // DELETE SELECTED EVENT - USER MUST BE LOGGED IN AND MATCH HOSTID
 
+
 // EDIT SELECTED EVENT - USER MUST BE LOGGED IN AND MATCH HOSTID
+
 
 module.exports = router;
