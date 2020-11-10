@@ -21,7 +21,7 @@ const Index = () => {
         <Row>
           <div className="col-sm-6 text-center mb-5">
             {/* TODO: add functionality to go to host event page if logged in */}
-            <Link to="/login">
+            <Link to="/create-event">
               <div className="card bg-dark">
                 <img src={hostImg} className="card-img" alt="monopoly" />
                 <div className="card-img-overlay">
