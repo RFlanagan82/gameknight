@@ -13,6 +13,12 @@ const EventSchema = new Schema ({
         default: Date.now,
     },
 
+    gameTime: {
+        type: String,
+        trim: true,
+        required: "String is Required",
+    },
+
     gameCategory: {
         type: String,
         trim: true,

@@ -30,6 +30,7 @@ function Events() {
     eventName={eventaroo.eventName}
     date={eventaroo.date}
     gameName={eventaroo.gameName}
+    gameTime={eventaroo.gameTime}
     category={eventaroo.gameCategory}
     description={eventaroo.description}
     maxAttendees={eventaroo.maxAttendees}
