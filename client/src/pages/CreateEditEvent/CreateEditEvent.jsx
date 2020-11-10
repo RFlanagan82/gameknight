@@ -4,6 +4,7 @@ import Container from "../../components/Container/Container";
 import Row from "../../components/Row/Row";
 import DatePick from "../../components/DatePick/DatePick"
 import TimePick from "../../components/TimePick/TimePick"
+import Form from "react-bootstrap/Form";
 
 const createNewEvent = function (e) {
   e.preventDefault();
@@ -36,60 +37,68 @@ const CreateEditEvent = () => {
       <Container>
         <Row>
           <div className="col-sm-3"></div>
-          <form onSubmit={(e) => createNewEvent(e)}>
+          <Form onSubmit={(e) => createNewEvent(e)}>
             <h1>Create New Event</h1>
-            <div className="form-group mt-4">
-              <label htmlFor="eventName">Event Name</label>
-              <input type="text" className="form-control" id="eventName" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="date">Event Date:</label>
+            <Form.Group controlId="eventName">
+              <Form.Label >Event Name</Form.Label>
+              {/* <div><span style={{color: "red", fontSize: 10}}>WERE DOBIS PR</span></div> */}
+              <Form.Control type="text" required placeholder="Event Name" />
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label >Event Date:</Form.Label>
               <DatePick id="date"/>
-            </div>
-            <div className="form-group">
-              <label htmlFor="gameTime">Event Time:</label>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label >Event Time:</Form.Label>
               <TimePick id="gameTime"/>
-            </div>
-            <div className="form-group">
-              <label htmlFor="gameCategory">Category</label>
-              <input
+            </Form.Group>
+            <Form.Group controlId="gameCategory">
+              <Form.Label >Category</Form.Label>
+              {/* <div><span style={{color: "red", fontSize: 10}}>WERE DOBIS PR</span></div> */}
+              <Form.Control 
                 type="text"
-                className="form-control"
-                id="gameCategory"
+                required 
+                placeholder="Category"
               />
-            </div>
-            <div className="form-group mt-4">
-              <label htmlFor="gameName">Game</label>
-              <input type="text" className="form-control" id="gameName" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="eventLink">
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group controlId="gameName">
+              <Form.Label >Game</Form.Label>
+              {/* <div><span style={{color: "red", fontSize: 10}}>WERE DOBIS PR</span></div> */}
+              <Form.Control type="text" required placeholder="Email" />
+            </Form.Group>
+            <Form.Group controlId="eventLink">
+              <Form.Label >
                 Add a link to your virtual event here!
-              </label>
-              <input type="text" className="form-control" id="eventLink" />
-            </div>
-            <div className="form-group">
+              </Form.Label>
+              {/* <div><span style={{color: "red", fontSize: 10}}>WERE DOBIS PR</span></div> */}
+              <Form.Control type="text" required placeholder="Event Link" />
+            </Form.Group>
+            <div>
               <label htmlFor="maxAttendees">Max attendees</label>
-              <input type="number" className="form-control" id="maxAttendees" />
+              <input  type="number" className="form-control" id="maxAttendees" min="1" />
             </div>
-            <div className="form-group">
-              <label htmlFor="description">Description</label>
-              <textarea className="form-control" id="description" rows="3"></textarea>
-            </div>
-            <div className="form-group form-check">
-              <input
+            <Form.Group controlId="description">
+              <Form.Label >Description</Form.Label>
+              {/* <div><span style={{color: "red", fontSize: 10}}>WERE DOBIS PR</span></div> */}
+              <Form.Control required placeholder="Event Name" type="text" rows="3"></Form.Control>
+            </Form.Group>
+            <Form.Group className="form-group form-check">
+              <Form.Control 
                 type="checkbox"
                 className="form-check-input"
                 id="ageCheck"
               />
-              <label className="form-check-label" htmlFor="ageCheck">
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+              <Form.Label className="form-check-label" htmlFor="ageCheck">
                 I confirm that I am at least 13 years old.
-              </label>
-            </div>
+              </Form.Label>
+            </Form.Group>
             <button type="submit" className="btn btn-primary">
               Submit
             </button>
-          </form>
+          </Form>
         </Row>
       </Container>
     </>
