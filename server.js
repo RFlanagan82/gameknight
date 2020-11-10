@@ -10,6 +10,8 @@ const app = express();
 const AuthController = require("./controllers/authController");
 const EventController = require("./controllers/eventController");
 const UserController = require("./controllers/userController");
+const AttendController = require("./controllers/attendController");
+const HostController = require("./controllers/hostController");
 
 app.use(express.static("client/build"));
 
@@ -43,9 +45,11 @@ app.get("/api/config", (req, res) => {
   });
 });
 
-app.use(AuthController);
 app.use("/api/events", EventController);
 app.use("/api/users", UserController);
+app.use("/api/attend", AttendController);
+app.use("/api/host", HostController)
+app.use(AuthController);
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
