@@ -6,9 +6,10 @@ function Aboutcard(props) {
     <div className="col-sm-6 my-4 text-center">
       <div className="card mx-auto my-auto" style={{ height: "100%", width: "75%" }}>
         <img src={props.img} className="card-img-top" alt={props.alt} />
-        <div className="card-body">
+        <div className="card-body d-flex flex-column">
           <h5 className="card-title">{props.name}</h5>
           <p className="card-text">{props.bio}</p>
+          <footer className="mt-auto">
           <a
             href={props.linkedinUrl}
             target="_blank"
@@ -33,6 +34,7 @@ function Aboutcard(props) {
           >
             Email
           </a>
+          </footer>
         </div>
       </div>
     </div>
