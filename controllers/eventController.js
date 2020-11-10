@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const router = express.Router();
 const db = require("../models");
 
+// GET ALL EVENTS - NO AUTHORIZATION NEEDED
 router.get("/", (req, res) => {
   db.Event.find({})
     .then((Events) => {
@@ -18,6 +19,7 @@ router.get("/", (req, res) => {
     });
 });
 
+// CREATE AN EVENT - MUST BE SIGNED IN AND USERID IS PASSED IN VIA HEADERS FOR HOST ID
 router.post("/", (req, res) => {
   console.log(req.headers)
   if (!req.headers.authorization) {
@@ -36,7 +38,6 @@ router.post("/", (req, res) => {
         message: "Invalid token.",
       });
     } else {
-      console.log({...req.body, hostID: decoded.userId});
       db.Event.create({...req.body, hostID: decoded.userId})
         .then((NewEvent) => {
           res.json(NewEvent);
@@ -52,5 +53,9 @@ router.post("/", (req, res) => {
     }
   });
 });
+
+// DELETE SELECTED EVENT - USER MUST BE LOGGED IN AND MATCH HOSTID
+
+// EDIT SELECTED EVENT - USER MUST BE LOGGED IN AND MATCH HOSTID
 
 module.exports = router;
