@@ -43,6 +43,7 @@ const CreateEditEvent = () => {
             <div className="form-group mt-4">
               <label htmlFor="eventName">Event Name</label>
               <input type="text" className="form-control" id="eventName" />
+              <span style={{color: "red"}}>WERE DOBIS PR</span>
             </div>
             <div className="form-group">
               <label htmlFor="date">Event Date:</label>
