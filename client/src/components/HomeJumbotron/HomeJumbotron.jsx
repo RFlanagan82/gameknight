@@ -8,9 +8,9 @@ const Jumbo = () => {
   return (
     <Jumbotron fluid className="home-jumbotron">
       <Container>
-          <div className="text-center">
+        <div className="text-center">
           <img src={logo} alt="logo" className="logo-img" />
-          </div>
+        </div>
       </Container>
     </Jumbotron>
   );
