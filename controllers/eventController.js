@@ -21,7 +21,7 @@ router.get("/", (req, res) => {
 
 // CREATE AN EVENT - MUST BE SIGNED IN AND USERID IS PASSED IN VIA HEADERS FOR HOST ID
 router.post("/", (req, res) => {
-  console.log(req.headers)
+  console.log(req.headers);
   if (!req.headers.authorization) {
     return res.status(401).json({
       error: true,
@@ -38,7 +38,7 @@ router.post("/", (req, res) => {
         message: "Invalid token.",
       });
     } else {
-      db.Event.create({...req.body, hostID: decoded.userId})
+      db.Event.create({ ...req.body, hostID: decoded.userId })
         .then((NewEvent) => {
           res.json(NewEvent);
         })
@@ -55,9 +55,21 @@ router.post("/", (req, res) => {
 });
 
 // DELETE SELECTED EVENT - USER MUST BE LOGGED IN AND MATCH HOSTID
-
+router.delete("/:id", (req, res) => {
+  db.Event.findByIdAndDelete(req.params.id)
+    .then((deletedEvent) => {
+      res.json(deletedEvent);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: true,
+        data: null,
+        message: "Failed to delete event.",
+      });
+    });
+});
 
 // EDIT SELECTED EVENT - USER MUST BE LOGGED IN AND MATCH HOSTID
-
 
 module.exports = router;
