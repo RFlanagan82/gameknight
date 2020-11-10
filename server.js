@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
+const AuthController = require("./controllers/authController");
 const EventController = require("./controllers/eventController");
 const UserController = require("./controllers/userController");
 
@@ -42,6 +43,7 @@ app.get("/api/config", (req, res) => {
   });
 });
 
+app.use(AuthController);
 app.use("/api/events", EventController);
 app.use("/api/users", UserController);
 
