@@ -13,6 +13,20 @@ const CreateAccount = () => {
   const [newUserDisplay, setNewUserDisplay] = useState("col-sm-6 my-4 hide");
   const [loginValidated, setLoginValidated] = useState(false);
   const [createValidated, setCreateValidated] = useState(false);
+  const [newUser, setNewUser] = useState({
+    userName: "",
+    ageRange: "",
+    bio: "",
+    email: "",
+    password: "",
+    image: "",
+    location: "",
+  });
+
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  });
 
   const { setJwt } = useContext(AuthContext);
 
@@ -39,11 +53,9 @@ const CreateAccount = () => {
     setLoginValidated(true);
     if (form.checkValidity() === true) {
       e.preventDefault();
+      e.stopPropagation();
       axios
-        .post("/api/login", {
-          email: form.email.value,
-          password: form.password.value,
-        })
+        .post("/api/login", loginUser)
         .then((res) => {
           console.log(res.data);
           setJwt(res.data.data);
@@ -64,15 +76,6 @@ const CreateAccount = () => {
     if (form.checkValidity() === true) {
       e.preventDefault();
       e.stopPropagation();
-      let newUser = {
-        userName: form.username.value,
-        ageRange: form.ageRange.value,
-        bio: form.bio.value,
-        email: form.newEmail.value,
-        password: form.newPassword.value,
-        image: form.profileImage.value,
-        location: form.location.value,
-      };
       axios
         .post("/api/signup", newUser)
         .then((res) => {
@@ -93,12 +96,28 @@ const CreateAccount = () => {
             <Form noValidate validated={loginValidated} onSubmit={loginUser}>
               <Form.Group controlId="email">
                 <Form.Label>Email</Form.Label>
-                <Form.Control required type="email" placeholder="Email" />
+                <Form.Control
+                  required
+                  type="email"
+                  placeholder="Email"
+                  value={login.email}
+                  onChange={(e) =>
+                    setLogin({ ...login, email: e.currentTarget.value })
+                  }
+                />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="password">
                 <Form.Label>Password</Form.Label>
-                <Form.Control required type="password" placeholder="Password" />
+                <Form.Control
+                  required
+                  type="password"
+                  placeholder="Password"
+                  value={login.password}
+                  onChange={(e) =>
+                    setLogin({ ...login, password: e.currentTarget.value })
+                  }
+                />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
@@ -106,7 +125,9 @@ const CreateAccount = () => {
                   Don't have an account? Create one here!
                 </Link>
               </Form.Group>
-              <Button type="submit" id="submitbtn">Submit</Button>
+              <Button type="submit" id="submitbtn">
+                Submit
+              </Button>
             </Form>
           </div>
           <div className={newUserDisplay}>
@@ -118,22 +139,54 @@ const CreateAccount = () => {
             >
               <Form.Group controlId="username">
                 <Form.Label>Username</Form.Label>
-                <Form.Control required type="text" placeholder="Username" />
+                <Form.Control
+                  required
+                  type="text"
+                  placeholder="Username"
+                  value={newUser.userName}
+                  onChange={(e) =>
+                    setNewUser({ ...newUser, userName: e.currentTarget.value })
+                  }
+                />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="newEmail">
                 <Form.Label>Email</Form.Label>
-                <Form.Control required type="email" placeholder="Email" />
+                <Form.Control
+                  required
+                  type="email"
+                  placeholder="Email"
+                  value={newUser.email}
+                  onChange={(e) =>
+                    setNewUser({ ...newUser, email: e.currentTarget.value })
+                  }
+                />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="newPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control required type="password" placeholder="Password" />
+                <Form.Control
+                  required
+                  type="password"
+                  placeholder="Password"
+                  value={newUser.password}
+                  onChange={(e) =>
+                    setNewUser({ ...newUser, password: e.currentTarget.value })
+                  }
+                />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="location">
                 <Form.Label>Location</Form.Label>
-                <Form.Control type="text" placeholder="City, State" required />
+                <Form.Control
+                  type="text"
+                  placeholder="City, State"
+                  required
+                  value={newUser.location}
+                  onChange={(e) =>
+                    setNewUser({ ...newUser, location: e.currentTarget.value })
+                  }
+                />
                 <Form.Control.Feedback type="invalid">
                   Please provide a valid location.
                 </Form.Control.Feedback>
@@ -147,12 +200,28 @@ const CreateAccount = () => {
                 <Form.Label>
                   Want to add a profile image? Enter the link here!
                 </Form.Label>
-                <Form.Control required type="text" placeholder="Enter URL" />
+                <Form.Control
+                  required
+                  type="text"
+                  placeholder="Enter URL"
+                  value={newUser.image}
+                  onChange={(e) =>
+                    setNewUser({ ...newUser, image: e.currentTarget.value })
+                  }
+                />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="ageRange">
                 <Form.Label>Age</Form.Label>
-                <Form.Control required as="select" custom>
+                <Form.Control
+                  required
+                  as="select"
+                  custom
+                  value={newUser.ageRange}
+                  onChange={(e) =>
+                    setNewUser({ ...newUser, ageRange: e.currentTarget.value })
+                  }
+                >
                   <option value="" className="disabled">
                     Choose your age range
                   </option>
@@ -168,7 +237,15 @@ const CreateAccount = () => {
               </Form.Group>
               <Form.Group controlId="bio">
                 <Form.Label>About Me</Form.Label>
-                <Form.Control required as="textarea" rows={3} />
+                <Form.Control
+                  required
+                  as="textarea"
+                  rows={3}
+                  value={newUser.bio}
+                  onChange={(e) =>
+                    setNewUser({ ...newUser, bio: e.currentTarget.value })
+                  }
+                />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
@@ -183,7 +260,9 @@ const CreateAccount = () => {
                   Already have an account? Login here!
                 </Link>
               </Form.Group>
-              <Button type="submit" id="submitbtn">Submit</Button>
+              <Button type="submit" id="submitbtn">
+                Submit
+              </Button>
             </Form>
           </div>
         </Row>
