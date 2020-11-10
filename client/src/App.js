@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Index from "./pages/Index/Index";
 import LoginCreateAccount from "./pages/LoginCreateAccount/LoginCreateAccount";
 import CreateEditEvent from "./pages/CreateEditEvent/CreateEditEvent";
-import Profile from "./pages/Profile/Profile";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import NotFound from "./pages/NotFound/NotFound";
 import About from "./pages/About/About";
 import Events from "./pages/Events/Events";
@@ -34,7 +34,7 @@ function App() {
             <Route exact path="/create-event" component={CreateEditEvent} />
             <Route exact path="/edit-event" component={CreateEditEvent} />
             <Route exact path="/events" component={Events} />
-            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/Dashboard" component={Dashboard} />
             <Route path="/" component={NotFound} />
           </Switch>
           <Footer />

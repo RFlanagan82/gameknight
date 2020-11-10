@@ -5,6 +5,7 @@ import Row from "../../components/Row/Row";
 import DatePick from "../../components/DatePick/DatePick";
 import TimePick from "../../components/TimePick/TimePick";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button"
 
 const createNewEvent = function (e) {
   e.preventDefault();
@@ -100,9 +101,9 @@ const CreateEditEvent = () => {
               </Form.Label>
             </Form.Group>
 
-            <button type="submit" className="btn btn-primary">
+            <Button type="submit">
               Submit
-            </button>
+            </Button>
           </Form>
         </Row>
       </Container>

@@ -4,7 +4,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg">
+    <nav className="navbar navbar-expand-lg navbar-dark">
       <Link to="/" className="navbar-brand knight-font">
         Game Knight
       </Link>
@@ -24,8 +24,8 @@ const Navbar = () => {
           <NavLink to="/events" className="nav-link">
             Events
           </NavLink>
-          <NavLink to="/profile" className="nav-link">
-            Profile
+          <NavLink to="/dashboard" className="nav-link">
+            Dashboard
           </NavLink>
           <NavLink to="/login" className="nav-link">
             Login
