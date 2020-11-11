@@ -23,7 +23,7 @@ const CreateEditEvent = () => {
     // };
     if (e.target.ageCheck.value === "on") {
       axios
-        .post("/api/events", newUser)
+        .post("/api/events", newEvent)
         .then((res) => {
           console.log(res.data);
         })
@@ -33,7 +33,7 @@ const CreateEditEvent = () => {
     }
   };
 
-  const [newEvent, setnewEvent] = useState({
+  const [newEvent, setNewEvent] = useState({
     eventName: "",
     date: "",
     gameCategory: "",
@@ -43,11 +43,17 @@ const CreateEditEvent = () => {
     eventLink: "",
     maxAttendees: "",
   });
-  const setGameTime = (gameTime) => {
-    setnewEvent({ ...newEvent, gameTime: gameTime });
+  // const setGameTime = (gameTime) => {
+  //   setNewEvent({ ...newEvent, gameTime: gameTime });
+  // };
+  // const setDate = (date) => {
+  //   setNewEvent({ ...newEvent, date: date });
+  // };
+  const setDateTime = (date) => {
+    setNewEvent({ ...newEvent, date });
   };
-  const setDate = (date) => {
-    setnewEvent({ ...newEvent, date: date });
+  const setGameTime = (gameTime) => {
+    setNewEvent({ ...newEvent, gameTime });
   };
   return (
     <>
@@ -64,7 +70,7 @@ const CreateEditEvent = () => {
                 placeholder="Event Name"
                 value={newEvent.eventName}
                 onChange={(e) =>
-                  setnewEvent({ ...newEvent, eventName: e.currentTarget.value })
+                  setNewEvent({ ...newEvent, eventName: e.currentTarget.value })
                 }
               />
 
@@ -72,13 +78,17 @@ const CreateEditEvent = () => {
             </Form.Group>
             <Form.Group>
               <Form.Label>Event Date: </Form.Label>
-              <DatePick id="date" value={state.date} setGameTime={setDate} />
+              <DatePick
+                id="date"
+                value={newEvent.date}
+                setDateTime={setDateTime}
+              />
             </Form.Group>
             <Form.Group>
               <Form.Label>Event Time: </Form.Label>
               <TimePick
                 id="gameTime"
-                value={state.gameTime}
+                value={newEvent.gameTime}
                 setGameTime={setGameTime}
               />
             </Form.Group>
@@ -90,7 +100,7 @@ const CreateEditEvent = () => {
                 placeholder="Game Category"
                 value={newEvent.gameCategory}
                 onChange={(e) =>
-                  setnewEvent({
+                  setNewEvent({
                     ...newEvent,
                     gameCategory: e.currentTarget.value,
                   })
@@ -111,7 +121,7 @@ const CreateEditEvent = () => {
                 placeholder="Event Link"
                 value={newEvent.eventLink}
                 onChange={(e) =>
-                  setnewEvent({ ...newEvent, eventLink: e.currentTarget.value })
+                  setNewEvent({ ...newEvent, eventLink: e.currentTarget.value })
                 }
               />
             </Form.Group>
@@ -124,7 +134,7 @@ const CreateEditEvent = () => {
                 placeholder="1"
                 value={newEvent.maxAttendees}
                 onChange={(e) =>
-                  setnewEvent({
+                  setNewEvent({
                     ...newEvent,
                     maxAttendees: e.currentTarget.value,
                   })
@@ -141,7 +151,7 @@ const CreateEditEvent = () => {
                 placeholder="Event description"
                 value={newEvent.description}
                 onChange={(e) =>
-                  setnewEvent({
+                  setNewEvent({
                     ...newEvent,
                     description: e.currentTarget.value,
                   })
