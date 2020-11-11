@@ -6,21 +6,9 @@ import DatePick from "../../components/DatePick/DatePick";
 import TimePick from "../../components/TimePick/TimePick";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
 
 const CreateEditEvent = () => {
-  const createNewEvent = function (e) {
-    e.preventDefault();
-    console.log(e.target.date.value);
-   
-      axios
-        .post("/api/events", newEvent)
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => console.log(err));
-    
-  };
-
   const [newEvent, setNewEvent] = useState({
     eventName: "",
     date: "",
@@ -31,7 +19,20 @@ const CreateEditEvent = () => {
     eventLink: "",
     maxAttendees: "",
   });
- 
+
+  const history = useHistory();
+
+  const createNewEvent = function (e) {
+    e.preventDefault();
+    axios
+      .post("/api/events", newEvent)
+      .then((res) => {
+        console.log(res.data);
+        history.push("/Dashboard");
+      })
+      .catch((err) => console.log(err));
+  };
+
   const setDateTime = (date) => {
     setNewEvent({ ...newEvent, date });
   };
@@ -104,7 +105,7 @@ const CreateEditEvent = () => {
                     gameName: e.currentTarget.value,
                   })
                 }
-                />
+              />
             </Form.Group>
             <Form.Group controlId="eventLink">
               <Form.Label>Add a link to your virtual event here!</Form.Label>
