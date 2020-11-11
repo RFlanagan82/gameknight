@@ -1,8 +1,17 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import axios from "axios";
 
 const AttendingEventCard = (props) => {
+
+const handleWithdraw= (id) => {
+ axios.put(`/api/attend/remove/${id}`)
+ .then((results) => {console.log(results.data)
+props.getAttendingEvents()})
+.catch( err => (console.log(err))
+)};
+
   return (
     <Card className="mx-4">
       <Card.Header as="h5" className="text-center">
@@ -33,7 +42,7 @@ const AttendingEventCard = (props) => {
         <Card.Text>
           <b>Event Link:</b> {props.eventLink}
         </Card.Text>
-        <Button variant="primary">Withdraw</Button>
+        <Button variant="primary" onClick={(e) => handleWithdraw(props._id)}>Withdraw</Button>
       </Card.Body>
     </Card>
   );

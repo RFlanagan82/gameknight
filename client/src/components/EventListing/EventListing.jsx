@@ -2,9 +2,18 @@ import React from "react";
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import axios from "axios";
 
 
 function EventListing(props) {
+
+const handleJoin = (id) => {
+  axios.put(`/api/attend/add/${id}`)
+  .then((results) => {console.log(results.data)})
+  //TODO: Put confirmation modal here
+  .catch( err => (console.log(err))
+  )};
+
   return (
     <>
         <Card>
@@ -23,7 +32,7 @@ function EventListing(props) {
                 <p className="description">Description: {props.description}</p>
                 <p className="maxAttendees">Max Attendees: {props.maxAttendees}</p>
                 <p className="eventLink">Event Link: {props.eventLink}</p>
-                <Button variant="success">Join</Button>{' '}
+                <Button variant="success" onClick={(e) => handleJoin(props.eventkey)}>Join</Button>
             </Card.Body>
           </Accordion.Collapse>
         </Card>
