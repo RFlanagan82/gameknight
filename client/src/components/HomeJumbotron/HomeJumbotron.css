@@ -3,5 +3,7 @@
 }
 
 .home-jumbotron {
-    background-image: url("../../images/map-1.jpg");
+    background-image: url("../../images/jumbotron-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
