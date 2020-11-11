@@ -43,14 +43,14 @@ const EditEventModal = ({
               setDateTime={setDateTime}
             />
           </Form.Group>
-          {/* <Form.Group>
+          <Form.Group>
             <Form.Label>Event Time: </Form.Label>
             <TimePick
               id="gameTime"
               value={new Date(newEvent.gameTime)}
               setGameTime={setGameTime}
             />
-          </Form.Group> */}
+          </Form.Group>
           <Form.Group controlId="gameCategory">
             <Form.Label>Category</Form.Label>
             <Form.Control

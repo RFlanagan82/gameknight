@@ -78,8 +78,6 @@ const Dashboard = () => {
     if (form.checkValidity() === true) {
       e.preventDefault();
       e.stopPropagation();
-      console.log("UPDATE PROFILE");
-      console.log(newProfile);
       axios
         .put("/api/users", newProfile)
         .then((res) => {
@@ -111,8 +109,15 @@ const Dashboard = () => {
     if (form.checkValidity() === true) {
       e.preventDefault();
       e.stopPropagation();
-      console.log("UPDATE EVENT");
-      console.log(newEvent);
+      axios
+        .put("/api/events", newEvent)
+        .then((res) => {
+          console.log(res);
+          toggleEventModal();
+          getHostedEvents();
+          setEventValidated(false);
+        })
+        .catch((err) => console.log(err));
     }
   };
 
@@ -125,8 +130,9 @@ const Dashboard = () => {
           </Col>
           <Col>
             <h1 className="py-2 text-center">Hosted Events</h1>
-            {hosted.map((event) => (
+            {hosted.map((event, index) => (
               <HostingEventCard
+                key={index}
                 event={event}
                 getHostedEvents={getHostedEvents}
                 setNewEvent={setNewEvent}
@@ -134,8 +140,9 @@ const Dashboard = () => {
               />
             ))}
             <h1 className="py-2 mt-4 text-center">Upcoming Events</h1>
-            {attending.map((event) => (
+            {attending.map((event, index) => (
               <AttendingEventCard
+                key={index}
                 {...event}
                 getAttendingEvents={getAttendingEvents}
               />
