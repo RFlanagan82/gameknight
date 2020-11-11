@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
+import axios from "axios";
 
 const ProfileCard = () => {
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    getUserInfo();
+  }, []);
+
+  const getUserInfo = () => {
+    axios
+      .get("/api/users/dashboard")
+      .then((res) => {
+        console.log(res.data);
+        setUser(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <Card className="mx-auto sticky-top mt-auto" style={{ width: "40rem" }}>
       <Card.Header as="h5" className="text-center">
@@ -14,23 +31,16 @@ const ProfileCard = () => {
         <Row>
           <Image
             className="avatar justify-content-md-center"
-            src="https://images.complex.com/complex/images/c_fill,dpr_auto,f_auto,q_90,w_1400/fl_lossy,pg_1/gxdr5aesylxo7pixbdfx/venom-you-die"
+            src={user.image}
             thumbnail
           />
         </Row>
-        <h1 className="username">Username</h1>
+  <h1 className="username">{user.userName}</h1>
         <Card.Text>
-          <b>Age Range:</b> XX-XX
+          <b>Age Range:</b> {user.ageRange}
         </Card.Text>
         <Card.Text>
-          <b>Bio:</b> The path of the righteous man is beset on all sides by the
-          inequities of the selfish and the tyranny of evil men. Blessed is he
-          who, in the name of charity and good will, shepherds the weak through
-          the valley of the darkness. For he is truly his brother’s keeper and
-          the finder of lost children. And I will strike down upon thee with
-          great vengeance and furious anger those who attempt to poison and
-          destroy my brothers. And you will know I am the Lord when I lay my
-          vengeance upon you.
+          <b>Bio:</b> {user.bio}
         </Card.Text>
         <Button variant="primary">Edit Profile</Button>
       </Card.Body>
