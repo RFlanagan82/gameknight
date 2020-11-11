@@ -13,22 +13,30 @@ const Dashboard = () => {
   const [attending, setAttending] = useState([]);
 
   useEffect(() => {
+    getHostedEvents();
+    getAttendingEvents();
+  }, []);
+
+  const getHostedEvents = function() {
     Axios.get("/api/host")
       .then((results) => {
         setHosted(results.data);
-        console.log(hosted);
       })
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  const getAttendingEvents = function() {
     Axios.get("/api/attend")
-      .then((results) => {
-        setAttending(results.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
+    .then((results) => {
+      setAttending(results.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
   return (
     <Container>
       <Row>
@@ -38,11 +46,11 @@ const Dashboard = () => {
         <Col>
           <h1 className="py-2 text-center">Hosted Events</h1>
           {hosted.map((event) => (
-            <HostingEventCard {...event} />
+            <HostingEventCard {...event} getHostedEvents={getHostedEvents}/>
           ))}
           <h1 className="py-2 mt-4 text-center">Upcoming Events</h1>
           {attending.map((event) => (
-            <AttendingEventCard {...event} />
+            <AttendingEventCard {...event} getAttendingEvents={getAttendingEvents}/>
           ))}
         </Col>
       </Row>

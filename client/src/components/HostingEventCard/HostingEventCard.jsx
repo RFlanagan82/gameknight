@@ -1,8 +1,20 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import axios from "axios";
 
 const HostingEventCard = (props) => {
+  const handleDelete = function (id) {
+    console.log(id)
+    axios
+      .delete(`/api/events/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        props.getHostedEvents();
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <Card className="mx-4">
       <Card.Header as="h5" className="text-center">
@@ -34,7 +46,11 @@ const HostingEventCard = (props) => {
           <b>Event Link:</b> {props.eventLink}
         </Card.Text>
         <Button variant="primary">Edit</Button>
-        <Button className="ml-2" variant="primary">
+        <Button
+          className="ml-2"
+          variant="primary"
+          onClick={(e) => handleDelete(props._id)}
+        >
           Delete
         </Button>
       </Card.Body>
