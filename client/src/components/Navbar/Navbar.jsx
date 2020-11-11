@@ -1,11 +1,13 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
+import Image from "react-bootstrap/Image"
 
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark">
       <Link to="/" className="navbar-brand knight-font">
+      <Image className="py-auto pr-1" src="images/knightIcon.png" />
         Game Knight
       </Link>
       <button
