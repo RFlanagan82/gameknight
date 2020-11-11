@@ -76,6 +76,41 @@ router.get("/", (req, res) => {
 
 
 // UPDATE TO REMOVE USER FROM ATTENDEE ARRAY - REMOVE USERID OF LOGGED IN USER
+router.put("/remove/:id", (req, res) => {
+  if (!req.headers.authorization) {
+    return res.status(401).json({
+      error: true,
+      data: null,
+      message: "Unauthorized",
+    });
+  }
+  jwt.verify(req.headers.authorization, process.env.SECRET, (err, decoded) => {
+    if (err) {
+      console.log(err);
+      return res.status(401).json({
+        error: true,
+        data: null,
+        message: "Invalid token.",
+      });
+    } else {
+      console.log(decoded);
+      // include the db.Event.whatever here
+      db.Event.findByIdAndUpdate(req.params.id, {$pull: {attendees: decoded.userId}})
+      .then((updatedEvent) => {
+        res.json(updatedEvent)
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({
+          error: true,
+          data: null,
+          message: "Failed to update event.",
+        });
+      });
+    }
+  });
+});
+
 
     // router.put(name the route that we want/:eventid, (req, res) =>{
     //   db.Events.findOne({where:{_id:req.params.id}})
