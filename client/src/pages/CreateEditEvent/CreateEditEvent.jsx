@@ -47,11 +47,11 @@ const CreateEditEvent = () => {
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
             <Form.Group>
-              <Form.Label>Event Date:</Form.Label>
+              <Form.Label>Event Date:  </Form.Label>
               <DatePick id="date" />
             </Form.Group>
             <Form.Group>
-              <Form.Label>Event Time:</Form.Label>
+              <Form.Label>Event Time:  </Form.Label>
               <TimePick id="gameTime" />
             </Form.Group>
             <Form.Group controlId="gameCategory">
@@ -63,7 +63,7 @@ const CreateEditEvent = () => {
             <Form.Group controlId="gameName">
               <Form.Label>Game</Form.Label>
               {/* <div><span style={{color: "red", fontSize: 10}}>WERE DOBIS PR</span></div> */}
-              <Form.Control type="text" required placeholder="Email" />
+              <Form.Control type="text" required placeholder="Game Name" />
             </Form.Group>
             <Form.Group controlId="eventLink">
               <Form.Label>Add a link to your virtual event here!</Form.Label>
@@ -84,7 +84,7 @@ const CreateEditEvent = () => {
               {/* <div><span style={{color: "red", fontSize: 10}}>WERE DOBIS PR</span></div> */}
               <Form.Control
                 required
-                placeholder="Event Name"
+                placeholder="Event Description"
                 type="text"
                 rows="3"
               ></Form.Control>
