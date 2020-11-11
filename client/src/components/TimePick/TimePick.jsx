@@ -3,13 +3,12 @@ import DatePicker from "react-datepicker";
  
 import "react-datepicker/dist/react-datepicker.css";
 
-const TimePick = (props) => {
-    const [startTime, setStartTime] = useState(new Date());
+const TimePick = ({id, setGameTime, value}) => {
     return (
         <DatePicker
-        id={props.id}
-        selected={startTime}
-        onChange={time => setStartTime(time)}
+        id={id}
+        selected={value}
+        onChange={time => setGameTime(time)}
         showTimeSelect
         showTimeSelectOnly
         timeIntervals={15}
