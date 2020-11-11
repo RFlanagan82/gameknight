@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import axios from "axios";
 import Container from "../../components/Container/Container";
 import Row from "../../components/Row/Row";
@@ -33,6 +33,16 @@ const createNewEvent = function (e) {
 };
 
 const CreateEditEvent = () => {
+  const [newEvent, setnewEvent] = useState({
+    eventName: "",
+    date: "",
+    gameCategory: "",
+    gameName: "",
+    gameTime: "",
+    description: "",
+    eventLink: "",
+    maxAttendees: ""
+  });
   return (
     <>
       <Container>
@@ -42,8 +52,16 @@ const CreateEditEvent = () => {
             <h1>Create New Event</h1>
             <Form.Group controlId="eventName">
               <Form.Label>Event Name</Form.Label>
-              {/* <div><span style={{color: "red", fontSize: 10}}>WERE DOBIS PR</span></div> */}
-              <Form.Control type="text" required placeholder="Event Name" />
+              <Form.Control
+                  required
+                  type="text"
+                  placeholder="Event Name"
+                  value={newEvent.eventName}
+                  onChange={(e) =>
+                    setnewEvent({ ...newEvent, eventName: e.currentTarget.value })
+                  }
+                />
+              
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
             <Form.Group>
@@ -56,38 +74,60 @@ const CreateEditEvent = () => {
             </Form.Group>
             <Form.Group controlId="gameCategory">
               <Form.Label>Category</Form.Label>
-              {/* <div><span style={{color: "red", fontSize: 10}}>WERE DOBIS PR</span></div> */}
-              <Form.Control type="text" required placeholder="Category" />
+              <Form.Control
+                  required
+                  type="text"
+                  placeholder="Game Category"
+                  value={newEvent.gameCategory}
+                  onChange={(e) =>
+                    setnewEvent({ ...newEvent, gameCategory: e.currentTarget.value })
+                  }
+                />
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="gameName">
               <Form.Label>Game</Form.Label>
-              {/* <div><span style={{color: "red", fontSize: 10}}>WERE DOBIS PR</span></div> */}
+              
               <Form.Control type="text" required placeholder="Game Name" />
             </Form.Group>
             <Form.Group controlId="eventLink">
               <Form.Label>Add a link to your virtual event here!</Form.Label>
-              {/* <div><span style={{color: "red", fontSize: 10}}>WERE DOBIS PR</span></div> */}
-              <Form.Control type="text" required placeholder="Event Link" />
+              <Form.Control
+                  required
+                  type="text"
+                  placeholder="Event Link"
+                  value={newEvent.eventLink}
+                  onChange={(e) =>
+                    setnewEvent({ ...newEvent, eventLink: e.currentTarget.value })
+                  }
+                />
             </Form.Group>
-            <div>
-              <label htmlFor="maxAttendees">Max attendees</label>
-              <input
-                type="number"
-                className="form-control"
-                id="maxAttendees"
-                min="1"
-              />
-            </div>
+            <Form.Group controlId="maxAttendees">
+              <Form.Label >Max attendees</Form.Label>
+              <Form.Control
+                  required
+                  type="number"
+                  min="1"
+                  placeholder="1"
+                  value={newEvent.maxAttendees}
+                  onChange={(e) =>
+                    setnewEvent({ ...newEvent, maxAttendees: e.currentTarget.value })
+                  }
+                />
+            </Form.Group>
             <Form.Group controlId="description">
               <Form.Label>Description</Form.Label>
-              {/* <div><span style={{color: "red", fontSize: 10}}>WERE DOBIS PR</span></div> */}
+              
               <Form.Control
-                required
-                placeholder="Event Description"
-                type="text"
-                rows="3"
-              ></Form.Control>
+                  required
+                  type="text"
+                  as="textarea"
+                  placeholder="Event description"
+                  value={newEvent.description}
+                  onChange={(e) =>
+                    setnewEvent({ ...newEvent, description: e.currentTarget.value })
+                  }
+                />
             </Form.Group>
             <Form.Group className="form-group form-check">
               <Form.Check
