@@ -1,26 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
-import axios from "axios";
 
-const ProfileCard = () => {
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    getUserInfo();
-  }, []);
-
-  const getUserInfo = () => {
-    axios
-      .get("/api/users/dashboard")
-      .then((res) => {
-        console.log(res.data);
-        setUser(res.data);
-      })
-      .catch((err) => console.log(err));
-  };
+const ProfileCard = ({user, toggleProfileModal}) => {
 
   return (
     <Card className="mx-auto sticky-top mt-auto" style={{ width: "40rem" }}>
@@ -42,7 +26,7 @@ const ProfileCard = () => {
         <Card.Text>
           <b>Bio:</b> {user.bio}
         </Card.Text>
-        <Button variant="primary">Edit Profile</Button>
+        <Button variant="primary" onClick={toggleProfileModal} >Edit Profile</Button>
       </Card.Body>
     </Card>
   );
