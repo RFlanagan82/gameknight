@@ -8,6 +8,7 @@ import HostingEventCard from "../../components/HostingEventCard/HostingEventCard
 import Col from "react-bootstrap/Col";
 import axios from "axios";
 import EditProfileModal from "../../components/EditProfileModal/EditProfileModal";
+import EditEventModal from "../../components/EditEventModal/EditEventModal";
 
 const Dashboard = () => {
   const [hosted, setHosted] = useState([]);
@@ -16,6 +17,9 @@ const Dashboard = () => {
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [newProfile, setNewProfile] = useState({});
   const [profileValidated, setProfileValidated] = useState(false);
+  const [showEventModal, setShowEventModal] = useState(false);
+  const [newEvent, setNewEvent] = useState({});
+  const [eventValidated, setEventValidated] = useState(false);
 
   useEffect(() => {
     getHostedEvents();
@@ -60,6 +64,10 @@ const Dashboard = () => {
     setShowProfileModal(!showProfileModal);
   };
 
+  const toggleEventModal = () => {
+    setShowEventModal(!showEventModal);
+  };
+
   const updateProfile = function (e) {
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
@@ -86,6 +94,28 @@ const Dashboard = () => {
     }
   };
 
+  const setDateTime = (date) => {
+    setNewEvent({ ...newEvent, date });
+  };
+  const setGameTime = (gameTime) => {
+    setNewEvent({ ...newEvent, gameTime });
+  };
+
+  const updateEvent = function (e) {
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setProfileValidated(true);
+    if (form.checkValidity() === true) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log("UPDATE EVENT");
+      console.log(newEvent);
+    }
+  };
+
   return (
     <>
       <Container>
@@ -96,7 +126,12 @@ const Dashboard = () => {
           <Col>
             <h1 className="py-2 text-center">Hosted Events</h1>
             {hosted.map((event) => (
-              <HostingEventCard {...event} getHostedEvents={getHostedEvents} />
+              <HostingEventCard
+                event={event}
+                getHostedEvents={getHostedEvents}
+                setNewEvent={setNewEvent}
+                toggleEventModal={toggleEventModal}
+              />
             ))}
             <h1 className="py-2 mt-4 text-center">Upcoming Events</h1>
             {attending.map((event) => (
@@ -115,6 +150,16 @@ const Dashboard = () => {
         setNewProfile={setNewProfile}
         updateProfile={updateProfile}
         profileValidated={profileValidated}
+      />
+      <EditEventModal
+        newEvent={newEvent}
+        showEventModal={showEventModal}
+        toggleEventModal={toggleEventModal}
+        setNewEvent={setNewEvent}
+        updateEvent={updateEvent}
+        eventValidated={eventValidated}
+        setDateTime={setDateTime}
+        setGameTime={setGameTime}
       />
     </>
   );
