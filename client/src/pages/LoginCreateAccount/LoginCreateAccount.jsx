@@ -7,6 +7,7 @@ import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import AuthContext from "../../context/AuthContext";
+import { useHistory } from "react-router-dom";
 
 const CreateAccount = () => {
   const [loginDisplay, setLoginDisplay] = useState("col-sm-6 my-4 show");
@@ -29,6 +30,7 @@ const CreateAccount = () => {
   });
 
   const { setJwt } = useContext(AuthContext);
+  const history = useHistory();
 
   useEffect(() => {
     setLoginDisplay("col-sm-6 my-4 show");
@@ -58,6 +60,7 @@ const CreateAccount = () => {
         .then((res) => {
           console.log(res.data);
           setJwt(res.data.data);
+          history.push("/Dashboard");
         })
         .catch((err) => {
           console.log(err);
@@ -80,6 +83,7 @@ const CreateAccount = () => {
         .then((res) => {
           console.log(res.data);
           setJwt(res.data.data);
+          history.push("/Dashboard");
         })
         .catch((err) => console.log(err));
     }

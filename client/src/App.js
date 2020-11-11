@@ -11,6 +11,7 @@ import Events from "./pages/Events/Events";
 import Footer from "./components/Footer/Footer";
 import AuthContext from "./context/AuthContext";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
   const [jwt, setJwt] = useState("");
@@ -31,10 +32,10 @@ function App() {
             <Route exact path="/" component={Index} />
             <Route exact path="/about" component={About} />
             <Route exact path="/login" component={LoginCreateAccount} />
-            <Route exact path="/create-event" component={CreateEditEvent} />
-            <Route exact path="/edit-event" component={CreateEditEvent} />
+            <ProtectedRoute exact path="/create-event" component={CreateEditEvent} />
+            <ProtectedRoute exact path="/edit-event" component={CreateEditEvent} />
             <Route exact path="/events" component={Events} />
-            <Route exact path="/Dashboard" component={Dashboard} />
+            <ProtectedRoute exact path="/Dashboard" component={Dashboard} />
             <Route path="/" component={NotFound} />
           </Switch>
           <Footer />
