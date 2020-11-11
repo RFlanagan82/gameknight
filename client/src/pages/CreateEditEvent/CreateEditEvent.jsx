@@ -11,26 +11,14 @@ const CreateEditEvent = () => {
   const createNewEvent = function (e) {
     e.preventDefault();
     console.log(e.target.date.value);
-    // let newUser = {
-    //   eventName: e.target.eventName.value,
-    //   date: e.target.date.value,
-    //   gameCategory: e.target.gameCategory.value,
-    //   gameName: e.target.gameName.value,
-    //   gameTime: e.target.gameTime.value,
-    //   description: e.target.description.value,
-    //   eventLink: e.target.eventLink.value,
-    //   maxAttendees: e.target.maxAttendees.value,
-    // };
-    if (e.target.ageCheck.value === "on") {
+   
       axios
         .post("/api/events", newEvent)
         .then((res) => {
           console.log(res.data);
         })
         .catch((err) => console.log(err));
-    } else {
-      // TODO: add some kind of validation to throw an alert/modal if the user does not check box
-    }
+    
   };
 
   const [newEvent, setNewEvent] = useState({
@@ -43,12 +31,7 @@ const CreateEditEvent = () => {
     eventLink: "",
     maxAttendees: "",
   });
-  // const setGameTime = (gameTime) => {
-  //   setNewEvent({ ...newEvent, gameTime: gameTime });
-  // };
-  // const setDate = (date) => {
-  //   setNewEvent({ ...newEvent, date: date });
-  // };
+ 
   const setDateTime = (date) => {
     setNewEvent({ ...newEvent, date });
   };
@@ -110,8 +93,18 @@ const CreateEditEvent = () => {
             </Form.Group>
             <Form.Group controlId="gameName">
               <Form.Label>Game</Form.Label>
-
-              <Form.Control type="text" required placeholder="Game Name" />
+              <Form.Control
+                required
+                type="text"
+                placeholder="Game Name"
+                value={newEvent.gameName}
+                onChange={(e) =>
+                  setNewEvent({
+                    ...newEvent,
+                    gameName: e.currentTarget.value,
+                  })
+                }
+                />
             </Form.Group>
             <Form.Group controlId="eventLink">
               <Form.Label>Add a link to your virtual event here!</Form.Label>
@@ -157,17 +150,6 @@ const CreateEditEvent = () => {
                   })
                 }
               />
-            </Form.Group>
-            <Form.Group className="form-group form-check">
-              <Form.Check
-                type="checkbox"
-                className="form-check-input"
-                id="ageCheck"
-              />
-              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-              <Form.Label className="form-check-label" htmlFor="ageCheck">
-                I confirm that I am at least 13 years old.
-              </Form.Label>
             </Form.Group>
 
             <Button type="submit">Submit</Button>
