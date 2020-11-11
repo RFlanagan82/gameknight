@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
- 
+
 import "react-datepicker/dist/react-datepicker.css";
 
-const DatePick = (props) => {
-    const [startDate, setStartDate] = useState(new Date());
-    return (
-      <DatePicker id={props.id} selected={startDate} onChange={date => setStartDate(date)} />
-    );
-  };
+const DatePick = ({ id, setDateTime, value }) => {
+  return (
+    <DatePicker
+      id={id}
+      selected={value}
+      onChange={(date) => setDateTime(date)}
+    />
+  );
+};
 
 export default DatePick;
