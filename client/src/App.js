@@ -33,7 +33,6 @@ function App() {
             <Route exact path="/about" component={About} />
             <Route exact path="/login" component={LoginCreateAccount} />
             <ProtectedRoute exact path="/create-event" component={CreateEditEvent} />
-            <ProtectedRoute exact path="/edit-event" component={CreateEditEvent} />
             <Route exact path="/events" component={Events} />
             <ProtectedRoute exact path="/Dashboard" component={Dashboard} />
             <Route path="/" component={NotFound} />

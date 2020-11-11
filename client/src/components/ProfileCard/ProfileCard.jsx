@@ -1,27 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
-import axios from "axios";
+import { useHistory } from "react-router-dom";
 
-const ProfileCard = () => {
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    getUserInfo();
-  }, []);
-
-  const getUserInfo = () => {
-    axios
-      .get("/api/users/dashboard")
-      .then((res) => {
-        console.log(res.data);
-        setUser(res.data);
-      })
-      .catch((err) => console.log(err));
-  };
-
+const ProfileCard = ({ user, toggleProfileModal }) => {
+  const history = useHistory();
   return (
     <Card className="mx-auto sticky-top mt-auto" style={{ width: "40rem" }}>
       <Card.Header as="h5" className="text-center">
@@ -35,14 +20,23 @@ const ProfileCard = () => {
             thumbnail
           />
         </Row>
-  <h1 className="username">{user.userName}</h1>
+        <h1 className="username">{user.userName}</h1>
         <Card.Text>
           <b>Age Range:</b> {user.ageRange}
         </Card.Text>
         <Card.Text>
           <b>Bio:</b> {user.bio}
         </Card.Text>
-        <Button variant="primary">Edit Profile</Button>
+
+        <Card.Footer className="mt-auto">
+          <Button variant="primary mx-2" onClick={toggleProfileModal}>
+            Edit Profile
+          </Button>
+          <Button variant="primary mx-2" onClick={() => history.push("/create-event")}>
+            Host Event
+          </Button>
+          <Button variant="primary mx-2"  onClick={() => history.push("/events")}>View All Events</Button>
+        </Card.Footer>
       </Card.Body>
     </Card>
   );

@@ -71,5 +71,38 @@ router.delete("/:id", (req, res) => {
 });
 
 // EDIT SELECTED EVENT - USER MUST BE LOGGED IN AND MATCH HOSTID
+router.put("/", (req, res) => {
+  if (!req.headers.authorization) {
+    return res.status(401).json({
+      error: true,
+      data: null,
+      message: "Unauthorized",
+    });
+  }
+  jwt.verify(req.headers.authorization, process.env.SECRET, (err, decoded) => {
+    if (err) {
+      console.log(err);
+      return res.status(401).json({
+        error: true,
+        data: null,
+        message: "Invalid token.",
+      });
+    } else {
+      console.log(decoded);
+      db.Event.findByIdAndUpdate(req.body._id, req.body)
+        .then((user) => {
+          res.json(user);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({
+            error: true,
+            data: null,
+            message: "Could not update event.",
+          });
+        });
+    }
+  });
+});
 
 module.exports = router;
