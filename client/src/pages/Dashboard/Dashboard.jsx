@@ -32,6 +32,7 @@ const Dashboard = () => {
       .get("/api/host")
       .then((results) => {
         setHosted(results.data);
+        console.log(results)
       })
       .catch((err) => {
         console.log(err);
