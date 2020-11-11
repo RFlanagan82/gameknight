@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Container from "../../components/Container/Container";
+import ContainerFluid from "../../components/ContainerFluid/ContainerFluid";
 import Row from "../../components/Row/Row";
 import HomeJumbotron from "../../components/HomeJumbotron/HomeJumbotron";
 import "./Index.css";
@@ -11,7 +12,8 @@ const Index = () => {
   return (
     <>
       <HomeJumbotron />
-      <Container>
+      <ContainerFluid className="indexContainerFluid">
+      <Container className="indexContainer">
         <Row>
           <div className="col-sm-12 text-center my-5">
             <h1 className="knight-font">Stuck at home and bored?</h1>
@@ -54,6 +56,9 @@ const Index = () => {
           </div>
         </Row>
       </Container>
+
+      </ContainerFluid>
+
     </>
   );
 };
