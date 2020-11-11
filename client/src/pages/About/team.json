@@ -22,11 +22,11 @@
     {
         "id": 3,
         "name": "Thomas Walsh",
-        "img": "https://i3.cpcache.com/merchandise/631_550x550_Front_Color-White.jpg?Size=3x3&AttributeValue=NA&c=True&region={%22name%22:%22FrontCenter%22,%22width%22:2.9953501,%22height%22:0.855,%22alignment%22:%22MiddleCenter%22,%22orientation%22:0,%22dpi%22:200,%22crop_x%22:0,%22crop_y%22:0,%22crop_h%22:200,%22crop_w%22:600,%22scale%22:0,%22template%22:{%22id%22:81484668,%22params%22:{}}}",
+        "img": "/images/dane.jpg",
         "alt": "Danepic",
         "linkedinUrl": "https://www.linkedin.com/in/thomasdwj/",
         "email": "mailto: thomas.walsh736@gmail.com" ,
-        "bio": "Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should. Hey, you know how I'm, like, always trying to save the planet? Here's my chance. God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs."
+        "bio": "Full stack web developer with an educational background in symbolic logic and deductive systems as well as music and ancient philosophy. Recently graduated from the Georgia Tech coding bootcamp focusing on the MERN stack and is also proficient with SQL. Eager to join an industry that encourages continuous learning and promotes constant innovation."
     },
     {
         "id": 4,
