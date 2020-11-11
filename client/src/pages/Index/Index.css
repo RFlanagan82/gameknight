@@ -1,5 +1,17 @@
+.indexContainerFluid{
+  background-color: #222222;
+  }
+
+.indexContainer{
+background-color: #222222;
+}
+
+.knight-font {
+  color: whitesmoke;
+}
+
 .game-text {
-  background-color: white;
+  background-color: whitesmoke;
   padding: 1rem;
   opacity: 0.8;
   position: absolute;

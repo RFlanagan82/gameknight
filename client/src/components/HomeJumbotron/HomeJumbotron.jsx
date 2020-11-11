@@ -6,7 +6,7 @@ import logo from "../../images/gameknightlogo.png";
 
 const Jumbo = () => {
   return (
-    <Jumbotron fluid className="home-jumbotron">
+    <Jumbotron fluid className="home-jumbotron mb-0">
       <Container>
         <div className="text-center">
           <img src={logo} alt="logo" className="logo-img" />
