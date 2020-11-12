@@ -5,13 +5,15 @@ import axios from "axios";
 import moment from "moment";
 
 const AttendingEventCard = (props) => {
-
-const handleWithdraw= (id) => {
- axios.put(`/api/attend/remove/${id}`)
- .then((results) => {console.log(results.data)
-props.getAttendingEvents()})
-.catch( err => (console.log(err))
-)};
+  const handleWithdraw = (id) => {
+    axios
+      .put(`/api/attend/remove/${id}`)
+      .then((results) => {
+        console.log(results.data);
+        props.getAttendingEvents();
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Card className="mx-4 bg-secondary">
@@ -26,7 +28,7 @@ props.getAttendingEvents()})
           <b>Time:</b> {moment(props.gameTime).format("LT")}
         </Card.Text>
         <Card.Text>
-          <b>Event Host:</b> {props.hostID}
+          <b>Event Host:</b> {props.hostID.userName}
         </Card.Text>
         <Card.Text>
           <b>Category:</b> {props.gameCategory}
@@ -41,6 +43,12 @@ props.getAttendingEvents()})
           <b>State:</b> {props.state}
         </Card.Text>
         <Card.Text>
+          <b>Users Attending:</b>
+          {props.attendees.map((user) => (
+            <Card.Text>{user.userName}</Card.Text>
+          ))}
+        </Card.Text>
+        <Card.Text>
           <b>Spots Left:</b> {props.maxAttendees - props.attendees.length}
         </Card.Text>
         <Card.Text>
@@ -49,7 +57,9 @@ props.getAttendingEvents()})
         <Card.Text>
           <b>Event Link:</b> <a href={props.eventLink}>{props.eventLink}</a>
         </Card.Text>
-        <Button variant="warning" onClick={(e) => handleWithdraw(props._id)}>Withdraw</Button>
+        <Button variant="warning" onClick={(e) => handleWithdraw(props._id)}>
+          Withdraw
+        </Button>
       </Card.Body>
     </Card>
   );
