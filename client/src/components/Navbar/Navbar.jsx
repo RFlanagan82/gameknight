@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import Image from "react-bootstrap/Image"
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark">
       <Link to="/" className="navbar-brand knight-font">
@@ -29,9 +29,12 @@ const Navbar = () => {
           <NavLink to="/dashboard" className="nav-link">
             Dashboard
           </NavLink>
-          <NavLink to="/login" className="nav-link">
+          {!props.jwt ?<NavLink to="/login" className="nav-link">
             Login
           </NavLink>
+          :<NavLink to="/logout" className="nav-link">
+          Logout
+        </NavLink>}
           <NavLink to="/about" className="nav-link">
             About
           </NavLink>
