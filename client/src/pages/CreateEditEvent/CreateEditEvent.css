@@ -1,8 +1,16 @@
-.createEventContainer {
-  background-image: url("../../images/parchment.jpg");
-  background-size: cover;
+.createEventContainerFluid {
+  background-color: #222222;
 }
+
+.createEventContainer {
+  background-color: #222222;
+}
+
 
 .createEventCard {
   background-color: rgba(0, 0, 0, 0.6);
+}
+
+.createheader {
+  color: #5d1615;
 }

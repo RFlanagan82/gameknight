@@ -50,13 +50,13 @@ const CreateEditEvent = () => {
   };
   return (
     <>
-      <ContainerFluid className="createEventContainer">
-        <Container className="p-5">
+      <ContainerFluid className="createEventContainerFluid">
+        <Container className="p-5 createEventContainer">
           <Alert />
           <Card className="createEventCard">
             <Card.Body>
               <Form onSubmit={(e) => createNewEvent(e)}>
-                <Card.Header className="text-center">
+                <Card.Header className="text-center createheader">
                   <h2>
                     <b>Create New Event</b>
                   </h2>
@@ -208,7 +208,7 @@ const CreateEditEvent = () => {
                   />
                 </Form.Group>
                 <Form.Group className="text-center">
-                  <Button type="submit" className="align-items-md-center">
+                  <Button type="submit" className="align-items-md-center" variant="warning">
                     Submit
                   </Button>
                 </Form.Group>
