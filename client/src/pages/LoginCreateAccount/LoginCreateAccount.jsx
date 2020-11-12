@@ -7,7 +7,9 @@ import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import AuthContext from "../../context/AuthContext";
+import AlertContext from "../../context/AlertContext";
 import { useHistory } from "react-router-dom";
+import Alert from "../../components/Alert/Alert";
 
 const CreateAccount = () => {
   const [loginDisplay, setLoginDisplay] = useState("col-sm-6 my-4 show");
@@ -30,6 +32,7 @@ const CreateAccount = () => {
   });
 
   const { setJwt } = useContext(AuthContext);
+  const { setAlert } = useContext(AlertContext);
   const history = useHistory();
 
   useEffect(() => {
@@ -58,12 +61,11 @@ const CreateAccount = () => {
       axios
         .post("/api/login", login)
         .then((res) => {
-          console.log(res.data);
           setJwt(res.data.data);
           history.push("/Dashboard");
         })
         .catch((err) => {
-          console.log(err);
+          setAlert({ message: "Login failed. Please try again.", type: "danger" });
         });
     }
   };
@@ -85,7 +87,10 @@ const CreateAccount = () => {
           setJwt(res.data.data);
           history.push("/Dashboard");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          setAlert({ message: "Account creation failed. Please try again.", type: "danger" });
+        });
     }
   };
 
@@ -93,6 +98,7 @@ const CreateAccount = () => {
     <>
       <Container>
         <Row>
+        <Alert />
           <div className="col-sm-3"></div>
           <div className={loginDisplay}>
             <h1>Login</h1>

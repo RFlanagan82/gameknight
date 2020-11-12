@@ -10,21 +10,26 @@ import About from "./pages/About/About";
 import Events from "./pages/Events/Events";
 import Footer from "./components/Footer/Footer";
 import AuthContext from "./context/AuthContext";
+import AlertContext from "./context/AlertContext";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
+  const [alert, setAlert] = useState({
+    message: "",
+    type: "",
+  });
   const [jwt, setJwt] = useState("");
 
   useEffect(() => {
     if (jwt) {
-      setAxiosDefaults(jwt)
-      console.log(jwt);
+      setAxiosDefaults(jwt);
     }
   }, [jwt]);
 
   return (
     <Router>
+      <AlertContext.Provider value={{ ...alert, setAlert: setAlert }}>
       <AuthContext.Provider value={{ jwt, setJwt }}>
         <div className="d-flex flex-column min-vh-100">
           <Navbar />
@@ -33,7 +38,6 @@ function App() {
             <Route exact path="/about" component={About} />
             <Route exact path="/login" component={LoginCreateAccount} />
             <ProtectedRoute exact path="/create-event" component={CreateEditEvent} />
-            <ProtectedRoute exact path="/edit-event" component={CreateEditEvent} />
             <Route exact path="/events" component={Events} />
             <ProtectedRoute exact path="/Dashboard" component={Dashboard} />
             <Route path="/" component={NotFound} />
@@ -41,6 +45,7 @@ function App() {
           <Footer />
         </div>
       </AuthContext.Provider>
+      </AlertContext.Provider>
     </Router>
   );
 }
