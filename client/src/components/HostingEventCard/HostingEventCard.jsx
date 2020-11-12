@@ -46,7 +46,7 @@ const HostingEventCard = ({ event, setNewEvent, getHostedEvents, toggleEventModa
           <b>Event Link:</b> {event.eventLink}
         </Card.Text>
         <Button
-          variant="primary"
+          variant="warning"
           onClick={(e) => {
             setNewEvent(event);
             toggleEventModal();
@@ -56,7 +56,7 @@ const HostingEventCard = ({ event, setNewEvent, getHostedEvents, toggleEventModa
         </Button>
         <Button
           className="ml-2"
-          variant="primary"
+          variant="warning"
           onClick={(e) => handleDelete(event._id)}
         >
           Delete

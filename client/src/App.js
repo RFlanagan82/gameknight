@@ -13,6 +13,7 @@ import AuthContext from "./context/AuthContext";
 import AlertContext from "./context/AlertContext";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import "./App.css";
 
 function App() {
   const [alert, setAlert] = useState({
@@ -31,7 +32,7 @@ function App() {
     <Router>
       <AlertContext.Provider value={{ ...alert, setAlert: setAlert }}>
       <AuthContext.Provider value={{ jwt, setJwt }}>
-        <div className="d-flex flex-column min-vh-100">
+        <div className="d-flex flex-column min-vh-100 darkFiller">
           <Navbar />
           <Switch>
             <Route exact path="/" component={Index} />
