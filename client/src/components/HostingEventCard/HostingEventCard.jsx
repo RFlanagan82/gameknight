@@ -49,7 +49,10 @@ const HostingEventCard = ({
           <b>State:</b> {event.state}
         </Card.Text>
         <Card.Text>
-          <b>Spots Left:</b> {event.maxAttendees}
+          <b>Users Attending:</b> {event.attendees.length}
+        </Card.Text>
+        <Card.Text>
+          <b>Spots Left:</b> {event.maxAttendees - event.attendees.length}
         </Card.Text>
         <Card.Text>
           <b>Description:</b> {event.description}

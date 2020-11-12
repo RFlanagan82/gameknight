@@ -41,7 +41,7 @@ props.getAttendingEvents()})
           <b>State:</b> {props.state}
         </Card.Text>
         <Card.Text>
-          <b>Spots Left:</b> {props.maxAttendees}
+          <b>Spots Left:</b> {props.maxAttendees - props.attendees.length}
         </Card.Text>
         <Card.Text>
           <b>Description:</b> {props.description}

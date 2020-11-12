@@ -50,6 +50,7 @@ function Events() {
               description={eventaroo.description}
               maxAttendees={eventaroo.maxAttendees}
               eventLink={eventaroo.eventLink}
+              attendees={eventaroo.attendees}
             />
           ))}
         </Accordion>
