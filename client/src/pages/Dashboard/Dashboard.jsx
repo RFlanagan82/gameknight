@@ -153,7 +153,7 @@ const Dashboard = () => {
             <ProfileCard user={user} toggleProfileModal={toggleProfileModal} />
           </Col>
           <Col>
-            <h1 className="py-2 text-center">Hosted Events</h1>
+            <h1 className="py-2 text-center header">Hosted Events</h1>
             {hosted.map((event, index) => (
               <HostingEventCard
                 key={index}
@@ -163,7 +163,7 @@ const Dashboard = () => {
                 toggleEventModal={toggleEventModal}
               />
             ))}
-            <h1 className="py-2 mt-4 text-center">Upcoming Events</h1>
+            <h1 className="py-2 mt-4 text-center header">Upcoming Events</h1>
             {attending.map((event, index) => (
               <AttendingEventCard
                 key={index}

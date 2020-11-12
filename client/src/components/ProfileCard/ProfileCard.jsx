@@ -29,13 +29,13 @@ const ProfileCard = ({ user, toggleProfileModal }) => {
         </Card.Text>
 
         <Card.Footer className="mt-auto">
-          <Button variant="primary mx-2" onClick={toggleProfileModal}>
+          <Button variant="warning mx-2" onClick={toggleProfileModal}>
             Edit Profile
           </Button>
-          <Button variant="primary mx-2" onClick={() => history.push("/create-event")}>
+          <Button variant="warning mx-2" onClick={() => history.push("/create-event")}>
             Host Event
           </Button>
-          <Button variant="primary mx-2"  onClick={() => history.push("/events")}>View All Events</Button>
+          <Button variant="warning mx-2"  onClick={() => history.push("/events")}>View All Events</Button>
         </Card.Footer>
       </Card.Body>
     </Card>
