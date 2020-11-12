@@ -159,6 +159,7 @@ const Dashboard = () => {
                 key={index}
                 event={event}
                 getHostedEvents={getHostedEvents}
+                getAttendingEvents={getAttendingEvents}
                 setNewEvent={setNewEvent}
                 toggleEventModal={toggleEventModal}
               />
@@ -169,6 +170,7 @@ const Dashboard = () => {
                 key={index}
                 {...event}
                 getAttendingEvents={getAttendingEvents}
+                getHostedEvents={getHostedEvents}
               />
             ))}
           </Col>

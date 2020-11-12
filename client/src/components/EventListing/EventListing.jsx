@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -13,6 +13,14 @@ function EventListing(props) {
   const { jwt } = useContext(AuthContext);
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
+  const [buttonStatus, setButtonStatus] = useState({
+    status: "",
+    text: "Join"
+  });
+
+  useEffect(() => {
+    checkOpenSpaces();
+  }, [])
 
   const handleJoin = (id) => {
     if (!jwt) {
@@ -22,6 +30,7 @@ function EventListing(props) {
         .put(`/api/attend/add/${id}`)
         .then((results) => {
           toggleModal();
+          props.loadEvents();
         })
         .catch((err) => console.log(err));
     }
@@ -29,7 +38,22 @@ function EventListing(props) {
 
   const toggleModal = function () {
     setShowModal(!showModal);
+    checkOpenSpaces();
   };
+
+  const checkOpenSpaces = function() {
+    if ((props.maxAttendees - props.attendees.length) === 0) {
+      setButtonStatus({
+        status: "disabled",
+        text: "Event Full"
+      })
+    } else {
+      setButtonStatus({
+        status: "",
+        text: "Join"
+      })
+    }
+  }
 
   return (
     <>
@@ -54,11 +78,11 @@ function EventListing(props) {
             <p className="state">State: {props.state}</p>
             <p className="maxAttendees">Max Attendees: {props.maxAttendees}</p>
             <p className="spotsLeft">Spots Left: {props.maxAttendees - props.attendees.length}</p>
-            <Button
+            <Button disabled={buttonStatus.status}
               variant="warning"
               onClick={(e) => handleJoin(props.eventkey)}
             >
-              Join
+              {buttonStatus.text}
             </Button>
           </Card.Body>
         </Accordion.Collapse>

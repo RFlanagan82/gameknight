@@ -11,7 +11,7 @@ const modal = ({ showModal, toggleModal, title, body }) => {
         </Modal.Header>
         <Modal.Body>{body}</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={toggleModal}>
+          <Button variant="warning" onClick={toggleModal}>
             Close
           </Button>
         </Modal.Footer>

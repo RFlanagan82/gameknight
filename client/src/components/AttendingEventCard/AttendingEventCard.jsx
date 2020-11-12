@@ -9,8 +9,9 @@ const AttendingEventCard = (props) => {
     axios
       .put(`/api/attend/remove/${id}`)
       .then((results) => {
-        console.log(results.data);
+        console.log(results);
         props.getAttendingEvents();
+        props.getHostedEvents();
       })
       .catch((err) => console.log(err));
   };

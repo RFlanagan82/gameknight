@@ -3,7 +3,6 @@ import axios from "axios";
 import EventListing from "../../components/EventListing/EventListing";
 import Accordion from "react-bootstrap/Accordion";
 import Container from "../../components/Container/Container";
-import ContainerFluid from "../../components/ContainerFluid/ContainerFluid";
 import AlertContext from "../../context/AlertContext";
 import Alert from "../../components/Alert/Alert";
 import Form from "react-bootstrap/Form";
@@ -154,6 +153,7 @@ function Events() {
               maxAttendees={eventaroo.maxAttendees}
               eventLink={eventaroo.eventLink}
               attendees={eventaroo.attendees}
+              loadEvents={loadEvents}
             />
           ))}
         </Accordion>
