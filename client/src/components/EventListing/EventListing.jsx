@@ -52,7 +52,6 @@ function EventListing(props) {
             <p className="city">City: {props.city}</p>
             <p className="state">State: {props.state}</p>
             <p className="maxAttendees">Max Attendees: {props.maxAttendees}</p>
-            <p className="eventLink">Event Link: {props.eventLink}</p>
             <Button
               variant="warning"
               onClick={(e) => handleJoin(props.eventkey)}
