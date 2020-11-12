@@ -8,11 +8,11 @@ import { useHistory } from "react-router-dom";
 const ProfileCard = ({ user, toggleProfileModal }) => {
   const history = useHistory();
   return (
-    <Card className="mx-auto sticky-top mt-auto" style={{ width: "40rem" }}>
+    <Card className="mx-auto sticky-top mt-auto bg-secondary" style={{ width: "40rem" }}>
       <Card.Header as="h5" className="text-center">
         My Profile
       </Card.Header>
-      <Card.Body className="text-center">
+      <Card.Body className="text-center text-white">
         <Row>
           <Image
             className="avatar justify-content-md-center"

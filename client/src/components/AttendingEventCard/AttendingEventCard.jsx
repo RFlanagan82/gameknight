@@ -14,11 +14,11 @@ props.getAttendingEvents()})
 )};
 
   return (
-    <Card className="mx-4">
+    <Card className="mx-4 bg-secondary">
       <Card.Header as="h5" className="text-center">
         {props.eventName}
       </Card.Header>
-      <Card.Body className="text-center">
+      <Card.Body className="text-center text-white">
         <Card.Text>
           <b>Date:</b> {moment(props.date).format("LL")}
         </Card.Text>
