@@ -154,6 +154,7 @@ function Events() {
               maxAttendees={eventaroo.maxAttendees}
               eventLink={eventaroo.eventLink}
               attendees={eventaroo.attendees}
+              isVirtual={eventaroo.isVirtual}
             />
           ))}
         </Accordion>

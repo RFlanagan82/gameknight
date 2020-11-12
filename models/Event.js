@@ -40,16 +40,21 @@ const EventSchema = new Schema ({
     eventLink: {
         type: String,
         trim: true,
-        required: "String is Required",
     },
 
     city: {
         type: String,
         trim: true,
-        required: "String is Required",
+
     },
 
     state: {
+        type: String,
+        trim: true,
+
+    },
+
+    isVirtual: {
         type: String,
         trim: true,
         required: "String is Required",

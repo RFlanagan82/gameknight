@@ -8,7 +8,6 @@ import { useHistory } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
 import moment from "moment";
 
-
 function EventListing(props) {
   const { jwt } = useContext(AuthContext);
   const history = useHistory();
@@ -35,9 +34,17 @@ function EventListing(props) {
     <>
       <Card className="bg-secondary knight-font">
         <Card.Header className="text-white">
-          <h2 className="eventName header"><u>{props.eventName}</u></h2>
-          <h4 className="gameName"><b>Game:</b> {props.gameName}</h4>
-          <h6 className="date mb-3">{moment(props.date).format("LL")} at {moment(props.gameTime).format("LT")}</h6>
+          <h2 className="eventName header">
+            <u>{props.eventName}</u>
+          </h2>
+          <h4 className="gameName">
+            <b>Game:</b> {props.gameName}
+          </h4>
+          <h6 className="date mb-3">
+            {moment(props.date).format("LL")} at{" "}
+            {moment(props.gameTime).format("LT")}
+          </h6>
+          <h6 className="date mb-3">{props.isVirtual}</h6>
           <Accordion.Toggle
             as={Button}
             variant="warning"
@@ -53,7 +60,9 @@ function EventListing(props) {
             <p className="city">City: {props.city}</p>
             <p className="state">State: {props.state}</p>
             <p className="maxAttendees">Max Attendees: {props.maxAttendees}</p>
-            <p className="spotsLeft">Spots Left: {props.maxAttendees - props.attendees.length}</p>
+            <p className="spotsLeft">
+              Spots Left: {props.maxAttendees - props.attendees.length}
+            </p>
             <Button
               variant="warning"
               onClick={(e) => handleJoin(props.eventkey)}

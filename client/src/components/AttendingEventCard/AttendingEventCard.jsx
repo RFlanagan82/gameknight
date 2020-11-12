@@ -21,6 +21,9 @@ const AttendingEventCard = (props) => {
         <u>{props.eventName}</u>
       </Card.Header>
       <Card.Body className="text-center text-white">
+      <Card.Text>
+         {props.isVirtual}
+        </Card.Text>
         <Card.Text>
           <b>Date:</b> {moment(props.date).format("LL")}
         </Card.Text>
