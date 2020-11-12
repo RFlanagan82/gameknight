@@ -2,6 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import moment from "moment";
 
 const AttendingEventCard = (props) => {
 
@@ -19,10 +20,10 @@ props.getAttendingEvents()})
       </Card.Header>
       <Card.Body className="text-center">
         <Card.Text>
-          <b>Date:</b> {props.date}
+          <b>Date:</b> {moment(props.date).format("LL")}
         </Card.Text>
         <Card.Text>
-          <b>Time:</b> {props.gameTime}
+          <b>Time:</b> {moment(props.gameTime).format("LT")}
         </Card.Text>
         <Card.Text>
           <b>Event Host:</b> {props.hostID}
