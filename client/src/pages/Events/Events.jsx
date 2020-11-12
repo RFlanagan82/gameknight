@@ -68,9 +68,9 @@ function Events() {
       <Container>
         <Alert />
         <Row>
-          <div className="col-sm-4"></div>
-          <div className="col-sm-4">
-            <Card className="p-4 bg-dark">
+          <div className="col-sm-3"></div>
+          <div className="col-sm-6">
+            <Card className="p-4 bg-dark knight-font">
               <Form onSubmit={(e) => {searchEvents(e)}}>
                 <Form.Group controlId="searchCategory">
                   <Form.Label className="text-white">

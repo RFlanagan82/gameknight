@@ -8,9 +8,9 @@ import { useHistory } from "react-router-dom";
 const ProfileCard = ({ user, toggleProfileModal }) => {
   const history = useHistory();
   return (
-    <Card className="mx-auto sticky-top mt-auto bg-secondary" style={{ width: "40rem" }}>
-      <Card.Header as="h5" className="text-center">
-        My Profile
+    <Card className="mx-auto sticky-top mt-auto bg-secondary knight-font" style={{ width: "40rem" }}>
+      <Card.Header as="h5" className="text-center header">
+        <u>My Profile</u>
       </Card.Header>
       <Card.Body className="text-center text-white">
         <Row>
@@ -20,7 +20,7 @@ const ProfileCard = ({ user, toggleProfileModal }) => {
             thumbnail
           />
         </Row>
-        <h1 className="username">{user.userName}</h1>
+        <h1 className="username header"><u>{user.userName}</u></h1>
         <Card.Text>
           <b>Age Range:</b> {user.ageRange}
         </Card.Text>

@@ -16,9 +16,9 @@ const AttendingEventCard = (props) => {
   };
 
   return (
-    <Card className="mx-4 bg-secondary">
-      <Card.Header as="h5" className="text-center">
-        {props.eventName}
+    <Card className="mx-4 bg-secondary knight-font">
+      <Card.Header as="h5" className="text-center header">
+        <u>{props.eventName}</u>
       </Card.Header>
       <Card.Body className="text-center text-white">
         <Card.Text>
