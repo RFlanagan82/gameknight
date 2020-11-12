@@ -208,7 +208,7 @@ const CreateEditEvent = () => {
                   />
                 </Form.Group>
                 <Form.Group className="text-center">
-                  <Button type="submit" className="align-items-md-center" variant="warning">
+                  <Button type="submit" className="align-items-md-center knight-font" variant="warning">
                     Submit
                   </Button>
                 </Form.Group>

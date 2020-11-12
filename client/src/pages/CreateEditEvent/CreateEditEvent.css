@@ -8,9 +8,14 @@
 
 
 .createEventCard {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: whitesmoke;
 }
 
 .createheader {
   color: #5d1615;
+  font-family: 'Cinzel', serif
+}
+
+.knight-font {
+  font-family: 'Cinzel', serif;
 }
