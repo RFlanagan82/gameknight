@@ -16,6 +16,7 @@ const CreateEditEvent = () => {
   const [newEvent, setNewEvent] = useState({
     eventName: "",
     date: "",
+    isVirtual: "",
     gameCategory: "",
     gameName: "",
     gameTime: "",
@@ -23,7 +24,7 @@ const CreateEditEvent = () => {
     eventLink: "",
     maxAttendees: "",
     city: "",
-    state: ""
+    state: "",
   });
 
   const history = useHistory();
@@ -75,9 +76,27 @@ const CreateEditEvent = () => {
                       })
                     }
                   />
-
+                 
                   <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 </Form.Group>
+                <Form.Group controlId="isVirtual">
+                    <Form.Label>Virtual or In Person?</Form.Label>
+                    <Form.Control
+                      as="select"
+                      required
+                      value={newEvent.isVirtual}
+                      onChange={(e) =>
+                        setNewEvent({
+                          ...newEvent,
+                          isVirtual: e.currentTarget.value,
+                        })
+                      }
+                    >
+                      <option value="" className="disabled"></option>
+                      <option value="Virtual">Virtual</option>
+                      <option value="In Person">In Person</option>
+                    </Form.Control>
+                  </Form.Group>
                 <Form.Group>
                   <Form.Label>Event Date: &nbsp; </Form.Label>
                   <DatePick
@@ -128,9 +147,8 @@ const CreateEditEvent = () => {
                 <Form.Group controlId="city">
                   <Form.Label>City</Form.Label>
                   <Form.Control
-                    required
                     type="text"
-                    placeholder="City"
+                    placeholder="Optional"
                     value={newEvent.city}
                     onChange={(e) =>
                       setNewEvent({
@@ -143,9 +161,8 @@ const CreateEditEvent = () => {
                 <Form.Group controlId="state">
                   <Form.Label>State</Form.Label>
                   <Form.Control
-                    required
                     type="text"
-                    placeholder="State"
+                    placeholder="Optional"
                     value={newEvent.state}
                     onChange={(e) =>
                       setNewEvent({
@@ -154,17 +171,13 @@ const CreateEditEvent = () => {
                       })
                     }
                   />
-
                 </Form.Group>
-                
+
                 <Form.Group controlId="eventLink">
-                  <Form.Label>
-                    Add a link to your event here!
-                  </Form.Label>
+                  <Form.Label>Add a link to your event here!</Form.Label>
                   <Form.Control
-                    required
                     type="text"
-                    placeholder="Event Link"
+                    placeholder="Optional"
                     value={newEvent.eventLink}
                     onChange={(e) =>
                       setNewEvent({
@@ -208,7 +221,11 @@ const CreateEditEvent = () => {
                   />
                 </Form.Group>
                 <Form.Group className="text-center">
-                  <Button type="submit" className="align-items-md-center knight-font" variant="warning">
+                  <Button
+                    type="submit"
+                    className="align-items-md-center knight-font"
+                    variant="warning"
+                  >
                     Submit
                   </Button>
                 </Form.Group>
