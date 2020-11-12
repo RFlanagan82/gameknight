@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import ContainerFluid from "../../components/ContainerFluid/ContainerFluid";
 import Container from "../../components/Container/Container";
@@ -8,6 +8,8 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
+import AlertContext from "../../context/AlertContext";
+import Alert from "../../components/Alert/Alert";
 import "./CreateEditEvent.css";
 
 const CreateEditEvent = () => {
@@ -23,6 +25,7 @@ const CreateEditEvent = () => {
   });
 
   const history = useHistory();
+  const { setAlert } = useContext(AlertContext);
 
   const createNewEvent = function (e) {
     e.preventDefault();
@@ -32,7 +35,9 @@ const CreateEditEvent = () => {
         console.log(res.data);
         history.push("/Dashboard");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setAlert({ message: "Could not create new event.", type: "danger" });
+      });
   };
 
   const setDateTime = (date) => {
@@ -45,6 +50,7 @@ const CreateEditEvent = () => {
     <>
       <ContainerFluid className="createEventContainer">
         <Container className="p-5">
+          <Alert />
           <Card className="createEventCard">
             <Card.Body>
               <Form onSubmit={(e) => createNewEvent(e)}>

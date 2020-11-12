@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import "./Dashboard.css";
 import Container from "../../components/Container/Container";
 import Row from "../../components/Row/Row";
@@ -9,6 +9,8 @@ import Col from "react-bootstrap/Col";
 import axios from "axios";
 import EditProfileModal from "../../components/EditProfileModal/EditProfileModal";
 import EditEventModal from "../../components/EditEventModal/EditEventModal";
+import Alert from "../../components/Alert/Alert";
+import AlertContext from "../../context/AlertContext";
 
 const Dashboard = () => {
   const [hosted, setHosted] = useState([]);
@@ -20,6 +22,7 @@ const Dashboard = () => {
   const [showEventModal, setShowEventModal] = useState(false);
   const [newEvent, setNewEvent] = useState({});
   const [eventValidated, setEventValidated] = useState(false);
+  const { setAlert } = useContext(AlertContext);
 
   useEffect(() => {
     getHostedEvents();
@@ -35,7 +38,10 @@ const Dashboard = () => {
         console.log(results)
       })
       .catch((err) => {
-        console.log(err);
+        setAlert({
+          message: "Could not retrieve events.",
+          type: "danger",
+        });
       });
   };
 
@@ -46,7 +52,10 @@ const Dashboard = () => {
         setAttending(results.data);
       })
       .catch((err) => {
-        console.log(err);
+        setAlert({
+          message: "Could not retrieve events.",
+          type: "danger",
+        });
       });
   };
 
@@ -58,7 +67,12 @@ const Dashboard = () => {
         setUser(res.data);
         setNewProfile(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setAlert({
+          message: "Could not retrieve profile information.",
+          type: "danger",
+        });
+      });
   };
 
   const toggleProfileModal = () => {
@@ -88,7 +102,10 @@ const Dashboard = () => {
           setProfileValidated(false);
         })
         .catch((err) => {
-          console.log(err);
+          setAlert({
+            message: "Could not update profile.",
+            type: "danger",
+          });
         });
     }
   };
@@ -118,13 +135,19 @@ const Dashboard = () => {
           getHostedEvents();
           setEventValidated(false);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          setAlert({
+            message: "Could not update profile.",
+            type: "danger",
+          });
+        });
     }
   };
 
   return (
     <>
       <Container>
+        <Alert />
         <Row>
           <Col className="mt-5">
             <ProfileCard user={user} toggleProfileModal={toggleProfileModal} />
