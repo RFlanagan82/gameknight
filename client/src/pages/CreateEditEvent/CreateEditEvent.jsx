@@ -154,7 +154,7 @@ const CreateEditEvent = () => {
                       })
                     }
                   />
-                  
+
                 </Form.Group>
                 
                 <Form.Group controlId="eventLink">
