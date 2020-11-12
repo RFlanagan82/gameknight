@@ -31,7 +31,7 @@ const HostingEventCard = ({
           <b>Date:</b> {moment(event.date).format("LL")}
         </Card.Text>
         <Card.Text>
-          <b>Time:</b> {event.gameTime}
+          <b>Time:</b> {moment(event.gameTime).format("LT")}
         </Card.Text>
         <Card.Text>
           <b>Event Host:</b> {event.hostID}
