@@ -4,10 +4,10 @@ import "./About.css";
 function Aboutcard(props) {
   return (
     <div className="col-sm-6 my-4 text-center">
-      <div className="card mx-auto my-auto" style={{ height: "100%", width: "75%" }}>
+      <div className="card mx-auto my-auto knight-font bg-secondary" style={{ height: "100%", width: "75%" }}>
         <img src={props.img} className="card-img-top" alt={props.alt} />
         <div className="card-body d-flex flex-column">
-          <h5 className="card-title">{props.name}</h5>
+          <h5 className="card-title header"><u>{props.name}</u></h5>
           <p className="card-text">{props.bio}</p>
           <footer className="mt-auto">
           <a
