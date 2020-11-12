@@ -11,6 +11,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/esm/Button";
 import Row from "../../components/Row/Row";
 import "./Events.css"
+import EventJumbo from "../../components/EventJumbo/EventJumbo";
 
 function Events() {
   const [events, setEvents] = useState([]);
@@ -63,6 +64,7 @@ function Events() {
 
   return (
     <>
+    <EventJumbo />
       <Container>
         <Alert />
         <Row>

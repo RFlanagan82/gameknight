@@ -1,0 +1,11 @@
+.event-jumbotron {
+    background-image: url("../../images/event-listing-jumbo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.eventjumboheader {
+background-color: whitesmoke;
+color: #5d1615;
+background: rgba(255,255,255,.5)
+}
