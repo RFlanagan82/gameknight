@@ -47,7 +47,7 @@ props.getAttendingEvents()})
           <b>Description:</b> {props.description}
         </Card.Text>
         <Card.Text>
-          <b>Event Link:</b> {props.eventLink}
+          <b>Event Link:</b> <a href={props.eventLink}>{props.eventLink}</a>
         </Card.Text>
         <Button variant="warning" onClick={(e) => handleWithdraw(props._id)}>Withdraw</Button>
       </Card.Body>

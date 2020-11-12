@@ -55,7 +55,7 @@ const HostingEventCard = ({
           <b>Description:</b> {event.description}
         </Card.Text>
         <Card.Text>
-          <b>Event Link:</b> {event.eventLink}
+        <b>Event Link:</b> <a href={event.eventLink}>{event.eventLink}</a>
         </Card.Text>
         <Button
           variant="warning"
