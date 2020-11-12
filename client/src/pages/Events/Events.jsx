@@ -3,8 +3,10 @@ import axios from "axios";
 import EventListing from "../../components/EventListing/EventListing";
 import Accordion from "react-bootstrap/Accordion";
 import Container from "../../components/Container/Container";
+import ContainerFluid from "../../components/ContainerFluid/ContainerFluid";
 import AlertContext from "../../context/AlertContext";
 import Alert from "../../components/Alert/Alert";
+import "./Events.css"
 
 function Events() {
   const [events, setEvents] = useState([]);
@@ -31,25 +33,27 @@ function Events() {
 
   return (
     <>
-      <Container>
-        <Alert />
-        <Accordion>
-          {events.map((eventaroo, index) => (
-            <EventListing
-              key={index}
-              eventkey={eventaroo._id}
-              eventName={eventaroo.eventName}
-              date={eventaroo.date}
-              gameTime={eventaroo.gameTime}
-              gameName={eventaroo.gameName}
-              category={eventaroo.gameCategory}
-              description={eventaroo.description}
-              maxAttendees={eventaroo.maxAttendees}
-              eventLink={eventaroo.eventLink}
-            />
-          ))}
-        </Accordion>
-      </Container>
+      <ContainerFluid className="eventsContainerFluid">
+        <Container className="eventsContainer">
+          <Alert />
+          <Accordion>
+            {events.map((eventaroo, index) => (
+              <EventListing
+                key={index}
+                eventkey={eventaroo._id}
+                eventName={eventaroo.eventName}
+                date={eventaroo.date}
+                gameTime={eventaroo.gameTime}
+                gameName={eventaroo.gameName}
+                category={eventaroo.gameCategory}
+                description={eventaroo.description}
+                maxAttendees={eventaroo.maxAttendees}
+                eventLink={eventaroo.eventLink}
+              />
+            ))}
+          </Accordion>
+        </Container>
+      </ContainerFluid>
     </>
   );
 }
