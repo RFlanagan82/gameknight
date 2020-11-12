@@ -8,7 +8,7 @@ function Aboutcard(props) {
         <img src={props.img} className="card-img-top" alt={props.alt} />
         <div className="card-body d-flex flex-column">
           <h5 className="card-title header"><u>{props.name}</u></h5>
-          <p className="card-text">{props.bio}</p>
+          <p className="card-text text-white">{props.bio}</p>
           <footer className="mt-auto">
           <a
             href={props.linkedinUrl}

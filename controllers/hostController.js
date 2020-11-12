@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
       });
     } else {
       db.Event.find({ hostID: { $eq: decoded.userId } })
-        .populate("attendees")
+        .populate(["attendees", "hostID"])
         .then((Events) => {
           res.json(Events);
         })

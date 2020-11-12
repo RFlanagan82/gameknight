@@ -1,8 +1,9 @@
-import React from "react";
+import { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import moment from "moment";
+import ProfileCardModal from "../../components/ProfileCardModal/ProfileCardModal";
 
 const HostingEventCard = ({
   event,
@@ -10,6 +11,7 @@ const HostingEventCard = ({
   getHostedEvents,
   toggleEventModal,
 }) => {
+  const [showModal, setShowModal] = useState(false);
   const handleDelete = function (id) {
     console.log(id);
     axios
@@ -20,68 +22,81 @@ const HostingEventCard = ({
       })
       .catch((err) => console.log(err));
   };
+  const toggleModal = function () {
+    setShowModal(!showModal);
+  };
 
   return (
-    <Card className="mx-4 bg-secondary knight-font">
-      <Card.Header as="h5" className="text-center header">
-        <u>{event.eventName}</u>
-      </Card.Header>
-      <Card.Body className="text-center text-white">
-        <Card.Text>
-          <b>Date:</b> {moment(event.date).format("LL")}
-        </Card.Text>
-        <Card.Text>
-          <b>Time:</b> {moment(event.gameTime).format("LT")}
-        </Card.Text>
-        <Card.Text>
-          <b>Category:</b> {event.gameCategory}
-        </Card.Text>
-        <Card.Text>
-          <b>Game:</b> {event.gameName}
-        </Card.Text>
-        <Card.Text>
-          <b>City:</b> {event.city}
-        </Card.Text>
-        <Card.Text>
-          <b>State:</b> {event.state}
-        </Card.Text>
-        <Card.Text>
-          <b>Users Attending:</b> {event.attendees.map((user) => (
-            <Card.Text>
-              {user.userName}
-            </Card.Text>
-          ))}
-        </Card.Text>
-        <Card.Text>
-          <b># of Users Attending:</b> {event.attendees.length}
-        </Card.Text>
-        <Card.Text>
-          <b>Spots Left:</b> {event.maxAttendees - event.attendees.length}
-        </Card.Text>
-        <Card.Text>
-          <b>Description:</b> {event.description}
-        </Card.Text>
-        <Card.Text>
-        <b>Event Link:</b> <a href={event.eventLink}>{event.eventLink}</a>
-        </Card.Text>
-        <Button
-          variant="warning"
-          onClick={(e) => {
-            setNewEvent(event);
-            toggleEventModal();
-          }}
-        >
-          Edit
-        </Button>
-        <Button
-          className="ml-2"
-          variant="warning"
-          onClick={(e) => handleDelete(event._id)}
-        >
-          Delete
-        </Button>
-      </Card.Body>
-    </Card>
+    <>
+      <Card className="mx-4 bg-secondary knight-font">
+        <Card.Header as="h5" className="text-center header">
+          <u>{event.eventName}</u>
+        </Card.Header>
+        <Card.Body className="text-center text-white">
+          <Card.Text>
+            <b>Date:</b> {moment(event.date).format("LL")}
+          </Card.Text>
+          <Card.Text>
+            <b>Time:</b> {moment(event.gameTime).format("LT")}
+          </Card.Text>
+          <Card.Text>
+            <b>Category:</b> {event.gameCategory}
+          </Card.Text>
+          <Card.Text>
+            <b>Game:</b> {event.gameName}
+          </Card.Text>
+          <Card.Text>
+            <b>City:</b> {event.city}
+          </Card.Text>
+          <Card.Text>
+            <b>State:</b> {event.state}
+          </Card.Text>
+          <Card.Text>
+            <b>Users Attending:</b>{" "}
+            {event.attendees.map((user, index) => (
+              <Button
+                key={index}
+                variant="link"
+                onClick={(e) => {
+                  toggleModal();
+                }}
+              >
+                {user.userName}
+              </Button>
+            ))}
+          </Card.Text>
+          <Card.Text>
+            <b># of Users Attending:</b> {event.attendees.length}
+          </Card.Text>
+          <Card.Text>
+            <b>Spots Left:</b> {event.maxAttendees - event.attendees.length}
+          </Card.Text>
+          <Card.Text>
+            <b>Description:</b> {event.description}
+          </Card.Text>
+          <Card.Text>
+            <b>Event Link:</b> <a href={event.eventLink} target="_blank" rel="noreferrer">{event.eventLink}</a>
+          </Card.Text>
+          <Button
+            variant="warning"
+            onClick={(e) => {
+              setNewEvent(event);
+              toggleEventModal();
+            }}
+          >
+            Edit
+          </Button>
+          <Button
+            className="ml-2"
+            variant="warning"
+            onClick={(e) => handleDelete(event._id)}
+          >
+            Delete
+          </Button>
+        </Card.Body>
+      </Card>
+      <ProfileCardModal user={event.hostID} showModal={showModal} toggleModal={toggleModal} />
+    </>
   );
 };
 
