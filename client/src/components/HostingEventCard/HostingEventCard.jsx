@@ -34,9 +34,6 @@ const HostingEventCard = ({
           <b>Time:</b> {moment(event.gameTime).format("LT")}
         </Card.Text>
         <Card.Text>
-          <b>Event Host:</b> {event.hostID}
-        </Card.Text>
-        <Card.Text>
           <b>Category:</b> {event.gameCategory}
         </Card.Text>
         <Card.Text>
@@ -49,7 +46,14 @@ const HostingEventCard = ({
           <b>State:</b> {event.state}
         </Card.Text>
         <Card.Text>
-          <b>Users Attending:</b> {event.attendees.length}
+          <b>Users Attending:</b> {event.attendees.map((user) => (
+            <Card.Text>
+              {user.userName}
+            </Card.Text>
+          ))}
+        </Card.Text>
+        <Card.Text>
+          <b># of Users Attending:</b> {event.attendees.length}
         </Card.Text>
         <Card.Text>
           <b>Spots Left:</b> {event.maxAttendees - event.attendees.length}

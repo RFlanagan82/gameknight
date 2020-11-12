@@ -68,8 +68,9 @@ function Events() {
       <Container>
         <Alert />
         <Row>
-          <div className="col-sm-12">
-            <Card className="p-4 bg-secondary knight-font">
+          <div className="col-sm-3"></div>
+          <div className="col-sm-6">
+            <Card className="p-4 bg-dark knight-font">
               <Form onSubmit={(e) => {searchEvents(e)}}>
                 <Form.Group controlId="searchCategory">
                   <Form.Label className="text-white">
@@ -115,14 +116,7 @@ function Events() {
                   Reset
                 </Button>
               </Form>
-            </Card>
-          </div>
-        </Row>
-        <Row>
-          <div className="col-sm-10"></div>
-          <div className="col-sm-2">
-            <Card className="p-2 bg-secondary">
-              <Form>
+              <Form className="mt-5">
                 <Form.Label className="text-white">Sort</Form.Label>
                 <Form.Control
                   required
