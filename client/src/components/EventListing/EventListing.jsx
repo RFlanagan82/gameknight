@@ -6,6 +6,7 @@ import axios from "axios";
 import AuthContext from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
+import moment from "moment";
 
 function EventListing(props) {
   const { jwt } = useContext(AuthContext);
@@ -33,10 +34,9 @@ function EventListing(props) {
     <>
       <Card className="bg-secondary">
         <Card.Header className="text-white">
-          <h3 className="eventName">Event Title: {props.eventName}</h3>
-          <h5 className="gameName">Game Name: {props.gameName}</h5>
-          <p className="date">Event Date: {props.date}</p>
-          <p className="date">Event Time: {props.gameTime}</p>
+          <h2 className="eventName"><b>{props.eventName}</b></h2>
+          <h4 className="gameName"><b>Game:</b> {props.gameName}</h4>
+          <h6 className="date mb-3">{moment(props.date).format("LL")} @ {moment(props.gameTime).format("LT")}</h6>
           <Accordion.Toggle
             as={Button}
             variant="warning"
@@ -47,12 +47,12 @@ function EventListing(props) {
         </Card.Header>
         <Accordion.Collapse eventKey={props.eventkey}>
           <Card.Body className="text-white">
-            <p className="category">Category: {props.category}</p>
-            <p className="description">Description: {props.description}</p>
-            <p className="city">City: {props.city}</p>
-            <p className="state">State: {props.state}</p>
-            <p className="maxAttendees">Max Attendees: {props.maxAttendees}</p>
-            <p className="eventLink">Event Link: {props.eventLink}</p>
+            <p className="category"><b>Category</b> {props.category}</p>
+            <p className="description"><b>Description:</b> {props.description}</p>
+            <p className="city"><b>City:</b> {props.city}</p>
+            <p className="state"><b>State:</b> {props.state}</p>
+            <p className="maxAttendees"><b>Max Attendees:</b> {props.maxAttendees}</p>
+            <p className="eventLink"><b>Event Link:</b> {props.eventLink}</p>
             <Button
               variant="warning"
               onClick={(e) => handleJoin(props.eventkey)}
