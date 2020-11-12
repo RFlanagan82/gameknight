@@ -47,12 +47,12 @@ function EventListing(props) {
         </Card.Header>
         <Accordion.Collapse eventKey={props.eventkey}>
           <Card.Body className="text-white">
-            <p className="category"><b>Category</b> {props.category}</p>
-            <p className="description"><b>Description:</b> {props.description}</p>
-            <p className="city"><b>City:</b> {props.city}</p>
-            <p className="state"><b>State:</b> {props.state}</p>
-            <p className="maxAttendees"><b>Max Attendees:</b> {props.maxAttendees}</p>
-            <p className="eventLink"><b>Event Link:</b> {props.eventLink}</p>
+            <p className="category">Category: {props.category}</p>
+            <p className="description">Description: {props.description}</p>
+            <p className="city">City: {props.city}</p>
+            <p className="state">State: {props.state}</p>
+            <p className="maxAttendees">Max Attendees: {props.maxAttendees}</p>
+            <p className="spotsLeft">Spots Left: {props.maxAttendees - props.attendees.length}</p>
             <Button
               variant="warning"
               onClick={(e) => handleJoin(props.eventkey)}
