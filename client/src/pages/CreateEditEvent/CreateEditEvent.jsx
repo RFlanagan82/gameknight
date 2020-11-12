@@ -22,6 +22,8 @@ const CreateEditEvent = () => {
     description: "",
     eventLink: "",
     maxAttendees: "",
+    city: "",
+    state: ""
   });
 
   const history = useHistory();
@@ -123,9 +125,41 @@ const CreateEditEvent = () => {
                     }
                   />
                 </Form.Group>
+                <Form.Group controlId="city">
+                  <Form.Label>City</Form.Label>
+                  <Form.Control
+                    required
+                    type="text"
+                    placeholder="City"
+                    value={newEvent.city}
+                    onChange={(e) =>
+                      setNewEvent({
+                        ...newEvent,
+                        city: e.currentTarget.value,
+                      })
+                    }
+                  />
+                </Form.Group>
+                <Form.Group controlId="state">
+                  <Form.Label>State</Form.Label>
+                  <Form.Control
+                    required
+                    type="text"
+                    placeholder="State"
+                    value={newEvent.state}
+                    onChange={(e) =>
+                      setNewEvent({
+                        ...newEvent,
+                        state: e.currentTarget.value,
+                      })
+                    }
+                  />
+
+                </Form.Group>
+                
                 <Form.Group controlId="eventLink">
                   <Form.Label>
-                    Add a link to your virtual event here!
+                    Add a link to your event here!
                   </Form.Label>
                   <Form.Control
                     required

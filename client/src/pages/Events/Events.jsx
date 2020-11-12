@@ -33,27 +33,27 @@ function Events() {
 
   return (
     <>
-      <ContainerFluid className="eventsContainerFluid">
-        <Container className="eventsContainer">
-          <Alert />
-          <Accordion>
-            {events.map((eventaroo, index) => (
-              <EventListing
-                key={index}
-                eventkey={eventaroo._id}
-                eventName={eventaroo.eventName}
-                date={eventaroo.date}
-                gameTime={eventaroo.gameTime}
-                gameName={eventaroo.gameName}
-                category={eventaroo.gameCategory}
-                description={eventaroo.description}
-                maxAttendees={eventaroo.maxAttendees}
-                eventLink={eventaroo.eventLink}
-              />
-            ))}
-          </Accordion>
-        </Container>
-      </ContainerFluid>
+      <Container>
+        <Alert />
+        <Accordion>
+          {events.map((eventaroo, index) => (
+            <EventListing
+              key={index}
+              eventkey={eventaroo._id}
+              eventName={eventaroo.eventName}
+              date={eventaroo.date}
+              gameTime={eventaroo.gameTime}
+              gameName={eventaroo.gameName}
+              category={eventaroo.gameCategory}
+              city={eventaroo.city}
+              state={eventaroo.state}
+              description={eventaroo.description}
+              maxAttendees={eventaroo.maxAttendees}
+              eventLink={eventaroo.eventLink}
+            />
+          ))}
+        </Accordion>
+      </Container>
     </>
   );
 }

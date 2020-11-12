@@ -49,6 +49,8 @@ function EventListing(props) {
           <Card.Body className="text-white">
             <p className="category">Category: {props.category}</p>
             <p className="description">Description: {props.description}</p>
+            <p className="city">City: {props.city}</p>
+            <p className="state">State: {props.state}</p>
             <p className="maxAttendees">Max Attendees: {props.maxAttendees}</p>
             <p className="eventLink">Event Link: {props.eventLink}</p>
             <Button
