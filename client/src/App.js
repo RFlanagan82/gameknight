@@ -33,7 +33,7 @@ function App() {
       <AlertContext.Provider value={{ ...alert, setAlert: setAlert }}>
       <AuthContext.Provider value={{ jwt, setJwt }}>
         <div className="d-flex flex-column min-vh-100 darkFiller">
-          <Navbar />
+          <Navbar jwt={jwt}/>
           <Switch>
             <Route exact path="/" component={Index} />
             <Route exact path="/about" component={About} />
