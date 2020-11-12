@@ -43,6 +43,12 @@ const HostingEventCard = ({
           <b>Game:</b> {event.gameName}
         </Card.Text>
         <Card.Text>
+          <b>City:</b> {event.city}
+        </Card.Text>
+        <Card.Text>
+          <b>State:</b> {event.state}
+        </Card.Text>
+        <Card.Text>
           <b>Spots Left:</b> {event.maxAttendees}
         </Card.Text>
         <Card.Text>

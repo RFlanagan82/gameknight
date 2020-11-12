@@ -43,6 +43,8 @@ function Events() {
               gameTime={eventaroo.gameTime}
               gameName={eventaroo.gameName}
               category={eventaroo.gameCategory}
+              city={eventaroo.city}
+              state={eventaroo.state}
               description={eventaroo.description}
               maxAttendees={eventaroo.maxAttendees}
               eventLink={eventaroo.eventLink}

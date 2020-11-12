@@ -35,6 +35,12 @@ props.getAttendingEvents()})
           <b>Game:</b> {props.gameName}
         </Card.Text>
         <Card.Text>
+          <b>City:</b> {props.city}
+        </Card.Text>
+        <Card.Text>
+          <b>State:</b> {props.state}
+        </Card.Text>
+        <Card.Text>
           <b>Spots Left:</b> {props.maxAttendees}
         </Card.Text>
         <Card.Text>
