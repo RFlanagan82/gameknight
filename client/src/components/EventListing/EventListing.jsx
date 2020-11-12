@@ -33,11 +33,11 @@ function EventListing(props) {
 
   return (
     <>
-      <Card className="bg-secondary">
+      <Card className="bg-secondary knight-font">
         <Card.Header className="text-white">
-          <h2 className="eventName"><b>{props.eventName}</b></h2>
+          <h2 className="eventName header"><u>{props.eventName}</u></h2>
           <h4 className="gameName"><b>Game:</b> {props.gameName}</h4>
-          <h6 className="date mb-3">{moment(props.date).format("LL")} @ {moment(props.gameTime).format("LT")}</h6>
+          <h6 className="date mb-3">{moment(props.date).format("LL")} at {moment(props.gameTime).format("LT")}</h6>
           <Accordion.Toggle
             as={Button}
             variant="warning"

@@ -53,12 +53,12 @@ const CreateEditEvent = () => {
       <ContainerFluid className="createEventContainerFluid">
         <Container className="p-5 createEventContainer">
           <Alert />
-          <Card className="createEventCard">
-            <Card.Body>
+          <Card className="createEventCard text-white knight-font">
+            <Card.Body className="bg-secondary">
               <Form onSubmit={(e) => createNewEvent(e)}>
-                <Card.Header className="text-center createheader">
+                <Card.Header className="text-center header">
                   <h2>
-                    <b>Create New Event</b>
+                    <u>Create New Event</u>
                   </h2>
                 </Card.Header>
                 <Form.Group controlId="eventName">
