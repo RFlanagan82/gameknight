@@ -103,7 +103,7 @@ const CreateAccount = () => {
 
   return (
     <>
-      <ContainerFluid className="loginContainerFluid">
+      <ContainerFluid className="loginContainerFluid knight-font">
         <Container className="loginContainer">
           <Row>
             <Alert />
