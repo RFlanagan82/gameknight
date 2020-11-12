@@ -43,16 +43,22 @@ const HostingEventCard = ({
           <b>Game:</b> {event.gameName}
         </Card.Text>
         <Card.Text>
+          <b>City:</b> {event.city}
+        </Card.Text>
+        <Card.Text>
+          <b>State:</b> {event.state}
+        </Card.Text>
+        <Card.Text>
           <b>Spots Left:</b> {event.maxAttendees}
         </Card.Text>
         <Card.Text>
           <b>Description:</b> {event.description}
         </Card.Text>
         <Card.Text>
-          <b>Event Link:</b> {event.eventLink}
+        <b>Event Link:</b> <a href={event.eventLink}>{event.eventLink}</a>
         </Card.Text>
         <Button
-          variant="primary"
+          variant="warning"
           onClick={(e) => {
             setNewEvent(event);
             toggleEventModal();
@@ -62,7 +68,7 @@ const HostingEventCard = ({
         </Button>
         <Button
           className="ml-2"
-          variant="primary"
+          variant="warning"
           onClick={(e) => handleDelete(event._id)}
         >
           Delete

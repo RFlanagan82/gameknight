@@ -35,15 +35,21 @@ props.getAttendingEvents()})
           <b>Game:</b> {props.gameName}
         </Card.Text>
         <Card.Text>
+          <b>City:</b> {props.city}
+        </Card.Text>
+        <Card.Text>
+          <b>State:</b> {props.state}
+        </Card.Text>
+        <Card.Text>
           <b>Spots Left:</b> {props.maxAttendees}
         </Card.Text>
         <Card.Text>
           <b>Description:</b> {props.description}
         </Card.Text>
         <Card.Text>
-          <b>Event Link:</b> {props.eventLink}
+          <b>Event Link:</b> <a href={props.eventLink}>{props.eventLink}</a>
         </Card.Text>
-        <Button variant="primary" onClick={(e) => handleWithdraw(props._id)}>Withdraw</Button>
+        <Button variant="warning" onClick={(e) => handleWithdraw(props._id)}>Withdraw</Button>
       </Card.Body>
     </Card>
   );

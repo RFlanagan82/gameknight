@@ -31,28 +31,29 @@ function EventListing(props) {
 
   return (
     <>
-      <Card>
-        <Card.Header>
+      <Card className="bg-secondary">
+        <Card.Header className="text-white">
           <h3 className="eventName">Event Title: {props.eventName}</h3>
           <h5 className="gameName">Game Name: {props.gameName}</h5>
           <p className="date">Event Date: {props.date}</p>
           <p className="date">Event Time: {props.gameTime}</p>
           <Accordion.Toggle
             as={Button}
-            variant="link"
+            variant="warning"
             eventKey={props.eventkey}
           >
             Learn More!
           </Accordion.Toggle>
         </Card.Header>
         <Accordion.Collapse eventKey={props.eventkey}>
-          <Card.Body>
+          <Card.Body className="text-white">
             <p className="category">Category: {props.category}</p>
             <p className="description">Description: {props.description}</p>
+            <p className="city">City: {props.city}</p>
+            <p className="state">State: {props.state}</p>
             <p className="maxAttendees">Max Attendees: {props.maxAttendees}</p>
-            <p className="eventLink">Event Link: {props.eventLink}</p>
             <Button
-              variant="success"
+              variant="warning"
               onClick={(e) => handleJoin(props.eventkey)}
             >
               Join

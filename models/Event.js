@@ -43,6 +43,18 @@ const EventSchema = new Schema ({
         required: "String is Required",
     },
 
+    city: {
+        type: String,
+        trim: true,
+        required: "String is Required",
+    },
+
+    state: {
+        type: String,
+        trim: true,
+        required: "String is Required",
+    },
+
     maxAttendees: {
         type: Number,
         required: true,

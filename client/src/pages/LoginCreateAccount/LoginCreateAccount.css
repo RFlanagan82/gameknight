@@ -1,7 +1,29 @@
+.loginContainerFluid {
+    background-color: #222222;
+  }
+  
+.loginContainer {
+    background-color: rgba(0,0,0,.1);
+    background-color: #222222;
+}
+  
 .hide {
     display: none;
 }
 
 .show {
     display: block;
+}
+
+.loginText {
+    color: whitesmoke;
+}
+
+.headerText {
+    color: #daa217;
+}
+
+.checkText {
+    color: #daa217;
+    font-size: larger;
 }

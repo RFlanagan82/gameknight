@@ -3,12 +3,14 @@ import axios from "axios";
 import EventListing from "../../components/EventListing/EventListing";
 import Accordion from "react-bootstrap/Accordion";
 import Container from "../../components/Container/Container";
+import ContainerFluid from "../../components/ContainerFluid/ContainerFluid";
 import AlertContext from "../../context/AlertContext";
 import Alert from "../../components/Alert/Alert";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/esm/Button";
 import Row from "../../components/Row/Row";
+import "./Events.css"
 
 function Events() {
   const [events, setEvents] = useState([]);
@@ -150,6 +152,8 @@ function Events() {
               gameTime={eventaroo.gameTime}
               gameName={eventaroo.gameName}
               category={eventaroo.gameCategory}
+              city={eventaroo.city}
+              state={eventaroo.state}
               description={eventaroo.description}
               maxAttendees={eventaroo.maxAttendees}
               eventLink={eventaroo.eventLink}

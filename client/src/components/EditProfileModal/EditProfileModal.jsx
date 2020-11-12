@@ -111,12 +111,12 @@ const EditProfileModal = ({
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="text-center">
-            <Button className="mr-1" variant="info" type="submit">
+            <Button className="mr-1" variant="warning" type="submit">
               Save Changes
             </Button>
             <Button
               className="ml-1"
-              variant="info"
+              variant="warning"
               onClick={toggleProfileModal}
             >
               Cancel
