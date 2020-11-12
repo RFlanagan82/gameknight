@@ -2,8 +2,14 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import moment from "moment";
 
-const HostingEventCard = ({ event, setNewEvent, getHostedEvents, toggleEventModal }) => {
+const HostingEventCard = ({
+  event,
+  setNewEvent,
+  getHostedEvents,
+  toggleEventModal,
+}) => {
   const handleDelete = function (id) {
     console.log(id);
     axios
@@ -22,7 +28,7 @@ const HostingEventCard = ({ event, setNewEvent, getHostedEvents, toggleEventModa
       </Card.Header>
       <Card.Body className="text-center">
         <Card.Text>
-          <b>Date:</b> {event.date}
+          <b>Date:</b> {moment(event.date).format("LL")}
         </Card.Text>
         <Card.Text>
           <b>Time:</b> {event.gameTime}
