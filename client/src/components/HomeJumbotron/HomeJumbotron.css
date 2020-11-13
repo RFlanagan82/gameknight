@@ -3,7 +3,7 @@
 }
 
 .home-jumbotron {
-    background-image: url("../../images/jumbotron-background.jpg");
-    background-repeat: no-repeat;
+    background-image: url("../../images/home-jumbotron.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
 }
