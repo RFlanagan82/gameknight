@@ -9,11 +9,12 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/esm/Button";
 import Row from "../../components/Row/Row";
-import "./Events.css"
+import "./Events.css";
 import EventJumbo from "../../components/EventJumbo/EventJumbo";
 
 function Events() {
   const [events, setEvents] = useState([]);
+  const [pastEvents, setPastEvents] = useState([]);
   const { setAlert } = useContext(AlertContext);
   const [search, setSearch] = useState("");
   const [searchCategory, setSearchCategory] = useState("");
@@ -29,7 +30,21 @@ function Events() {
 
   function loadEvents() {
     getEvents()
-      .then((res) => setEvents(res.data))
+      .then((res) => {
+        // Comment out setEvents and setPastEvents and then uncomment the below to just see all events without the date filter
+        // setEvents(res.data);
+        setEvents(
+          res.data.filter(
+            (event) =>
+              Date.parse(event.date) - new Date().getTime() >= -86400000
+          )
+        );
+        setPastEvents(
+          res.data.filter(
+            (event) => Date.parse(event.date) - new Date().getTime() < -86400000
+          )
+        );
+      })
       .catch((err) => {
         setAlert({
           message: "Could not load events.",
@@ -51,7 +66,7 @@ function Events() {
   const searchEvents = function (e) {
     e.preventDefault();
     e.stopPropagation();
-    setEvents(events.filter((event) => event[searchCategory].includes(search)))
+    setEvents(events.filter((event) => event[searchCategory].includes(search)));
   };
 
   const resetEvents = function () {
@@ -63,14 +78,18 @@ function Events() {
 
   return (
     <>
-    <EventJumbo />
+      <EventJumbo />
       <Container>
         <Alert />
         <Row>
           <div className="col-sm-3"></div>
           <div className="col-sm-6">
             <Card className="p-4 bg-dark knight-font">
-              <Form onSubmit={(e) => {searchEvents(e)}}>
+              <Form
+                onSubmit={(e) => {
+                  searchEvents(e);
+                }}
+              >
                 <Form.Group controlId="searchCategory">
                   <Form.Label className="text-white">
                     Search Category
@@ -111,7 +130,11 @@ function Events() {
                 <Button className="mr-1" type="submit" variant="warning">
                   Search
                 </Button>
-                <Button className="ml-1" variant="warning" onClick={resetEvents}>
+                <Button
+                  className="ml-1"
+                  variant="warning"
+                  onClick={resetEvents}
+                >
                   Reset
                 </Button>
               </Form>
