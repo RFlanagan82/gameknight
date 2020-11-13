@@ -11,8 +11,11 @@ import Alert from "../../components/Alert/Alert";
 import AlertContext from "../../context/AlertContext";
 import HostingSlider from "../../components/HostingSlider/HostingSlider";
 import AttendingSlider from "../../components/AttendingSlider/AttendingSlider";
+import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
 
 const Dashboard = () => {
+  const history = useHistory();
   const [hosted, setHosted] = useState([]);
   const [pastHosted, setPastHosted] = useState([]);
   const [attending, setAttending] = useState([]);
@@ -173,16 +176,22 @@ const Dashboard = () => {
 
   return (
     <>
-      <Container>
+      <Container className="text-center knight-font">
         <Alert />
         <Row>
-          <Col className="col-sm-6 mt-5">
+          <Col className="col-lg-6 mt-5">
             <ProfileCard user={user} toggleProfileModal={toggleProfileModal} />
           </Col>
-          <Col className="col-sm-6 my-5">
-            <h1 className="py-2 text-center header knight-font">
+          <Col className="col-lg-6 my-5">
+            <h1 className="py-2 header">
               Hosted Events
             </h1>
+            <Button
+              variant="warning mx-2"
+              onClick={() => history.push("/create-event")}
+            >
+              Host An Event
+            </Button>
             <HostingSlider
               hosted={hosted}
               getHostedEvents={getHostedEvents}
@@ -191,9 +200,15 @@ const Dashboard = () => {
               toggleEventModal={toggleEventModal}
             />
 
-            <h1 className="py-2 mt-4 text-center header knight-font">
+            <h1 className="py-2 mt-4 text-center header">
               Upcoming Events
             </h1>
+            <Button
+              variant="warning mx-2"
+              onClick={() => history.push("/events")}
+            >
+              View All Events
+            </Button>
             <AttendingSlider
               attending={attending}
               getAttendingEvents={getAttendingEvents}
