@@ -116,8 +116,7 @@ function EventListing(props) {
           <Card.Body className="text-white">
             <p className="category">Category: {props.category}</p>
             <p className="description">Description: {props.description}</p>
-            <p className="city">City: {props.city}</p>
-            <p className="state">State: {props.state}</p>
+            {props.city && props.state ? <p className="location">{props.city}{", "}{props.state}</p> : ""} 
             <p className="maxAttendees">Max Attendees: {props.maxAttendees}</p>
             <p className="spotsLeft">
               Spots Left: {props.maxAttendees - props.attendees.length}
