@@ -14,7 +14,7 @@ const ConfirmationModal = ({ showModal, toggleModal, title, body, confirmFunctio
           <Button variant="warning" onClick={toggleModal}>
             Cancel
           </Button>
-          <Button variant="warning" onClick={confirmFunction}>
+          <Button className="maroonbtn" onClick={confirmFunction}>
             Confirm
           </Button>
         </Modal.Footer>

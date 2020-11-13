@@ -86,7 +86,7 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
             <b>Description:</b> {event.description}
           </Card.Text>
           <Card.Text>
-            <b>Event Link:</b> <a href={event.eventLink}>{event.eventLink}</a>
+            <b>Event Link:</b> <a id="attendeventlink" href={event.eventLink}>{event.eventLink}</a>
           </Card.Text>
           <Button className="maroonbtn" onClick={toggleConfirm}>
             Withdraw
