@@ -2,6 +2,8 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+const usStates = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
+
 
 const EditProfileModal = ({
   newProfile,
@@ -51,22 +53,32 @@ const EditProfileModal = ({
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="state">
-            <Form.Label>State</Form.Label>
-            <Form.Control
-              type="text"
-              required
-              value={newProfile.state}
-              onChange={(e) =>
-                setNewProfile({
-                  ...newProfile,
-                  state: e.currentTarget.value,
-                })
-              }
-            />
-            <Form.Control.Feedback type="invalid">
-              Please provide a valid state.
-            </Form.Control.Feedback>
-          </Form.Group>
+                  <Form.Label>State</Form.Label>
+                  <Form.Control
+                  required
+                  as="select"
+                    placeholder="State"
+                    required
+                    value={newProfile.state}
+                    onChange={(e) =>
+                      setNewProfile({
+                        ...newProfile,
+                        state: e.currentTarget.value,
+                      })
+                    }
+                  >
+                    <option value="" className="disabled">
+                      Select your state
+                    </option>
+                    {usStates.map((eventaroo, index) => (
+                      <option key={index} value={eventaroo}>{eventaroo}</option>
+                    ))}
+                    
+                  </Form.Control>
+                  <Form.Control.Feedback type="invalid">
+                    Please provide a valid state.
+                  </Form.Control.Feedback>
+                  </Form.Group>
           <Form.Group controlId="profileImage">
             <Form.Label>
               Want to add a profile image? Enter the link here!
