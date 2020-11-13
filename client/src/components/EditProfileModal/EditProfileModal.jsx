@@ -42,7 +42,7 @@ const EditProfileModal = ({
               onChange={(e) =>
                 setNewProfile({
                   ...newProfile,
-                  location: e.currentTarget.value,
+                  city: e.currentTarget.value,
                 })
               }
             />
@@ -59,7 +59,7 @@ const EditProfileModal = ({
               onChange={(e) =>
                 setNewProfile({
                   ...newProfile,
-                  location: e.currentTarget.value,
+                  state: e.currentTarget.value,
                 })
               }
             />

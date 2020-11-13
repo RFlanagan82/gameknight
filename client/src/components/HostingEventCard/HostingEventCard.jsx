@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import moment from "moment";
 import ProfileCardModal from "../../components/ProfileCardModal/ProfileCardModal";
+import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
 
 const HostingEventCard = ({
   event,
@@ -13,6 +14,7 @@ const HostingEventCard = ({
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [user, setUser] = useState({});
+  const [showConfirm, setShowConfirm] = useState(false);
   const handleDelete = function (id) {
     console.log(id);
     axios
@@ -25,6 +27,10 @@ const HostingEventCard = ({
   };
   const toggleModal = function () {
     setShowModal(!showModal);
+  };
+
+  const toggleConfirm = function () {
+    setShowConfirm(!showConfirm);
   };
 
   return (
@@ -77,7 +83,10 @@ const HostingEventCard = ({
             <b>Description:</b> {event.description}
           </Card.Text>
           <Card.Text>
-            <b>Event Link:</b> <a href={event.eventLink} target="_blank" rel="noreferrer">{event.eventLink}</a>
+            <b>Event Link:</b>{" "}
+            <a href={event.eventLink} target="_blank" rel="noreferrer">
+              {event.eventLink}
+            </a>
           </Card.Text>
           <Button
             variant="warning"
@@ -91,13 +100,24 @@ const HostingEventCard = ({
           <Button
             className="ml-2"
             variant="warning"
-            onClick={(e) => handleDelete(event._id)}
+            onClick={toggleConfirm}
           >
             Delete
           </Button>
         </Card.Body>
       </Card>
-      <ProfileCardModal user={user} showModal={showModal} toggleModal={toggleModal} />
+      <ProfileCardModal
+        user={user}
+        showModal={showModal}
+        toggleModal={toggleModal}
+      />
+      <ConfirmationModal
+        showModal={showConfirm}
+        toggleModal={toggleConfirm}
+        title="Delete Event"
+        body={`Are you sure you want to delete the "${event.eventName}" event?`}
+        confirmFunction={(e) => handleDelete(event._id)}
+      />
     </>
   );
 };

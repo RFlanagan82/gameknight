@@ -205,7 +205,6 @@ const CreateAccount = () => {
                   required
                     type="text"
                     placeholder="City"
-                    required
                     value={newUser.city}
                     onChange={(e) =>
                       setNewUser({
@@ -224,7 +223,6 @@ const CreateAccount = () => {
                   required
                     type="text"
                     placeholder="State"
-                    required
                     value={newUser.state}
                     onChange={(e) =>
                       setNewUser({
