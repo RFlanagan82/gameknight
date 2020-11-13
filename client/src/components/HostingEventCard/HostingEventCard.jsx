@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import moment from "moment";
 import ProfileCardModal from "../../components/ProfileCardModal/ProfileCardModal";
+import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
 import "./HostingEventCard.css"
 
 const HostingEventCard = ({
@@ -14,6 +15,7 @@ const HostingEventCard = ({
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [user, setUser] = useState({});
+  const [showConfirm, setShowConfirm] = useState(false);
   const handleDelete = function (id) {
     console.log(id);
     axios
@@ -26,6 +28,10 @@ const HostingEventCard = ({
   };
   const toggleModal = function () {
     setShowModal(!showModal);
+  };
+
+  const toggleConfirm = function () {
+    setShowConfirm(!showConfirm);
   };
 
   return (
@@ -53,6 +59,7 @@ const HostingEventCard = ({
               <Button
                 key={index}
                 variant="link"
+                id="hosteventlink"
                 onClick={(e) => {
                   setUser(user);
                   toggleModal();
@@ -73,7 +80,7 @@ const HostingEventCard = ({
           </Card.Text>
           <Button
           className="maroonbtn"
-            onClick={(e) => handleDelete(event._id)}
+            onClick={toggleConfirm}
           >
             Delete
           </Button>
@@ -89,7 +96,18 @@ const HostingEventCard = ({
           </Button>
         </Card.Body>
       </Card>
-      <ProfileCardModal user={user} showModal={showModal} toggleModal={toggleModal} />
+      <ProfileCardModal
+        user={user}
+        showModal={showModal}
+        toggleModal={toggleModal}
+      />
+      <ConfirmationModal
+        showModal={showConfirm}
+        toggleModal={toggleConfirm}
+        title="Delete Event"
+        body={`Are you sure you want to delete the "${event.eventName}" event?`}
+        confirmFunction={(e) => handleDelete(event._id)}
+      />
     </>
   );
 };
