@@ -120,7 +120,6 @@ const EditEventModal = ({
                   <Form.Control
                   as="select"
                     placeholder="State"
-                    required
                     value={newEvent.state}
                     onChange={(e) =>
                       setNewEvent({
