@@ -16,8 +16,8 @@ const Index = () => {
       <Container className="indexContainer">
         <Row>
           <div className="col-sm-12 text-center my-5">
-            <h1 className="knight-font">Stuck at home and bored?</h1>
-            <h1 className="knight-font">Don't make it a lame night, make it a Game Knight!</h1>
+            <h1 className="text-white knight-font">Stuck at home and bored?</h1>
+            <h1 className="text-white knight-font">Don't make it a lame night, make it a Game Knight!</h1>
           </div>
         </Row>
         <Row>
