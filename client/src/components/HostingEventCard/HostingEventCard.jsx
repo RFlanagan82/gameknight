@@ -23,6 +23,7 @@ const HostingEventCard = ({
       .then((res) => {
         console.log(res.data);
         getHostedEvents();
+        setShowConfirm();
       })
       .catch((err) => console.log(err));
   };
@@ -45,7 +46,7 @@ const HostingEventCard = ({
             <h5>{moment(event.date).format("LL")} at {" "} {moment(event.gameTime).format("LT")}</h5>
           </Card.Text>
           <Card.Text>
-            <h5>{event.city}{", "}{event.state}</h5> 
+          {event.city && event.state ? <h5>{event.city}{", "}{event.state}</h5> : ""} 
           </Card.Text>
           <Card.Text>
             <b>Category:</b> {event.gameCategory}
@@ -76,7 +77,7 @@ const HostingEventCard = ({
             <b>Description:</b> {event.description}
           </Card.Text>
           <Card.Text>
-            <b>Event Link:</b> <a href={event.eventLink} target="_blank" id="hosteventlink" rel="noreferrer">{event.eventLink}</a>
+            {event.eventLink ? <><b>Event Link:</b> <a href={event.eventLink} target="_blank" id="hosteventlink" rel="noreferrer">{event.eventLink}</a></> : ""}
           </Card.Text>
           <Button
           className="maroonbtn"

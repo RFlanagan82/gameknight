@@ -17,6 +17,7 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
       .then((results) => {
         getAttendingEvents();
         getHostedEvents();
+        setShowConfirm();
       })
       .catch((err) => console.log(err));
   };
@@ -42,7 +43,7 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
             <h5>{moment(event.date).format("LL")} at {" "} {moment(event.gameTime).format("LT")}</h5> 
           </Card.Text>
           <Card.Text>
-            <h5>{event.city}{", "}{event.state}</h5> 
+          {event.city && event.state ? <h5>{event.city}{", "}{event.state}</h5> : ""} 
           </Card.Text>
           <Card.Text>
             <b>Event Host:</b>{" "}
@@ -86,7 +87,7 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
             <b>Description:</b> {event.description}
           </Card.Text>
           <Card.Text>
-            <b>Event Link:</b> <a id="attendeventlink" href={event.eventLink}>{event.eventLink}</a>
+            {event.eventLink ? <><b>Event Link:</b> <a href={event.eventLink} target="_blank" id="hosteventlink" rel="noreferrer">{event.eventLink}</a></> : ""}
           </Card.Text>
           <Button className="maroonbtn" onClick={toggleConfirm}>
           <i class="fas fa-user-times mr-1"></i>Withdraw
