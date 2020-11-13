@@ -5,3 +5,9 @@
 .eventsContainer{
 background-color: #222222;
 }
+
+.maroonbtn {
+    background-color: #5d1615!important;
+    border-color: #5d1615!important;
+    color: whitesmoke!important;
+}
