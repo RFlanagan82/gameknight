@@ -19,6 +19,43 @@ router.get("/", (req, res) => {
     });
 });
 
+// GET SINGLE EVENT TO SEE IF USER IS HOST OR ALREADY ATTENDING
+router.get("/:id", (req, res) => {
+  if (!req.headers.authorization) {
+    return res.status(401).json({
+      error: true,
+      data: null,
+      message: "Unauthorized",
+    });
+  }
+  jwt.verify(req.headers.authorization, process.env.SECRET, (err, decoded) => {
+    if (err) {
+      console.log(err);
+      return res.status(401).json({
+        error: true,
+        data: null,
+        message: "Invalid token.",
+      });
+    } else {
+      console.log(decoded);
+      db.Event.findById(req.params.id)
+        .then((event) => {
+            res.json({
+              data: {userId: decoded.userId, hostID: event.hostID, attendees: event.attendees},
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({
+            error: true,
+            data: null,
+            message: "Failed to retrieve event.",
+          });
+        });
+    }
+  });
+});
+
 // CREATE AN EVENT - MUST BE SIGNED IN AND USERID IS PASSED IN VIA HEADERS FOR HOST ID
 router.post("/", (req, res) => {
   console.log(req.headers);
