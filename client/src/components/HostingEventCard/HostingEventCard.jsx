@@ -36,8 +36,7 @@ const HostingEventCard = ({
         </Card.Header>
         <Card.Body className="text-center text-white">
           <Card.Text>
-            <h5>{moment(event.date).format("LL")} at {" "}
-            {moment(event.gameTime).format("LT")}</h5>
+            <h5>{moment(event.date).format("LL")} at {" "} {moment(event.gameTime).format("LT")}</h5>
           </Card.Text>
           <Card.Text>
             <h5>{event.city}{","}{event.state}</h5> 
@@ -74,7 +73,6 @@ const HostingEventCard = ({
           </Card.Text>
           <Button
           className="maroonbtn"
-            // variant="warning"
             onClick={(e) => handleDelete(event._id)}
           >
             Delete

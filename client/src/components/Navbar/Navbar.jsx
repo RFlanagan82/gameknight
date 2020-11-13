@@ -29,6 +29,10 @@ const Navbar = (props) => {
           <NavLink to="/dashboard" className="nav-link">
             Dashboard
           </NavLink>
+          
+          <NavLink to="/about" className="nav-link">
+            About
+          </NavLink>
           {!props.jwt ? (
             <NavLink to="/login" className="nav-link">
               Login
@@ -44,9 +48,6 @@ const Navbar = (props) => {
               Logout
             </NavLink>
           )}
-          <NavLink to="/about" className="nav-link">
-            About
-          </NavLink>
         </div>
       </div>
     </nav>

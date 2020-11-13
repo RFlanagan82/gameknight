@@ -25,7 +25,7 @@ const ProfileCardModal = ({ showModal, toggleModal, user }) => {
               <b>{user.userName}</b>
             </h1>
             <Card.Text>
-              <b>Location:</b> {user.location}
+              <b>Location:</b> {user.city}, {user.state}
             </Card.Text>
             <Card.Text>
               <b>Age Range:</b> {user.ageRange}

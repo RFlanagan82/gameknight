@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import moment from "moment";
 import ProfileCardModal from "../../components/ProfileCardModal/ProfileCardModal";
+import "./AttendingEventCard.css"
 
 const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
   const [showModal, setShowModal] = useState(false);
@@ -32,10 +33,10 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
             {event.isVirtual}
           </Card.Text>
           <Card.Text>
-            <b>Date:</b> {moment(event.date).format("LL")}
+            <h5>{moment(event.date).format("LL")} at {" "} {moment(event.gameTime).format("LT")}</h5> 
           </Card.Text>
           <Card.Text>
-            <b>Time:</b> {moment(event.gameTime).format("LT")}
+            <h5>{event.city}{","}{event.state}</h5> 
           </Card.Text>
           <Card.Text>
             <b>Event Host:</b>{" "}
@@ -54,12 +55,6 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
           </Card.Text>
           <Card.Text>
             <b>Game:</b> {event.gameName}
-          </Card.Text>
-          <Card.Text>
-            <b>City:</b> {event.city}
-          </Card.Text>
-          <Card.Text>
-            <b>State:</b> {event.state}
           </Card.Text>
           <Card.Text>
             <b>Users Attending:</b>
@@ -83,9 +78,9 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
             <b>Description:</b> {event.description}
           </Card.Text>
           <Card.Text>
-            <b>Event Link:</b> <a href={event.eventLink}>{event.eventLink}</a>
+            <b>Event Link:</b> <a id="attendeventlink" href={event.eventLink}>{event.eventLink}</a>
           </Card.Text>
-          <Button variant="warning" onClick={(e) => handleWithdraw(event._id)}>
+          <Button className="maroonbtn" onClick={(e) => handleWithdraw(event._id)}>
             Withdraw
           </Button>
         </Card.Body>
