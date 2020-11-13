@@ -141,12 +141,20 @@ const CreateAccount = () => {
                   />
                   <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group>
-                  <Link to="/login" className="checkText" onClick={showNewUserForm}>
+                <Form.Group className="text-right">
+                  <Link
+                    to="/login"
+                    className="checkText"
+                    onClick={showNewUserForm}
+                  >
                     Don't have an account? Create one here!
                   </Link>
                 </Form.Group>
-                <Button type="submit" variant="warning">Login</Button>
+                <Form.Group className="text-right">
+                  <Button type="submit" variant="warning">
+                    Login
+                  </Button>
+                </Form.Group>
               </Form>
             </div>
             <div className={newUserDisplay}>
@@ -185,7 +193,7 @@ const CreateAccount = () => {
                   />
                   <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group  className="loginText" controlId="newPassword">
+                <Form.Group className="loginText" controlId="newPassword">
                   <Form.Label>Password</Form.Label>
                   <Form.Control
                     required
@@ -204,10 +212,9 @@ const CreateAccount = () => {
                 <Form.Group className="loginText" controlId="city">
                   <Form.Label>City</Form.Label>
                   <Form.Control
-                  required
+                    required
                     type="text"
                     placeholder="City"
-                    required
                     value={newUser.city}
                     onChange={(e) =>
                       setNewUser({
@@ -225,7 +232,6 @@ const CreateAccount = () => {
                   <Form.Control
                   as="select"
                     placeholder="State"
-                    required
                     value={newUser.state}
                     onChange={(e) =>
                       setNewUser({
@@ -293,7 +299,7 @@ const CreateAccount = () => {
                     Please select an age range.
                   </Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group className="loginText"controlId="bio">
+                <Form.Group className="loginText" controlId="bio">
                   <Form.Label>About Me</Form.Label>
                   <Form.Control
                     required
@@ -313,12 +319,20 @@ const CreateAccount = () => {
                     feedback="You must confirm before submitting."
                   />
                 </Form.Group>
-                <Form.Group>
-                  <Link to="/login" className="checkText" onClick={showLoginForm}>
+                <Form.Group className="text-right">
+                  <Link
+                    to="/login"
+                    className="checkText"
+                    onClick={showLoginForm}
+                  >
                     Already have an account? Login here!
                   </Link>
                 </Form.Group>
-                <Button type="submit" variant="warning">Enter</Button>
+                <Form.Group className="text-right">
+                  <Button type="submit" variant="warning">
+                    Enter
+                  </Button>
+                </Form.Group>
               </Form>
             </div>
           </Row>

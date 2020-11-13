@@ -4,11 +4,13 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import moment from "moment";
 import ProfileCardModal from "../../components/ProfileCardModal/ProfileCardModal";
+import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
 import "./AttendingEventCard.css"
 
 const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
   const [showModal, setShowModal] = useState(false);
   const [user, setUser] = useState({});
+  const [showConfirm, setShowConfirm] = useState(false);
   const handleWithdraw = (id) => {
     axios
       .put(`/api/attend/remove/${id}`)
@@ -20,6 +22,10 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
   };
   const toggleModal = function () {
     setShowModal(!showModal);
+  };
+
+  const toggleConfirm = function () {
+    setShowConfirm(!showConfirm);
   };
 
   return (
@@ -80,9 +86,9 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
             <b>Description:</b> {event.description}
           </Card.Text>
           <Card.Text>
-            <b>Event Link:</b> <a href={event.eventLink}>{event.eventLink}</a>
+            <b>Event Link:</b> <a id="attendeventlink" href={event.eventLink}>{event.eventLink}</a>
           </Card.Text>
-          <Button className="maroonbtn" onClick={(e) => handleWithdraw(event._id)}>
+          <Button className="maroonbtn" onClick={toggleConfirm}>
             Withdraw
           </Button>
         </Card.Body>
@@ -91,6 +97,13 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
         user={user}
         showModal={showModal}
         toggleModal={toggleModal}
+      />
+      <ConfirmationModal
+        showModal={showConfirm}
+        toggleModal={toggleConfirm}
+        title="Leave Event"
+        body={`Are you sure you no longer want to attend the "${event.eventName}" event?`}
+        confirmFunction={(e) => handleWithdraw(event._id)}
       />
     </>
   );
