@@ -149,7 +149,7 @@ function Events() {
         <Row>
           <div className="col-sm-9"></div>
           <div className="col-sm-3">
-          <Form className="pr-5">
+          <Form className="pr-5 knight-font">
                 <Form.Label className="text-white"></Form.Label>
                 <Form.Control
                   required
