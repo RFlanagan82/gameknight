@@ -5,16 +5,15 @@ import axios from "axios";
 import moment from "moment";
 import ProfileCardModal from "../../components/ProfileCardModal/ProfileCardModal";
 
-const AttendingEventCard = (props) => {
+const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
   const [showModal, setShowModal] = useState(false);
   const [user, setUser] = useState({});
   const handleWithdraw = (id) => {
     axios
       .put(`/api/attend/remove/${id}`)
       .then((results) => {
-        console.log(results);
-        props.getAttendingEvents();
-        props.getHostedEvents();
+        getAttendingEvents();
+        getHostedEvents();
       })
       .catch((err) => console.log(err));
   };
@@ -26,43 +25,45 @@ const AttendingEventCard = (props) => {
     <>
       <Card className="mx-4 bg-secondary knight-font">
         <Card.Header as="h5" className="text-center header">
-          <u>{props.eventName}</u>
+          <u>{event.eventName}</u>
         </Card.Header>
-        <Card.Text>{props.isVirtual}</Card.Text>
         <Card.Body className="text-center text-white">
-          <Card.Text>
-            <b>Date:</b> {moment(props.date).format("LL")}
+          <Card.Text className="text-center text-white">
+            {event.isVirtual}
           </Card.Text>
           <Card.Text>
-            <b>Time:</b> {moment(props.gameTime).format("LT")}
+            <b>Date:</b> {moment(event.date).format("LL")}
+          </Card.Text>
+          <Card.Text>
+            <b>Time:</b> {moment(event.gameTime).format("LT")}
           </Card.Text>
           <Card.Text>
             <b>Event Host:</b>{" "}
             <Button
               variant="link"
               onClick={(e) => {
-                setUser(props.hostID);
+                setUser(event.hostID);
                 toggleModal();
               }}
             >
-              {props.hostID.userName}
+              {event.hostID.userName}
             </Button>
           </Card.Text>
           <Card.Text>
-            <b>Category:</b> {props.gameCategory}
+            <b>Category:</b> {event.gameCategory}
           </Card.Text>
           <Card.Text>
-            <b>Game:</b> {props.gameName}
+            <b>Game:</b> {event.gameName}
           </Card.Text>
           <Card.Text>
-            <b>City:</b> {props.city}
+            <b>City:</b> {event.city}
           </Card.Text>
           <Card.Text>
-            <b>State:</b> {props.state}
+            <b>State:</b> {event.state}
           </Card.Text>
           <Card.Text>
             <b>Users Attending:</b>
-            {props.attendees.map((user, index) => (
+            {event.attendees.map((user, index) => (
               <Button
                 key={index}
                 variant="link"
@@ -76,15 +77,15 @@ const AttendingEventCard = (props) => {
             ))}
           </Card.Text>
           <Card.Text>
-            <b>Spots Left:</b> {props.maxAttendees - props.attendees.length}
+            <b>Spots Left:</b> {event.maxAttendees - event.attendees.length}
           </Card.Text>
           <Card.Text>
-            <b>Description:</b> {props.description}
+            <b>Description:</b> {event.description}
           </Card.Text>
           <Card.Text>
-            <b>Event Link:</b> <a href={props.eventLink}>{props.eventLink}</a>
+            <b>Event Link:</b> <a href={event.eventLink}>{event.eventLink}</a>
           </Card.Text>
-          <Button variant="warning" onClick={(e) => handleWithdraw(props._id)}>
+          <Button variant="warning" onClick={(e) => handleWithdraw(event._id)}>
             Withdraw
           </Button>
         </Card.Body>

@@ -3,14 +3,14 @@ import "./Dashboard.css";
 import Container from "../../components/Container/Container";
 import Row from "../../components/Row/Row";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
-import AttendingEventCard from "../../components/AttendingEventCard/AttendingEventCard";
-import HostingEventCard from "../../components/HostingEventCard/HostingEventCard";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
 import EditProfileModal from "../../components/EditProfileModal/EditProfileModal";
 import EditEventModal from "../../components/EditEventModal/EditEventModal";
 import Alert from "../../components/Alert/Alert";
 import AlertContext from "../../context/AlertContext";
+import HostingSlider from "../../components/HostingSlider/HostingSlider";
+import AttendingSlider from "../../components/AttendingSlider/AttendingSlider";
 
 const Dashboard = () => {
   const [hosted, setHosted] = useState([]);
@@ -35,7 +35,7 @@ const Dashboard = () => {
       .get("/api/host")
       .then((results) => {
         setHosted(results.data);
-        console.log(results)
+        console.log(results);
       })
       .catch((err) => {
         setAlert({
@@ -149,30 +149,29 @@ const Dashboard = () => {
       <Container>
         <Alert />
         <Row>
-          <Col className="mt-5">
+          <Col className="col-sm-6 mt-5">
             <ProfileCard user={user} toggleProfileModal={toggleProfileModal} />
           </Col>
-          <Col>
-            <h1 className="py-2 text-center header knight-font">Hosted Events</h1>
-            {hosted.map((event, index) => (
-              <HostingEventCard
-                key={index}
-                event={event}
-                getHostedEvents={getHostedEvents}
-                getAttendingEvents={getAttendingEvents}
-                setNewEvent={setNewEvent}
-                toggleEventModal={toggleEventModal}
-              />
-            ))}
-            <h1 className="py-2 mt-4 text-center header knight-font">Upcoming Events</h1>
-            {attending.map((event, index) => (
-              <AttendingEventCard
-                key={index}
-                {...event}
-                getAttendingEvents={getAttendingEvents}
-                getHostedEvents={getHostedEvents}
-              />
-            ))}
+          <Col className="col-sm-6 my-5">
+            <h1 className="py-2 text-center header knight-font">
+              Hosted Events
+            </h1>
+            <HostingSlider
+              hosted={hosted}
+              getHostedEvents={getHostedEvents}
+              getAttendingEvents={getAttendingEvents}
+              setNewEvent={setNewEvent}
+              toggleEventModal={toggleEventModal}
+            />
+
+            <h1 className="py-2 mt-4 text-center header knight-font">
+              Upcoming Events
+            </h1>
+            <AttendingSlider 
+            attending={attending}
+            getAttendingEvents={getAttendingEvents}
+            getHostedEvents={getHostedEvents}
+            />
           </Col>
         </Row>
       </Container>
