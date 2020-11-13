@@ -35,6 +35,24 @@ const EditEventModal = ({
 
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
+          <Form.Group controlId="isVirtual">
+                    <Form.Label>Virtual or In Person?</Form.Label>
+                    <Form.Control
+                      as="select"
+                      required
+                      value={newEvent.isVirtual}
+                      onChange={(e) =>
+                        setNewEvent({
+                          ...newEvent,
+                          isVirtual: e.currentTarget.value,
+                        })
+                      }
+                    >
+                      <option value="" className="disabled"></option>
+                      <option value="Virtual">Virtual</option>
+                      <option value="In Person">In Person</option>
+                    </Form.Control>
+                  </Form.Group>
           <Form.Group>
             <Form.Label>Event Date: </Form.Label>
             <DatePick
@@ -84,9 +102,8 @@ const EditEventModal = ({
             <Form.Group controlId="city">
               <Form.Label>City</Form.Label>
               <Form.Control
-                required
                 type="text"
-                placeholder="City"
+                placeholder="Optional"
                 value={newEvent.city}
                 onChange={(e) =>
                   setNewEvent({
@@ -99,9 +116,8 @@ const EditEventModal = ({
             <Form.Group controlId="state">
               <Form.Label>State</Form.Label>
               <Form.Control
-                required
                 type="text"
-                placeholder="State"
+                placeholder="Optional"
                 value={newEvent.state}
                 onChange={(e) =>
                   setNewEvent({
@@ -115,9 +131,8 @@ const EditEventModal = ({
           <Form.Group controlId="eventLink">
             <Form.Label>Add a link to your virtual event here!</Form.Label>
             <Form.Control
-              required
               type="text"
-              placeholder="Event Link"
+              placeholder="Optional"
               value={newEvent.eventLink}
               onChange={(e) =>
                 setNewEvent({ ...newEvent, eventLink: e.currentTarget.value })

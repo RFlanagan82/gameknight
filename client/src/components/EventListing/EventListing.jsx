@@ -7,6 +7,8 @@ import AuthContext from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
 import moment from "moment";
+import virtualImg from "../../images/Virtual.png"
+import inPersonImg from "../../images/In_Person.png"
 
 function EventListing(props) {
   const { jwt } = useContext(AuthContext);
@@ -86,7 +88,11 @@ function EventListing(props) {
 
   return (
     <>
-      <Card className="bg-secondary knight-font">
+    <div className="container">
+    <Card className="bg-secondary knight-font">
+      <div className="row">
+        <div className="col-sm-8">
+        
         <Card.Header className="text-white">
           <h2 className="eventName header">
             <u>{props.eventName}</u>
@@ -98,6 +104,7 @@ function EventListing(props) {
             {moment(props.date).format("LL")} at{" "}
             {moment(props.gameTime).format("LT")}
           </h6>
+          <h6 className="date mb-3">{props.isVirtual}</h6>
           <Accordion.Toggle
             as={Button}
             variant="warning"
@@ -116,6 +123,7 @@ function EventListing(props) {
             <p className="spotsLeft">
               Spots Left: {props.maxAttendees - props.attendees.length}
             </p>
+            <p className="isVirtual">Virtual or inPerson: {props.isVirtual}</p>
             <Button
               disabled={buttonStatus.status}
               variant="warning"
@@ -125,6 +133,20 @@ function EventListing(props) {
             </Button>
           </Card.Body>
         </Accordion.Collapse>
+      
+
+        </div>
+        <div className="col-sm-4">
+        {(() => {
+        switch (props.isVirtual) {
+          case "Virtual":   return <img src={virtualImg} style={{height: "200px", float: "right"}} alt="Virtual event"/>;
+          case "In Person": return <img style={{height: "200px", float: "right"}} src={inPersonImg} alt="In Person event"/>;
+          default:      return <img src={virtualImg} style={{height: "200px", float: "right"}} alt="Virtual event"/>;
+        }
+      })()}
+
+        </div>
+      </div>
       </Card>
       <Modal
         showModal={showModal}
@@ -132,7 +154,10 @@ function EventListing(props) {
         title={modalMessage.title}
         body={modalMessage.body}
       />
-    </>
+    
+    </div>
+
+      </>
   );
 }
 

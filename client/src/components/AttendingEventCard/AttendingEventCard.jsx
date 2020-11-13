@@ -27,6 +27,9 @@ const AttendingEventCard = (props) => {
         <Card.Header as="h5" className="text-center header">
           <u>{props.eventName}</u>
         </Card.Header>
+        <Card.Text>
+         {props.isVirtual}
+        </Card.Text>
         <Card.Body className="text-center text-white">
           <Card.Text>
             <b>Date:</b> {moment(props.date).format("LL")}
