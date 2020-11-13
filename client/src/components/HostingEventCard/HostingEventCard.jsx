@@ -39,7 +39,7 @@ const HostingEventCard = ({
             <h5>{moment(event.date).format("LL")} at {" "} {moment(event.gameTime).format("LT")}</h5>
           </Card.Text>
           <Card.Text>
-            <h5>{event.city}{","}{event.state}</h5> 
+            <h5>{event.city}{", "}{event.state}</h5> 
           </Card.Text>
           <Card.Text>
             <b>Category:</b> {event.gameCategory}

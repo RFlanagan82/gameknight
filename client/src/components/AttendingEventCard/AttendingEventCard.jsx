@@ -36,12 +36,13 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
             <h5>{moment(event.date).format("LL")} at {" "} {moment(event.gameTime).format("LT")}</h5> 
           </Card.Text>
           <Card.Text>
-            <h5>{event.city}{","}{event.state}</h5> 
+            <h5>{event.city}{", "}{event.state}</h5> 
           </Card.Text>
           <Card.Text>
             <b>Event Host:</b>{" "}
             <Button
               variant="link"
+              id="attendeventlink"
               onClick={(e) => {
                 setUser(event.hostID);
                 toggleModal();
@@ -62,6 +63,7 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
               <Button
                 key={index}
                 variant="link"
+                id="attendeventlink"
                 onClick={(e) => {
                   setUser(user);
                   toggleModal();
@@ -78,7 +80,7 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
             <b>Description:</b> {event.description}
           </Card.Text>
           <Card.Text>
-            <b>Event Link:</b> <a id="attendeventlink" href={event.eventLink}>{event.eventLink}</a>
+            <b>Event Link:</b> <a href={event.eventLink}>{event.eventLink}</a>
           </Card.Text>
           <Button className="maroonbtn" onClick={(e) => handleWithdraw(event._id)}>
             Withdraw
