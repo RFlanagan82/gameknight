@@ -59,6 +59,7 @@ const HostingEventCard = ({
               <Button
                 key={index}
                 variant="link"
+                id="hosteventlink"
                 onClick={(e) => {
                   setUser(user);
                   toggleModal();
