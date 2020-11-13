@@ -83,7 +83,7 @@ function Events() {
         <Alert />
         <Row>
           <div className="col-sm-3"></div>
-          <div className="col-sm-6">
+          <div className="col-sm-6 ">
             <Card className="p-4 bg-dark knight-font">
               <Form
                 onSubmit={(e) => {
@@ -127,19 +127,30 @@ function Events() {
                     You must enter a search term.
                   </Form.Control.Feedback>
                 </Form.Group>
-                <Button className="mr-1" type="submit" variant="warning">
-                  Search
-                </Button>
+                <Form.Group className="text-right">
                 <Button
-                  className="ml-1"
+                  className="mr-1 maroonbtn"
                   variant="warning"
                   onClick={resetEvents}
                 >
                   Reset
                 </Button>
+                <Button 
+                className="ml-1" 
+                type="submit" 
+                variant="warning">
+                  Search
+                </Button>
+                </Form.Group>
               </Form>
-              <Form className="mt-5">
-                <Form.Label className="text-white">Sort</Form.Label>
+            </Card>
+          </div>
+        </Row>
+        <Row>
+          <div className="col-sm-9"></div>
+          <div className="col-sm-3">
+          <Form className="pr-5">
+                <Form.Label className="text-white"></Form.Label>
                 <Form.Control
                   required
                   as="select"
@@ -157,9 +168,11 @@ function Events() {
                   <option value="date desc">Date (latest to earliest)</option>
                 </Form.Control>
               </Form>
-            </Card>
           </div>
         </Row>
+
+
+
         <Accordion>
           {events.map((eventaroo, index) => (
             <EventListing
