@@ -24,7 +24,8 @@ const CreateAccount = () => {
     email: "",
     password: "",
     image: "",
-    location: "",
+    city: "",
+    state: "",
   });
 
   const [login, setLogin] = useState({
@@ -198,22 +199,42 @@ const CreateAccount = () => {
                   />
                   <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group className="loginText" controlId="location">
-                  <Form.Label>Location</Form.Label>
+                <Form.Group className="loginText" controlId="city">
+                  <Form.Label>City</Form.Label>
                   <Form.Control
+                  required
                     type="text"
-                    placeholder="City, State"
+                    placeholder="City"
                     required
-                    value={newUser.location}
+                    value={newUser.city}
                     onChange={(e) =>
                       setNewUser({
                         ...newUser,
-                        location: e.currentTarget.value,
+                        city: e.currentTarget.value,
                       })
                     }
                   />
                   <Form.Control.Feedback type="invalid">
-                    Please provide a valid location.
+                    Please provide a valid city.
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group className="loginText" controlId="state">
+                  <Form.Label>State</Form.Label>
+                  <Form.Control
+                  required
+                    type="text"
+                    placeholder="State"
+                    required
+                    value={newUser.state}
+                    onChange={(e) =>
+                      setNewUser({
+                        ...newUser,
+                        state: e.currentTarget.value,
+                      })
+                    }
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    Please provide a valid state.
                   </Form.Control.Feedback>
                 </Form.Group>
                 {/* <Form.File

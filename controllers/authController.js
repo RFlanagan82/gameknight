@@ -13,7 +13,8 @@ router.post("/api/signup", (req, res) => {
     email,
     password,
     image,
-    location,
+    city,
+    state
   } = req.body;
   if (!email.trim() || !password.trim()) {
     res.status(400);
@@ -28,7 +29,8 @@ router.post("/api/signup", (req, res) => {
           email: email,
           password: hashedPassword,
           image: image,
-          location: location,
+          city: city,
+          state: state,
         })
           .then((NewUser) => {
             const token = jwt.sign({ userId: NewUser._id }, process.env.SECRET);

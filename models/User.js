@@ -8,7 +8,8 @@ const UserSchema = new Schema({
   email: { type: String, trim: true, required: true },
   password: { type: String, trim: true, required: true },
   image: { type: String, trim: true },
-  location: { type: String, trim: true }
+  city: { type: String, trim: true, required: true  },
+  state: { type: String, trim: true, required: true  }
 });
 
 const User = mongoose.model("User", UserSchema);

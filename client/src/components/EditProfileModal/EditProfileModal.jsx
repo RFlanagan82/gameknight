@@ -33,12 +33,12 @@ const EditProfileModal = ({
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
-          <Form.Group controlId="location">
-            <Form.Label>Location</Form.Label>
+          <Form.Group controlId="city">
+            <Form.Label>City</Form.Label>
             <Form.Control
               type="text"
               required
-              value={newProfile.location}
+              value={newProfile.city}
               onChange={(e) =>
                 setNewProfile({
                   ...newProfile,
@@ -47,7 +47,24 @@ const EditProfileModal = ({
               }
             />
             <Form.Control.Feedback type="invalid">
-              Please provide a valid location.
+              Please provide a valid city.
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId="state">
+            <Form.Label>State</Form.Label>
+            <Form.Control
+              type="text"
+              required
+              value={newProfile.state}
+              onChange={(e) =>
+                setNewProfile({
+                  ...newProfile,
+                  location: e.currentTarget.value,
+                })
+              }
+            />
+            <Form.Control.Feedback type="invalid">
+              Please provide a valid state.
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="profileImage">
