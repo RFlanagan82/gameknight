@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 const ProfileCard = ({ user, toggleProfileModal }) => {
   const history = useHistory();
   return (
-    <Card className="mx-auto sticky-top mt-auto bg-secondary knight-font">
+    <Card className="mx-auto sticky-top mt-3 bg-secondary knight-font">
       <Card.Header as="h5" className="text-center header">
         <u>My Profile</u>
       </Card.Header>
@@ -20,23 +20,16 @@ const ProfileCard = ({ user, toggleProfileModal }) => {
             thumbnail
           />
         </Row>
-        <h1 className="username header"><u>{user.userName}</u></h1>
+        <h1 className="username header">{user.userName}</h1>
         <Card.Text>
           <b>Age Range:</b> {user.ageRange}
         </Card.Text>
         <Card.Text>
           <b>Bio:</b> {user.bio}
         </Card.Text>
-
-        <Card.Footer className="mt-auto">
           <Button variant="warning mx-2" onClick={toggleProfileModal}>
-            Edit Profile
+          <i class="far fa-edit mr-1"></i>Edit
           </Button>
-          <Button variant="warning mx-2" onClick={() => history.push("/create-event")}>
-            Host Event
-          </Button>
-          <Button variant="warning mx-2"  onClick={() => history.push("/events")}>View All Events</Button>
-        </Card.Footer>
       </Card.Body>
     </Card>
   );
