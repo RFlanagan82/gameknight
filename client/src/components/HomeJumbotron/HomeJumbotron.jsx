@@ -2,7 +2,7 @@ import React from "react";
 import { Jumbotron } from "react-bootstrap";
 import Container from "../Container/Container";
 import "./HomeJumbotron.css";
-import logo from "../../images/gameknightlogo_updated.png";
+import logo from "../../images/gameknightlogo.png";
 
 const Jumbo = () => {
   return (
