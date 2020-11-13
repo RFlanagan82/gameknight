@@ -1,13 +1,13 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
-import Image from "react-bootstrap/Image"
+import Image from "react-bootstrap/Image";
 
 const Navbar = (props) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark">
       <Link to="/" className="navbar-brand knight-font">
-      <Image className="py-auto pr-1" src="images/knightIcon.png" />
+        <Image className="py-auto pr-1" src="images/knightIcon.png" />
         Game Knight
       </Link>
       <button
@@ -29,12 +29,21 @@ const Navbar = (props) => {
           <NavLink to="/dashboard" className="nav-link">
             Dashboard
           </NavLink>
-          {!props.jwt ?<NavLink to="/login" className="nav-link">
-            Login
-          </NavLink>
-          :<NavLink to="/" onClick={() => {props.setJwt("")}} className="nav-link">
-          Logout
-        </NavLink>}
+          {!props.jwt ? (
+            <NavLink to="/login" className="nav-link">
+              Login
+            </NavLink>
+          ) : (
+            <NavLink
+              to="/"
+              onClick={() => {
+                props.setJwt("");
+              }}
+              className="nav-link"
+            >
+              Logout
+            </NavLink>
+          )}
           <NavLink to="/about" className="nav-link">
             About
           </NavLink>
