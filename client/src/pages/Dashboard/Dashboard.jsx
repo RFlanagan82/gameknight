@@ -14,7 +14,9 @@ import AttendingSlider from "../../components/AttendingSlider/AttendingSlider";
 
 const Dashboard = () => {
   const [hosted, setHosted] = useState([]);
+  const [pastHosted, setPastHosted] = useState([]);
   const [attending, setAttending] = useState([]);
+  const [pastAttending, setPastAttending] = useState([]);
   const [user, setUser] = useState({});
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [newProfile, setNewProfile] = useState({});
@@ -34,8 +36,19 @@ const Dashboard = () => {
     axios
       .get("/api/host")
       .then((results) => {
-        setHosted(results.data);
-        console.log(results);
+        // Comment out setHosted and setPastHosted and then uncomment the below to just see all events without the date filter
+        // setHosted(results.data);
+        setHosted(
+          results.data.filter(
+            (event) =>
+              Date.parse(event.date) - new Date().getTime() >= -86400000
+          )
+        );
+        setPastHosted(
+          results.data.filter(
+            (event) => Date.parse(event.date) - new Date().getTime() < -86400000
+          )
+        );
       })
       .catch((err) => {
         setAlert({
@@ -49,7 +62,19 @@ const Dashboard = () => {
     axios
       .get("/api/attend")
       .then((results) => {
-        setAttending(results.data);
+        // Comment out setAttending and setPastAttending and then uncomment the below to just see all events without the date filter
+        // setAttending(results.data);
+        setAttending(
+          results.data.filter(
+            (event) =>
+              Date.parse(event.date) - new Date().getTime() >= -86400000
+          )
+        );
+        setPastAttending(
+          results.data.filter(
+            (event) => Date.parse(event.date) - new Date().getTime() < -86400000
+          )
+        );
       })
       .catch((err) => {
         setAlert({
@@ -99,6 +124,8 @@ const Dashboard = () => {
           console.log(res.data);
           toggleProfileModal();
           getUserInfo();
+          getHostedEvents();
+          getAttendingEvents();
           setProfileValidated(false);
         })
         .catch((err) => {
@@ -167,10 +194,10 @@ const Dashboard = () => {
             <h1 className="py-2 mt-4 text-center header knight-font">
               Upcoming Events
             </h1>
-            <AttendingSlider 
-            attending={attending}
-            getAttendingEvents={getAttendingEvents}
-            getHostedEvents={getHostedEvents}
+            <AttendingSlider
+              attending={attending}
+              getAttendingEvents={getAttendingEvents}
+              getHostedEvents={getHostedEvents}
             />
           </Col>
         </Row>
