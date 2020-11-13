@@ -93,7 +93,7 @@ function EventListing(props) {
       <div className="row">
         <div className="col-sm-8">
         
-        <Card.Header className="text-white">
+        <Card.Header className="text-white pt-3" style={{height:200, width:850}}>
           <h2 className="eventName header">
             <u>{props.eventName}</u>
           </h2>
@@ -104,7 +104,6 @@ function EventListing(props) {
             {moment(props.date).format("LL")} at{" "}
             {moment(props.gameTime).format("LT")}
           </h6>
-          <h6 className="date mb-3">{props.isVirtual}</h6>
           <Accordion.Toggle
             as={Button}
             variant="warning"
@@ -139,9 +138,9 @@ function EventListing(props) {
         <div className="col-sm-4">
         {(() => {
         switch (props.isVirtual) {
-          case "Virtual":   return <img src={virtualImg} style={{height: "200px", float: "right"}} alt="Virtual event"/>;
-          case "In Person": return <img style={{height: "200px", float: "right"}} src={inPersonImg} alt="In Person event"/>;
-          default:      return <img src={virtualImg} style={{height: "200px", float: "right"}} alt="Virtual event"/>;
+          case "Virtual":   return <img src={virtualImg} style={{float: "right"}} alt="Virtual event"/>;
+          case "In Person": return <img style={{float: "right"}} src={inPersonImg} alt="In Person event"/>;
+          default:      return <img src={virtualImg} style={{float: "right"}} alt="Virtual event"/>;
         }
       })()}
 
