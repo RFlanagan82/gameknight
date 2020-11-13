@@ -82,7 +82,7 @@ const HostingEventCard = ({
           className="maroonbtn"
             onClick={toggleConfirm}
           >
-            Delete
+            <i class="far fa-trash-alt mr-1"></i>Delete
           </Button>
           <Button
             className="ml-2"
@@ -92,7 +92,7 @@ const HostingEventCard = ({
               toggleEventModal();
             }}
           >
-            Edit
+            <i class="far fa-edit mr-1"></i>Edit
           </Button>
         </Card.Body>
       </Card>

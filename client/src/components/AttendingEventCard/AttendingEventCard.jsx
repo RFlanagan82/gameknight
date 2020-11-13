@@ -89,7 +89,7 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
             <b>Event Link:</b> <a id="attendeventlink" href={event.eventLink}>{event.eventLink}</a>
           </Card.Text>
           <Button className="maroonbtn" onClick={toggleConfirm}>
-            Withdraw
+          <i class="fas fa-user-times mr-1"></i>Withdraw
           </Button>
         </Card.Body>
       </Card>

@@ -30,7 +30,7 @@ const ProfileCard = ({ user, toggleProfileModal }) => {
 
         <Card.Footer className="mt-auto">
           <Button variant="warning mx-2" onClick={toggleProfileModal}>
-          Edit Profile
+          <i class="far fa-edit mr-1"></i>Edit
           </Button>
         </Card.Footer>
       </Card.Body>
