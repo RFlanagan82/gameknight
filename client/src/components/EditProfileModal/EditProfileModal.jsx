@@ -52,7 +52,7 @@ const EditProfileModal = ({
               Please provide a valid city.
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group className="loginText" controlId="state">
+          <Form.Group controlId="state">
                   <Form.Label>State</Form.Label>
                   <Form.Control
                   required
