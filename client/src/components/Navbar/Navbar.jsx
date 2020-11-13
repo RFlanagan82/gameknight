@@ -22,12 +22,15 @@ const Navbar = (props) => {
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav ml-auto">
+        <div className="navbar-nav ml-auto knight-font">
           <NavLink to="/events" className="nav-link">
             Events
           </NavLink>
           <NavLink to="/dashboard" className="nav-link">
             Dashboard
+          </NavLink>
+          <NavLink to="/about" className="nav-link">
+            About
           </NavLink>
           {!props.jwt ?<NavLink to="/login" className="nav-link">
             Login
@@ -35,9 +38,6 @@ const Navbar = (props) => {
           :<NavLink to="/" onClick={() => {props.setJwt("")}} className="nav-link">
           Logout
         </NavLink>}
-          <NavLink to="/about" className="nav-link">
-            About
-          </NavLink>
         </div>
       </div>
     </nav>
