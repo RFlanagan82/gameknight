@@ -1,0 +1,14 @@
+#hosteventlink {
+    color: #daa217;
+    text-decoration: underline;
+  }
+
+#hosteventlink:hover {
+     color: #FFF;
+  }
+
+  .maroonbtn {
+      background-color: #5d1615!important;
+      border-color: #5d1615!important;
+      color: whitesmoke!important;
+  }
