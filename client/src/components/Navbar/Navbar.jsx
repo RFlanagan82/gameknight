@@ -32,7 +32,7 @@ const Navbar = (props) => {
           {!props.jwt ?<NavLink to="/login" className="nav-link">
             Login
           </NavLink>
-          :<NavLink to="/logout" className="nav-link">
+          :<NavLink to="/" onClick={() => {props.setJwt("")}} className="nav-link">
           Logout
         </NavLink>}
           <NavLink to="/about" className="nav-link">

@@ -66,6 +66,7 @@ const CreateAccount = () => {
           history.push("/Dashboard");
         })
         .catch((err) => {
+          console.log(err);
           setAlert({
             message: "Login failed. Please try again.",
             type: "danger",

@@ -141,7 +141,7 @@ function Events() {
           {events.map((eventaroo, index) => (
             <EventListing
               key={index}
-              eventkey={eventaroo._id}
+              eventKey={eventaroo._id}
               eventName={eventaroo.eventName}
               date={eventaroo.date}
               gameTime={eventaroo.gameTime}
@@ -153,6 +153,7 @@ function Events() {
               maxAttendees={eventaroo.maxAttendees}
               eventLink={eventaroo.eventLink}
               attendees={eventaroo.attendees}
+              loadEvents={loadEvents}
               isVirtual={eventaroo.isVirtual}
             />
           ))}

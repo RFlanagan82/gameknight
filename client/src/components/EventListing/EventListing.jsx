@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -14,15 +14,54 @@ function EventListing(props) {
   const { jwt } = useContext(AuthContext);
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
+  const [buttonStatus, setButtonStatus] = useState({
+    status: "",
+    text: "Join",
+  });
+  const [modalMessage, setModalMessage] = useState({
+    title: "",
+    body: "",
+  });
+
+  useEffect(() => {
+    checkOpenSpaces();
+  }, []);
 
   const handleJoin = (id) => {
     if (!jwt) {
       history.push("/login");
     } else {
       axios
-        .put(`/api/attend/add/${id}`)
+        .get(`/api/events/${id}`)
         .then((results) => {
-          toggleModal();
+          console.log(results.data.data);
+          if (results.data.data.hostID === results.data.data.userId) {
+            setModalMessage({
+              title: "Whoops...",
+              body: "You're hosting this event, no need to join!",
+            })
+            toggleModal();
+          } else if (
+            results.data.data.attendees.includes(results.data.data.userId)
+          ) {
+            setModalMessage({
+              title: "Whoops...",
+              body: "You're already attending this event!",
+            })
+            toggleModal();
+          } else {
+            axios
+              .put(`/api/attend/add/${id}`)
+              .then((results) => {
+                setModalMessage({
+                  title: "Success!",
+                  body: "You've been added to the event!",
+                })
+                toggleModal();
+                props.loadEvents();
+              })
+              .catch((err) => console.log(err));
+          }
         })
         .catch((err) => console.log(err));
     }
@@ -30,6 +69,21 @@ function EventListing(props) {
 
   const toggleModal = function () {
     setShowModal(!showModal);
+    checkOpenSpaces();
+  };
+
+  const checkOpenSpaces = function () {
+    if (props.maxAttendees - props.attendees.length === 0) {
+      setButtonStatus({
+        status: "disabled",
+        text: "Event Full",
+      });
+    } else {
+      setButtonStatus({
+        status: "",
+        text: "Join",
+      });
+    }
   };
 
   return (
@@ -54,12 +108,12 @@ function EventListing(props) {
           <Accordion.Toggle
             as={Button}
             variant="warning"
-            eventKey={props.eventkey}
+            eventKey={props.eventKey}
           >
             Learn More!
           </Accordion.Toggle>
         </Card.Header>
-        <Accordion.Collapse eventKey={props.eventkey}>
+        <Accordion.Collapse eventKey={props.eventKey}>
           <Card.Body className="text-white">
             <p className="category">Category: {props.category}</p>
             <p className="description">Description: {props.description}</p>
@@ -70,14 +124,12 @@ function EventListing(props) {
               Spots Left: {props.maxAttendees - props.attendees.length}
             </p>
             <p className="isVirtual">Virtual or inPerson: {props.isVirtual}</p>
-            
-            
-            
             <Button
+              disabled={buttonStatus.status}
               variant="warning"
-              onClick={(e) => handleJoin(props.eventkey)}
+              onClick={(e) => handleJoin(props.eventKey)}
             >
-              Join
+              {buttonStatus.text}
             </Button>
           </Card.Body>
         </Accordion.Collapse>
@@ -99,8 +151,8 @@ function EventListing(props) {
       <Modal
         showModal={showModal}
         toggleModal={toggleModal}
-        title="Success!"
-        body="You've been added to the event!"
+        title={modalMessage.title}
+        body={modalMessage.body}
       />
     
     </div>
