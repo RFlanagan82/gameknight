@@ -5,6 +5,7 @@ import axios from "axios";
 import moment from "moment";
 import ProfileCardModal from "../../components/ProfileCardModal/ProfileCardModal";
 import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
+import "./AttendingEventCard.css"
 
 const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
   const [showModal, setShowModal] = useState(false);
@@ -38,15 +39,16 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
             {event.isVirtual}
           </Card.Text>
           <Card.Text>
-            <b>Date:</b> {moment(event.date).format("LL")}
+            <h5>{moment(event.date).format("LL")} at {" "} {moment(event.gameTime).format("LT")}</h5> 
           </Card.Text>
           <Card.Text>
-            <b>Time:</b> {moment(event.gameTime).format("LT")}
+            <h5>{event.city}{", "}{event.state}</h5> 
           </Card.Text>
           <Card.Text>
             <b>Event Host:</b>{" "}
             <Button
               variant="link"
+              id="attendeventlink"
               onClick={(e) => {
                 setUser(event.hostID);
                 toggleModal();
@@ -62,17 +64,12 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
             <b>Game:</b> {event.gameName}
           </Card.Text>
           <Card.Text>
-            <b>City:</b> {event.city}
-          </Card.Text>
-          <Card.Text>
-            <b>State:</b> {event.state}
-          </Card.Text>
-          <Card.Text>
             <b>Users Attending:</b>
             {event.attendees.map((user, index) => (
               <Button
                 key={index}
                 variant="link"
+                id="attendeventlink"
                 onClick={(e) => {
                   setUser(user);
                   toggleModal();
@@ -91,7 +88,7 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
           <Card.Text>
             <b>Event Link:</b> <a href={event.eventLink}>{event.eventLink}</a>
           </Card.Text>
-          <Button variant="warning" onClick={toggleConfirm}>
+          <Button className="maroonbtn" onClick={toggleConfirm}>
             Withdraw
           </Button>
         </Card.Body>

@@ -5,6 +5,7 @@ import axios from "axios";
 import moment from "moment";
 import ProfileCardModal from "../../components/ProfileCardModal/ProfileCardModal";
 import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
+import "./HostingEventCard.css"
 
 const HostingEventCard = ({
   event,
@@ -41,22 +42,16 @@ const HostingEventCard = ({
         </Card.Header>
         <Card.Body className="text-center text-white">
           <Card.Text>
-            <b>Date:</b> {moment(event.date).format("LL")}
+            <h5>{moment(event.date).format("LL")} at {" "} {moment(event.gameTime).format("LT")}</h5>
           </Card.Text>
           <Card.Text>
-            <b>Time:</b> {moment(event.gameTime).format("LT")}
+            <h5>{event.city}{", "}{event.state}</h5> 
           </Card.Text>
           <Card.Text>
             <b>Category:</b> {event.gameCategory}
           </Card.Text>
           <Card.Text>
             <b>Game:</b> {event.gameName}
-          </Card.Text>
-          <Card.Text>
-            <b>City:</b> {event.city}
-          </Card.Text>
-          <Card.Text>
-            <b>State:</b> {event.state}
           </Card.Text>
           <Card.Text>
             <b>Users Attending:</b>{" "}
@@ -74,21 +69,22 @@ const HostingEventCard = ({
             ))}
           </Card.Text>
           <Card.Text>
-            <b># of Users Attending:</b> {event.attendees.length}
-          </Card.Text>
-          <Card.Text>
             <b>Spots Left:</b> {event.maxAttendees - event.attendees.length}
           </Card.Text>
           <Card.Text>
             <b>Description:</b> {event.description}
           </Card.Text>
           <Card.Text>
-            <b>Event Link:</b>{" "}
-            <a href={event.eventLink} target="_blank" rel="noreferrer">
-              {event.eventLink}
-            </a>
+            <b>Event Link:</b> <a href={event.eventLink} target="_blank" id="hosteventlink" rel="noreferrer">{event.eventLink}</a>
           </Card.Text>
           <Button
+          className="maroonbtn"
+            onClick={toggleConfirm}
+          >
+            Delete
+          </Button>
+          <Button
+            className="ml-2"
             variant="warning"
             onClick={(e) => {
               setNewEvent(event);
@@ -96,13 +92,6 @@ const HostingEventCard = ({
             }}
           >
             Edit
-          </Button>
-          <Button
-            className="ml-2"
-            variant="warning"
-            onClick={toggleConfirm}
-          >
-            Delete
           </Button>
         </Card.Body>
       </Card>
