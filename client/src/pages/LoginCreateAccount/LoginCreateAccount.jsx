@@ -11,6 +11,8 @@ import AuthContext from "../../context/AuthContext";
 import AlertContext from "../../context/AlertContext";
 import { useHistory } from "react-router-dom";
 import Alert from "../../components/Alert/Alert";
+const usStates = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
+
 
 const CreateAccount = () => {
   const [loginDisplay, setLoginDisplay] = useState("col-sm-6 my-4 show");
@@ -222,7 +224,7 @@ const CreateAccount = () => {
                   <Form.Label>State</Form.Label>
                   <Form.Control
                   required
-                    type="text"
+                  as="select"
                     placeholder="State"
                     required
                     value={newUser.state}
@@ -232,7 +234,15 @@ const CreateAccount = () => {
                         state: e.currentTarget.value,
                       })
                     }
-                  />
+                  >
+                    <option value="" className="disabled">
+                      Select your state
+                    </option>
+                    {usStates.map((eventaroo, index) => (
+                      <option key={index} value={eventaroo}>{eventaroo}</option>
+                    ))}
+                    
+                  </Form.Control>
                   <Form.Control.Feedback type="invalid">
                     Please provide a valid state.
                   </Form.Control.Feedback>

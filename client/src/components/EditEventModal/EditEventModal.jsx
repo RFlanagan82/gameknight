@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import DatePick from "../../components/DatePick/DatePick";
 import TimePick from "../../components/TimePick/TimePick";
+const usStates = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
+
 
 const EditEventModal = ({
   newEvent,
@@ -113,20 +115,33 @@ const EditEventModal = ({
                 }
               />
             </Form.Group>
-            <Form.Group controlId="state">
-              <Form.Label>State</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Optional"
-                value={newEvent.state}
-                onChange={(e) =>
-                  setNewEvent({
-                    ...newEvent,
-                    state: e.currentTarget.value,
-                  })
-                }
-              />
-            </Form.Group>
+            <Form.Group  controlId="state">
+                  <Form.Label>State</Form.Label>
+                  <Form.Control
+                  required
+                  as="select"
+                    placeholder="State"
+                    required
+                    value={newEvent.state}
+                    onChange={(e) =>
+                      setNewEvent({
+                        ...newEvent,
+                        state: e.currentTarget.value,
+                      })
+                    }
+                  >
+                    <option value="" className="disabled">
+                      Optional
+                    </option>
+                    {usStates.map((eventaroo, index) => (
+                      <option key={index} value={eventaroo}>{eventaroo}</option>
+                    ))}
+                    
+                  </Form.Control>
+                  <Form.Control.Feedback type="invalid">
+                    Please provide a valid state.
+                  </Form.Control.Feedback>
+                </Form.Group>
           </Form.Group>
           <Form.Group controlId="eventLink">
             <Form.Label>Add a link to your virtual event here!</Form.Label>
