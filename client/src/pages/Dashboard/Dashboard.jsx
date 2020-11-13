@@ -190,7 +190,7 @@ const Dashboard = () => {
               variant="warning mx-2"
               onClick={() => history.push("/create-event")}
             >
-              Host An Event
+              <i class="fas fa-users mr-1"></i>Host An Event
             </Button>
             <HostingSlider
               hosted={hosted}
@@ -207,7 +207,7 @@ const Dashboard = () => {
               variant="warning mx-2"
               onClick={() => history.push("/events")}
             >
-              View All Events
+              <i class="far fa-eye mr-1"></i>View All Events
             </Button>
             <AttendingSlider
               attending={attending}

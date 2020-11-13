@@ -27,12 +27,9 @@ const ProfileCard = ({ user, toggleProfileModal }) => {
         <Card.Text>
           <b>Bio:</b> {user.bio}
         </Card.Text>
-
-        <Card.Footer className="mt-auto">
           <Button variant="warning mx-2" onClick={toggleProfileModal}>
           <i class="far fa-edit mr-1"></i>Edit
           </Button>
-        </Card.Footer>
       </Card.Body>
     </Card>
   );
