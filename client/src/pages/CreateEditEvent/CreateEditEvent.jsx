@@ -163,10 +163,8 @@ const CreateEditEvent = () => {
                 <Form.Group className="loginText" controlId="state">
                   <Form.Label>State</Form.Label>
                   <Form.Control
-                  required
                   as="select"
                     placeholder="State"
-                    required
                     value={newEvent.state}
                     onChange={(e) =>
                       setNewEvent({
@@ -175,7 +173,7 @@ const CreateEditEvent = () => {
                       })
                     }
                   >
-                    <option value="" className="disabled">
+                    <option value="">
                       Optional
                     </option>
                     {usStates.map((eventaroo, index) => (
