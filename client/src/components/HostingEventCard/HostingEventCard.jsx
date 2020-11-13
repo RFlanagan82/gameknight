@@ -12,6 +12,7 @@ const HostingEventCard = ({
   toggleEventModal,
 }) => {
   const [showModal, setShowModal] = useState(false);
+  const [user, setUser] = useState({});
   const handleDelete = function (id) {
     console.log(id);
     axios
@@ -58,6 +59,7 @@ const HostingEventCard = ({
                 key={index}
                 variant="link"
                 onClick={(e) => {
+                  setUser(user);
                   toggleModal();
                 }}
               >
@@ -95,7 +97,7 @@ const HostingEventCard = ({
           </Button>
         </Card.Body>
       </Card>
-      <ProfileCardModal user={event.hostID} showModal={showModal} toggleModal={toggleModal} />
+      <ProfileCardModal user={user} showModal={showModal} toggleModal={toggleModal} />
     </>
   );
 };

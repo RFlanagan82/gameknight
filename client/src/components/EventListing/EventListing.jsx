@@ -108,12 +108,12 @@ function EventListing(props) {
           <Accordion.Toggle
             as={Button}
             variant="warning"
-            eventKey={props.eventkey}
+            eventKey={props.eventKey}
           >
             Learn More!
           </Accordion.Toggle>
         </Card.Header>
-        <Accordion.Collapse eventKey={props.eventkey}>
+        <Accordion.Collapse eventKey={props.eventKey}>
           <Card.Body className="text-white">
             <p className="category">Category: {props.category}</p>
             <p className="description">Description: {props.description}</p>
@@ -127,7 +127,7 @@ function EventListing(props) {
             <Button
               disabled={buttonStatus.status}
               variant="warning"
-              onClick={(e) => handleJoin(props.eventkey)}
+              onClick={(e) => handleJoin(props.eventKey)}
             >
               {buttonStatus.text}
             </Button>

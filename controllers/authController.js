@@ -59,7 +59,13 @@ router.post("/api/login", (req, res) => {
   const { email, password } = req.body;
   db.User.findOne({ email: email })
     .then((foundUser) => {
-      if (foundUser) {
+      if (foundUser === null) {
+        res.status(401).json({
+          error: true,
+          data: null,
+          message: "Not a valid user.",
+        });
+      } else if (foundUser) {
         bcrypt
           .compare(password, foundUser.password)
           .then(function (result) {
