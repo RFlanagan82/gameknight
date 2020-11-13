@@ -118,10 +118,8 @@ const EditEventModal = ({
             <Form.Group  controlId="state">
                   <Form.Label>State</Form.Label>
                   <Form.Control
-                  required
                   as="select"
                     placeholder="State"
-                    required
                     value={newEvent.state}
                     onChange={(e) =>
                       setNewEvent({
@@ -130,7 +128,7 @@ const EditEventModal = ({
                       })
                     }
                   >
-                    <option value="" className="disabled">
+                    <option value="">
                       Optional
                     </option>
                     {usStates.map((eventaroo, index) => (

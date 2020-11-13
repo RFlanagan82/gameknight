@@ -230,7 +230,6 @@ const CreateAccount = () => {
                 <Form.Group className="loginText" controlId="state">
                   <Form.Label>State</Form.Label>
                   <Form.Control
-                  required
                   as="select"
                     placeholder="State"
                     value={newUser.state}

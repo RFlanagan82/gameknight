@@ -55,7 +55,6 @@ const EditProfileModal = ({
           <Form.Group controlId="state">
                   <Form.Label>State</Form.Label>
                   <Form.Control
-                  required
                   as="select"
                     placeholder="State"
                     required
