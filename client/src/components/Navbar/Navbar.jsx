@@ -22,7 +22,7 @@ const Navbar = (props) => {
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav ml-auto">
+        <div className="navbar-nav ml-auto knight-font">
           <NavLink to="/events" className="nav-link">
             Events
           </NavLink>
