@@ -10,6 +10,7 @@ import moment from "moment";
 import virtualImg from "../../images/Virtual.png";
 import inPersonImg from "../../images/In_Person.png";
 import ProfileCardModal from "../ProfileCardModal/ProfileCardModal";
+import "./EventListing.css";
 
 function EventListing(props) {
   const { jwt } = useContext(AuthContext);
@@ -96,43 +97,77 @@ function EventListing(props) {
   return (
     <>
       <div className="container">
-        <Card className="bg-secondary knight-font">
-          <div className="row">
-            <div className="col-sm-8">
+        <div className="row">
+          <div className="col-sm-12">
+            <Card className="bg-secondary knight-font">
               <Card.Header
                 className="text-white pt-3"
-                style={{ height: 200, width: 850 }}
+                // style={{ height: 200, width: 850 }}
               >
-                <h2 className="eventName header">
-                  <u>{props.eventName}</u>
-                </h2>
-                <h4 className="gameName">
-                  <b>{props.gameName}</b> - {props.category}
-                </h4>
-                <h6 className="date mb-3">
-                  {moment(props.date).format("LL")} at{" "}
-                  {moment(props.gameTime).format("LT")}
-                </h6>
-                <Accordion.Toggle
-                  as={Button}
-                  variant="warning"
-                  eventKey={props.eventKey}
-                >
-                  Learn More!
-                </Accordion.Toggle>
+                <div className="row">
+                  <div className="col-md-8">
+                    <h2 className="eventName header">
+                      <u>{props.eventName}</u>
+                    </h2>
+                    <h4 className="gameName">
+                      <b>{props.gameName}</b> - {props.category}
+                    </h4>
+                    <h6>
+                      Hosted by:
+                      <Button
+                        variant="link"
+                        id="attendeventlink"
+                        onClick={toggleHostModal}
+                      >
+                        {props.host.userName}
+                      </Button>
+                    </h6>
+                    <h6 className="date mb-3">
+                      {moment(props.date).format("LL")} at{" "}
+                      {moment(props.gameTime).format("LT")}
+                    </h6>
+                    <Accordion.Toggle
+                      as={Button}
+                      variant="warning"
+                      eventKey={props.eventKey}
+                    >
+                      Learn More!
+                    </Accordion.Toggle>
+                  </div>
+                  <div className="col-md-4">
+                    {(() => {
+                      switch (props.isVirtual) {
+                        case "Virtual":
+                          return (
+                            <img
+                              src={virtualImg}
+                              className="eventImage"
+                              alt="Virtual event"
+                            />
+                          );
+                        case "In Person":
+                          return (
+                            <img
+                              src={inPersonImg}
+                              className="eventImage"
+                              alt="In Person event"
+                            />
+                          );
+                        default:
+                          return (
+                            <img
+                              src={virtualImg}
+                              className="eventImage"
+                              alt="Virtual event"
+                            />
+                          );
+                      }
+                    })()}
+                  </div>
+                </div>
               </Card.Header>
               <Accordion.Collapse eventKey={props.eventKey}>
                 <Card.Body className="text-white">
-                  <Card.Text>
-                    Hosted by:
-                    <Button
-                      variant="link"
-                      id="attendeventlink"
-                      onClick={toggleHostModal}
-                    >
-                      {props.host.userName}
-                    </Button>
-                  </Card.Text>
                   {props.city && props.state ? (
                     <p className="location">
                       {props.city}
@@ -161,39 +196,9 @@ function EventListing(props) {
                   </Button>
                 </Card.Body>
               </Accordion.Collapse>
-            </div>
-            <div className="col-sm-4">
-              {(() => {
-                switch (props.isVirtual) {
-                  case "Virtual":
-                    return (
-                      <img
-                        src={virtualImg}
-                        style={{ float: "right" }}
-                        alt="Virtual event"
-                      />
-                    );
-                  case "In Person":
-                    return (
-                      <img
-                        style={{ float: "right" }}
-                        src={inPersonImg}
-                        alt="In Person event"
-                      />
-                    );
-                  default:
-                    return (
-                      <img
-                        src={virtualImg}
-                        style={{ float: "right" }}
-                        alt="Virtual event"
-                      />
-                    );
-                }
-              })()}
-            </div>
+            </Card>
           </div>
-        </Card>
+        </div>
         <Modal
           showModal={showModal}
           toggleModal={toggleModal}

@@ -1,0 +1,10 @@
+.eventImage {
+  float: right;
+}
+
+@media only screen and (max-width: 768px) {
+  .eventImage {
+    margin-top: 1rem;
+    float: none;
+  }
+}
