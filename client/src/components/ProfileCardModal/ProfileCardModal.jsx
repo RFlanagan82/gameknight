@@ -22,7 +22,7 @@ const ProfileCardModal = ({ showModal, toggleModal, user }) => {
               />
             </Row>
             <h1 className="username header knight-font">
-              <b>{user.userName}</b>
+            <Image className="mr-1" style={{height: 25}} src="images/sword.png" /><b>{user.userName}</b>
             </h1>
             <Card.Text>
               <b>Location:</b> {user.city}, {user.state}
