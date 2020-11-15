@@ -93,7 +93,7 @@ const HostingEventCard = ({
               toggleEventModal();
             }}
           >
-            <i class="far fa-edit mr-1"></i>Edit
+            <i className="far fa-edit mr-1"></i>Edit
           </Button>
         </Card.Body>
       </Card>

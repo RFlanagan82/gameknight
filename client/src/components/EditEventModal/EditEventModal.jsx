@@ -184,12 +184,12 @@ const EditEventModal = ({
               }
             />
           </Form.Group>
-          <Form.Group className="text-center">
-            <Button className="mr-1" variant="warning" type="submit">
-              Save Changes
-            </Button>
-            <Button className="ml-1" variant="warning" onClick={toggleEventModal}>
+          <Form.Group className="text-right">
+            <Button className="mr-1 maroonbtn" onClick={toggleEventModal}>
               Cancel
+            </Button>
+            <Button className="ml-1" variant="warning" type="submit">
+              Save Changes
             </Button>
           </Form.Group>
         </Form>
