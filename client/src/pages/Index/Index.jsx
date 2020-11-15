@@ -5,8 +5,8 @@ import ContainerFluid from "../../components/ContainerFluid/ContainerFluid";
 import Row from "../../components/Row/Row";
 import HomeJumbotron from "../../components/HomeJumbotron/HomeJumbotron";
 import "./Index.css";
-import browseImg from "../../images/attending.png";
-import hostImg from "../../images/hosting.png";
+import browseImg from "../../images/attending.jpg";
+import hostImg from "../../images/hosting.jpg";
 
 const Index = () => {
   return (
@@ -25,15 +25,6 @@ const Index = () => {
             <Link to="/create-event">
               <div className="card bg-dark">
                 <img src={hostImg} className="card-img" alt="monopoly" />
-                <div className="card-img-overlay">
-                  <div className="game-text">
-                    <h5 className="knight-font mb-0">HOST GAME</h5>
-                    {/* <p className="card-text">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      Debitis.
-                    </p> */}
-                  </div>
-                </div>
               </div>
             </Link>
           </div>
@@ -41,15 +32,6 @@ const Index = () => {
             <Link to="/events">
               <div className="card bg-dark">
                 <img src={browseImg} className="card-img" alt="monopoly" />
-                <div className="card-img-overlay">
-                  <div className="game-text">
-                    <h5 className="knight-font mb-0">BROWSE GAMES</h5>
-                    {/* <p className="card-text">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      Debitis.
-                    </p> */}
-                  </div>
-                </div>
               </div>
             </Link>
           </div>
