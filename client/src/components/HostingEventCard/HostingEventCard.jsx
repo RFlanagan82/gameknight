@@ -49,11 +49,9 @@ const HostingEventCard = ({
           {event.city && event.state ? <>{event.city}{", "}{event.state}</> : ""} 
           </Card.Text>
           <Card.Text>
-            <b>Category:</b> {event.gameCategory}
+           {event.gameName} | {event.gameCategory}
           </Card.Text>
-          <Card.Text>
-            <b>Game:</b> {event.gameName}
-          </Card.Text>
+          
           <Card.Text>
             <b>Users Attending:</b>{" "}
             {event.attendees.map((user, index) => (
@@ -71,13 +69,14 @@ const HostingEventCard = ({
             ))}
           </Card.Text>
           <Card.Text>
-            <b>Spots Left:</b> {event.maxAttendees - event.attendees.length}
+          {event.maxAttendees - event.attendees.length} Spots Left 
+          </Card.Text>
+          
+          <Card.Text>
+            {event.eventLink ? <><b>Event Link:</b> <a href={event.eventLink} target="_blank" id="hosteventlink" rel="noreferrer">{event.eventLink}</a></> : ""}
           </Card.Text>
           <Card.Text>
             <b>Description:</b> {event.description}
-          </Card.Text>
-          <Card.Text>
-            {event.eventLink ? <><b>Event Link:</b> <a href={event.eventLink} target="_blank" id="hosteventlink" rel="noreferrer">{event.eventLink}</a></> : ""}
           </Card.Text>
           <Button
           className="maroonbtn"

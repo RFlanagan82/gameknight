@@ -33,20 +33,21 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
     <>
       <Card className="mx-4 bg-secondary knight-font">
         <Card.Header as="h5" className="text-center header">
-          <u>{event.eventName}</u>
+          <u>{event.eventName}</u> - {event.isVirtual}
         </Card.Header>
         <Card.Body className="text-center text-white">
-          <Card.Text className="text-center text-white">
-            {event.isVirtual}
-          </Card.Text>
           <Card.Text>
             <h5>{moment(event.date).format("LL")} at {" "} {moment(event.gameTime).format("LT")}</h5> 
           </Card.Text>
           <Card.Text>
-          {event.city && event.state ? <h5>{event.city}{", "}{event.state}</h5> : ""} 
+            {event.gameName} | {event.gameCategory}
           </Card.Text>
           <Card.Text>
-            <b>Event Host:</b>{" "}
+          {event.city && event.state ? <b>{event.city}{", "}{event.state}</b> : ""} 
+          </Card.Text>
+          
+          <Card.Text>
+            <b>Hosted by:</b>{" "}
             <Button
               variant="link"
               id="attendeventlink"
@@ -58,12 +59,8 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
               {event.hostID.userName}
             </Button>
           </Card.Text>
-          <Card.Text>
-            <b>Category:</b> {event.gameCategory}
-          </Card.Text>
-          <Card.Text>
-            <b>Game:</b> {event.gameName}
-          </Card.Text>
+          
+         
           <Card.Text>
             <b>Users Attending:</b>
             {event.attendees.map((user, index) => (
@@ -81,14 +78,15 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
             ))}
           </Card.Text>
           <Card.Text>
-            <b>Spots Left:</b> {event.maxAttendees - event.attendees.length}
-          </Card.Text>
-          <Card.Text>
-            <b>Description:</b> {event.description}
+          {event.maxAttendees - event.attendees.length} Spots Left 
           </Card.Text>
           <Card.Text>
             {event.eventLink ? <><b>Event Link:</b> <a href={event.eventLink} target="_blank" id="hosteventlink" rel="noreferrer">{event.eventLink}</a></> : ""}
           </Card.Text>
+          <Card.Text>
+            <b>Description:</b> {event.description}
+          </Card.Text>
+          
           <Button className="maroonbtn" onClick={toggleConfirm}>
           <i className="fas fa-user-times mr-1"></i>Withdraw
           </Button>
