@@ -11,10 +11,10 @@ background-color: #222222;
   padding: 1rem;
   opacity: 0.8;
   position: absolute;
-  top: 90%;
+  top: 91.2%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: black;
+  color: #5d1616;
 }
 
 .knight-font {

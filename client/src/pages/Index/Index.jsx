@@ -27,7 +27,7 @@ const Index = () => {
                 <img src={hostImg} className="card-img" alt="monopoly" />
                 <div className="card-img-overlay">
                   <div className="game-text">
-                    <h5 className="">HOST GAME</h5>
+                    <h5 className="knight-font mb-0">HOST GAME</h5>
                     {/* <p className="card-text">
                       Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                       Debitis.
@@ -43,7 +43,7 @@ const Index = () => {
                 <img src={browseImg} className="card-img" alt="monopoly" />
                 <div className="card-img-overlay">
                   <div className="game-text">
-                    <h5 className="">BROWSE GAMES</h5>
+                    <h5 className="knight-font mb-0">BROWSE GAMES</h5>
                     {/* <p className="card-text">
                       Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                       Debitis.
