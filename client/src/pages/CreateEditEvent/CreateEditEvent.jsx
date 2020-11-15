@@ -51,7 +51,7 @@ const CreateEditEvent = () => {
   };
   return (
     <>
-        <Container className="p-5 createEventContainer">
+        <Container className="createEventContainer">
           <Alert />
           <Card className="createEventCard text-white knight-font">
             <Card.Body className="bg-secondary">

@@ -181,7 +181,7 @@ function EventListing(props) {
                     Max Number of Players: {props.maxAttendees}
                   </p>
                   <p className="spotsLeft">
-                    Only {props.maxAttendees - props.attendees.length} Spots
+                    {props.maxAttendees - props.attendees.length} Spots
                     Left!
                   </p>
                   <p className="description">
