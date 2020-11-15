@@ -66,7 +66,11 @@ function Events() {
 
   const searchEvents = function (e) {
     e.preventDefault();
-    setEvents(events.filter((event) => event[searchCategory].toLowerCase().includes(search.toLowerCase())));
+    if (searchCategory === "hostName") {
+      setEvents(events.filter((event) => event.hostID["userName"].toLowerCase().includes(search.toLowerCase())));
+    } else {
+      setEvents(events.filter((event) => event[searchCategory].toLowerCase().includes(search.toLowerCase())));
+    }
   };
 
   const resetEvents = function () {
@@ -104,6 +108,7 @@ function Events() {
                     <option value="" className="disabled">
                       Choose a Search Category
                     </option>
+                    <option value="hostName">Host Username</option>
                     <option value="eventName">Event Name</option>
                     <option value="gameName">Game Name</option>
                     <option value="gameCategory">Game Category</option>
@@ -186,6 +191,7 @@ function Events() {
               attendees={eventaroo.attendees}
               loadEvents={loadEvents}
               isVirtual={eventaroo.isVirtual}
+              host={eventaroo.hostID}
             />
           ))}
         </Accordion>

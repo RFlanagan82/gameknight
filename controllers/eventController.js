@@ -6,6 +6,7 @@ const db = require("../models");
 // GET ALL EVENTS - NO AUTHORIZATION NEEDED
 router.get("/", (req, res) => {
   db.Event.find({})
+  .populate("hostID")
     .then((Events) => {
       res.json(Events);
     })

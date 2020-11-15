@@ -7,13 +7,15 @@ import AuthContext from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
 import moment from "moment";
-import virtualImg from "../../images/Virtual.png"
-import inPersonImg from "../../images/In_Person.png"
+import virtualImg from "../../images/Virtual.png";
+import inPersonImg from "../../images/In_Person.png";
+import ProfileCardModal from "../ProfileCardModal/ProfileCardModal";
 
 function EventListing(props) {
   const { jwt } = useContext(AuthContext);
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
+  const [showHostModal, setShowHostModal] = useState(false);
   const [buttonStatus, setButtonStatus] = useState({
     status: "",
     text: "Join",
@@ -40,7 +42,7 @@ function EventListing(props) {
             setModalMessage({
               title: "Whoops...",
               body: "You're hosting this event, no need to join!",
-            })
+            });
             toggleModal();
           } else if (
             results.data.data.attendees.includes(results.data.data.userId)
@@ -48,7 +50,7 @@ function EventListing(props) {
             setModalMessage({
               title: "Whoops...",
               body: "You're already attending this event!",
-            })
+            });
             toggleModal();
           } else {
             axios
@@ -57,7 +59,7 @@ function EventListing(props) {
                 setModalMessage({
                   title: "Success!",
                   body: "You've been added to the event!",
-                })
+                });
                 toggleModal();
                 props.loadEvents();
               })
@@ -71,6 +73,10 @@ function EventListing(props) {
   const toggleModal = function () {
     setShowModal(!showModal);
     checkOpenSpaces();
+  };
+
+  const toggleHostModal = function () {
+    setShowHostModal(!showHostModal);
   };
 
   const checkOpenSpaces = function () {
@@ -89,72 +95,118 @@ function EventListing(props) {
 
   return (
     <>
-    <div className="container">
-    <Card className="bg-secondary knight-font">
-      <div className="row">
-        <div className="col-sm-8">
-        
-        <Card.Header className="text-white pt-3" style={{height:200, width:850}}>
-          <h2 className="eventName header">
-            <u>{props.eventName}</u>
-          </h2>
-          <h4 className="gameName">
-            <b>{props.gameName}</b> - {props.category}
-          </h4>
-          <h6 className="date mb-3">
-            {moment(props.date).format("LL")} at{" "}
-            {moment(props.gameTime).format("LT")}
-          </h6>
-          <Accordion.Toggle
-            as={Button}
-            variant="warning"
-            eventKey={props.eventKey}
-          >
-            Learn More!
-          </Accordion.Toggle>
-        </Card.Header>
-        <Accordion.Collapse eventKey={props.eventKey}>
-          <Card.Body className="text-white">
-          {props.city && props.state ? <p className="location">{props.city}{", "}{props.state}</p> : ""} 
-            <p className="maxAttendees">Max Number of Players: {props.maxAttendees}</p>
-            <p className="spotsLeft">
-            Only {props.maxAttendees - props.attendees.length} Spots Left!
-            </p>
-            <p className="description">Description: {props.description}</p>
-            <Button
-              disabled={buttonStatus.status}
-              variant="warning"
-              onClick={(e) => handleJoin(props.eventKey)}
-            >
-              {buttonStatus.text}
-            </Button>
-          </Card.Body>
-        </Accordion.Collapse>
-      
-
-        </div>
-        <div className="col-sm-4">
-        {(() => {
-        switch (props.isVirtual) {
-          case "Virtual":   return <img src={virtualImg} style={{float: "right"}} alt="Virtual event"/>;
-          case "In Person": return <img style={{float: "right"}} src={inPersonImg} alt="In Person event"/>;
-          default:      return <img src={virtualImg} style={{float: "right"}} alt="Virtual event"/>;
-        }
-      })()}
-
-        </div>
+      <div className="container">
+        <Card className="bg-secondary knight-font">
+          <div className="row">
+            <div className="col-sm-8">
+              <Card.Header
+                className="text-white pt-3"
+                style={{ height: 200, width: 850 }}
+              >
+                <h2 className="eventName header">
+                  <u>{props.eventName}</u>
+                </h2>
+                <h4 className="gameName">
+                  <b>{props.gameName}</b> - {props.category}
+                </h4>
+                <h6 className="date mb-3">
+                  {moment(props.date).format("LL")} at{" "}
+                  {moment(props.gameTime).format("LT")}
+                </h6>
+                <Accordion.Toggle
+                  as={Button}
+                  variant="warning"
+                  eventKey={props.eventKey}
+                >
+                  Learn More!
+                </Accordion.Toggle>
+              </Card.Header>
+              <Accordion.Collapse eventKey={props.eventKey}>
+                <Card.Body className="text-white">
+                  <Card.Text>
+                    Hosted by:
+                    <Button
+                      variant="link"
+                      id="attendeventlink"
+                      onClick={toggleHostModal}
+                    >
+                      {props.host.userName}
+                    </Button>
+                  </Card.Text>
+                  {props.city && props.state ? (
+                    <p className="location">
+                      {props.city}
+                      {", "}
+                      {props.state}
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                  <p className="maxAttendees">
+                    Max Number of Players: {props.maxAttendees}
+                  </p>
+                  <p className="spotsLeft">
+                    Only {props.maxAttendees - props.attendees.length} Spots
+                    Left!
+                  </p>
+                  <p className="description">
+                    Description: {props.description}
+                  </p>
+                  <Button
+                    disabled={buttonStatus.status}
+                    variant="warning"
+                    onClick={(e) => handleJoin(props.eventKey)}
+                  >
+                    {buttonStatus.text}
+                  </Button>
+                </Card.Body>
+              </Accordion.Collapse>
+            </div>
+            <div className="col-sm-4">
+              {(() => {
+                switch (props.isVirtual) {
+                  case "Virtual":
+                    return (
+                      <img
+                        src={virtualImg}
+                        style={{ float: "right" }}
+                        alt="Virtual event"
+                      />
+                    );
+                  case "In Person":
+                    return (
+                      <img
+                        style={{ float: "right" }}
+                        src={inPersonImg}
+                        alt="In Person event"
+                      />
+                    );
+                  default:
+                    return (
+                      <img
+                        src={virtualImg}
+                        style={{ float: "right" }}
+                        alt="Virtual event"
+                      />
+                    );
+                }
+              })()}
+            </div>
+          </div>
+        </Card>
+        <Modal
+          showModal={showModal}
+          toggleModal={toggleModal}
+          title={modalMessage.title}
+          body={modalMessage.body}
+        />
+        <ProfileCardModal
+          user={props.host}
+          showModal={showHostModal}
+          toggleModal={toggleHostModal}
+        />
       </div>
-      </Card>
-      <Modal
-        showModal={showModal}
-        toggleModal={toggleModal}
-        title={modalMessage.title}
-        body={modalMessage.body}
-      />
-    
-    </div>
-
-      </>
+    </>
   );
 }
 
