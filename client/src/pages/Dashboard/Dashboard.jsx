@@ -162,7 +162,6 @@ const Dashboard = () => {
       axios
         .put("/api/events", newEvent)
         .then((res) => {
-          console.log(res);
           toggleEventModal();
           getHostedEvents();
           setEventValidated(false);

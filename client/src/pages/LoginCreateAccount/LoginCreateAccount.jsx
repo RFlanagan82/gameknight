@@ -91,7 +91,6 @@ const CreateAccount = () => {
       axios
         .post("/api/signup", newUser)
         .then((res) => {
-          console.log(res.data);
           setJwt(res.data.data);
           history.push("/Dashboard");
         })

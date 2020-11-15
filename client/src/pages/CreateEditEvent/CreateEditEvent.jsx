@@ -37,7 +37,6 @@ const CreateEditEvent = () => {
     axios
       .post("/api/events", newEvent)
       .then((res) => {
-        console.log(res.data);
         history.push("/Dashboard");
       })
       .catch((err) => {
