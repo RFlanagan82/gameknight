@@ -10,6 +10,7 @@ const Alert = () => {
           setAlert({ message: "", type: "" });
         }, 5000);
       }
+      // eslint-disable-next-line
     }, [message]);
 
   return (

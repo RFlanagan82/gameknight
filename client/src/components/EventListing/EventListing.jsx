@@ -25,6 +25,7 @@ function EventListing(props) {
 
   useEffect(() => {
     checkOpenSpaces();
+    // eslint-disable-next-line
   }, []);
 
   const handleJoin = (id) => {
