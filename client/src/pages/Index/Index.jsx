@@ -5,8 +5,8 @@ import ContainerFluid from "../../components/ContainerFluid/ContainerFluid";
 import Row from "../../components/Row/Row";
 import HomeJumbotron from "../../components/HomeJumbotron/HomeJumbotron";
 import "./Index.css";
-import browseImg from "../../images/gamenight1.jpg";
-import hostImg from "../../images/gamenight2.jpg";
+import browseImg from "../../images/attending.png";
+import hostImg from "../../images/hosting.png";
 
 const Index = () => {
   return (
@@ -22,17 +22,16 @@ const Index = () => {
         </Row>
         <Row>
           <div className="col-sm-6 text-center mb-5">
-            {/* TODO: add functionality to go to host event page if logged in */}
             <Link to="/create-event">
               <div className="card bg-dark">
                 <img src={hostImg} className="card-img" alt="monopoly" />
                 <div className="card-img-overlay">
                   <div className="game-text">
-                    <h5 className="card-title">HOST GAME</h5>
-                    <p className="card-text">
+                    <h5 className="">HOST GAME</h5>
+                    {/* <p className="card-text">
                       Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                       Debitis.
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </div>
@@ -44,11 +43,11 @@ const Index = () => {
                 <img src={browseImg} className="card-img" alt="monopoly" />
                 <div className="card-img-overlay">
                   <div className="game-text">
-                    <h5 className="card-title">BROWSE GAMES</h5>
-                    <p className="card-text">
+                    <h5 className="">BROWSE GAMES</h5>
+                    {/* <p className="card-text">
                       Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                       Debitis.
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </div>
