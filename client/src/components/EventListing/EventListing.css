@@ -1,14 +1,10 @@
 .eventImage {
-    float: right;
+  float: right;
 }
 
 @media only screen and (max-width: 768px) {
-    /* .toggleButton {
-
-    } */
-    .eventImage {
+  .eventImage {
     margin-top: 1rem;
     float: none;
-    align-content: center;
-    }
+  }
 }

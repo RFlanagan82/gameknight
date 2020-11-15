@@ -130,7 +130,6 @@ function EventListing(props) {
                       as={Button}
                       variant="warning"
                       eventKey={props.eventKey}
-                      className="toggleButton"
                     >
                       Learn More!
                     </Accordion.Toggle>
