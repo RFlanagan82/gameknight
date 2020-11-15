@@ -22,13 +22,13 @@ Users have the ability to search to filter or sort upcoming hosted games...
 
 We clearly show which events are virtual...
 
-![](client/src/images/virtual.png)
+![](client/src/images/Virtual.png)
 
 and 
 
 which are in-person...
 
-![](client/src/images/in_person.png)
+![](client/src/images/In_Person.png)
 
 In the dashboard page, users have views to their profile card with the ability to edit...
 
