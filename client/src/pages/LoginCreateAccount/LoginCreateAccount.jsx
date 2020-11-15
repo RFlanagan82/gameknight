@@ -123,7 +123,7 @@ const CreateAccount = () => {
                     placeholder="Email"
                     value={login.email}
                     onChange={(e) =>
-                      setLogin({ ...login, email: e.currentTarget.value })
+                      setLogin({ ...login, email: e.currentTarget.value.toLowerCase() })
                     }
                   />
                   <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -188,7 +188,7 @@ const CreateAccount = () => {
                     placeholder="Email"
                     value={newUser.email}
                     onChange={(e) =>
-                      setNewUser({ ...newUser, email: e.currentTarget.value })
+                      setNewUser({ ...newUser, email: e.currentTarget.value.toLowerCase()})
                     }
                   />
                   <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
