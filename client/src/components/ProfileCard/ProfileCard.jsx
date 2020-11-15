@@ -18,7 +18,7 @@ const ProfileCard = ({ user, toggleProfileModal }) => {
             thumbnail
           />
         </Row>
-        <h1 className="username header"><Image className="mr-1 mb-1" style={{height: 25}} src="images/sword.png" />{user.userName}</h1>
+        <h1 className="username header"><Image className="mr-1 mb-1" style={{height: 25}} src="images/sword.png" />{user.userName}<Image className="ml-1 mb-1" style={{height: 25}} src="images/sword.png" /></h1>
         <Card.Text>
           <b>Age Range:</b> {user.ageRange}
         </Card.Text>
