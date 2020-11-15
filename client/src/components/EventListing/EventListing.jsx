@@ -7,7 +7,7 @@ import AuthContext from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
 import moment from "moment";
-import virtualImg from "../../images/virtual.png";
+import virtualImg from "../../images/Virtual.png";
 import inPersonImg from "../../images/In_Person.png";
 import ProfileCardModal from "../ProfileCardModal/ProfileCardModal";
 import "./EventListing.css";
