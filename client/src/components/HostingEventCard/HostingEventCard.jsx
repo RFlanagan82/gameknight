@@ -17,11 +17,11 @@ const HostingEventCard = ({
   const [user, setUser] = useState({});
   const [showConfirm, setShowConfirm] = useState(false);
   const handleDelete = function (id) {
-    console.log(id);
+    // console.log(id);
     axios
       .delete(`/api/events/${id}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         getHostedEvents();
         setShowConfirm();
       })

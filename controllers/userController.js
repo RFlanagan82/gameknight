@@ -14,7 +14,7 @@ router.get("/dashboard", (req, res) => {
   }
   jwt.verify(req.headers.authorization, process.env.SECRET, (err, decoded) => {
     if (err) {
-      console.log(err);
+      // console.log(err);
       return res.status(401).json({
         error: true,
         data: null,
@@ -27,7 +27,7 @@ router.get("/dashboard", (req, res) => {
           res.json(user);
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           res.status(500).json({
             error: true,
             data: null,
@@ -48,20 +48,20 @@ router.put("/", (req, res) => {
   }
   jwt.verify(req.headers.authorization, process.env.SECRET, (err, decoded) => {
     if (err) {
-      console.log(err);
+      // console.log(err);
       return res.status(401).json({
         error: true,
         data: null,
         message: "Invalid token.",
       });
     } else {
-      console.log(decoded);
+      // console.log(decoded);
       db.User.findByIdAndUpdate(decoded.userId, req.body)
         .then((user) => {
           res.json(user);
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           res.status(500).json({
             error: true,
             data: null,
