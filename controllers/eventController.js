@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
       res.json(Events);
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
       res.status(500).json({
         error: true,
         data: null,
@@ -30,14 +30,14 @@ router.get("/:id", (req, res) => {
   }
   jwt.verify(req.headers.authorization, process.env.SECRET, (err, decoded) => {
     if (err) {
-      console.log(err);
+      // console.log(err);
       return res.status(401).json({
         error: true,
         data: null,
         message: "Invalid token.",
       });
     } else {
-      console.log(decoded);
+      // console.log(decoded);
       db.Event.findById(req.params.id)
         .then((event) => {
             res.json({
@@ -45,7 +45,7 @@ router.get("/:id", (req, res) => {
             });
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           res.status(500).json({
             error: true,
             data: null,
@@ -58,7 +58,7 @@ router.get("/:id", (req, res) => {
 
 // CREATE AN EVENT - MUST BE SIGNED IN AND USERID IS PASSED IN VIA HEADERS FOR HOST ID
 router.post("/", (req, res) => {
-  console.log(req.headers);
+  // console.log(req.headers);
   if (!req.headers.authorization) {
     return res.status(401).json({
       error: true,
@@ -68,7 +68,7 @@ router.post("/", (req, res) => {
   }
   jwt.verify(req.headers.authorization, process.env.SECRET, (err, decoded) => {
     if (err) {
-      console.log(err);
+      // console.log(err);
       return res.status(401).json({
         error: true,
         data: null,
@@ -80,7 +80,7 @@ router.post("/", (req, res) => {
           res.json(NewEvent);
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           res.status(500).json({
             error: true,
             data: null,
@@ -98,7 +98,7 @@ router.delete("/:id", (req, res) => {
       res.json(deletedEvent);
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
       res.status(500).json({
         error: true,
         data: null,
@@ -118,20 +118,20 @@ router.put("/", (req, res) => {
   }
   jwt.verify(req.headers.authorization, process.env.SECRET, (err, decoded) => {
     if (err) {
-      console.log(err);
+      // console.log(err);
       return res.status(401).json({
         error: true,
         data: null,
         message: "Invalid token.",
       });
     } else {
-      console.log(decoded);
+      // console.log(decoded);
       db.Event.findByIdAndUpdate(req.body._id, req.body)
         .then((user) => {
           res.json(user);
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           res.status(500).json({
             error: true,
             data: null,

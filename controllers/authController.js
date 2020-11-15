@@ -4,7 +4,7 @@ const db = require("../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-// Sign up
+// New User Sign up
 router.post("/api/signup", (req, res) => {
   const {
     userName,
@@ -41,7 +41,7 @@ router.post("/api/signup", (req, res) => {
             });
           })
           .catch((err) => {
-            console.log(err);
+            // console.log(err);
             res.status(500).json({
               error: true,
               data: null,
@@ -50,7 +50,7 @@ router.post("/api/signup", (req, res) => {
           });
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         res.status(500);
       });
   }
@@ -71,7 +71,7 @@ router.post("/api/login", (req, res) => {
         bcrypt
           .compare(password, foundUser.password)
           .then(function (result) {
-            console.log(result);
+            // console.log(result);
             if (result) {
               const token = jwt.sign(
                 { userId: foundUser._id },
@@ -91,7 +91,7 @@ router.post("/api/login", (req, res) => {
             }
           })
           .catch((err) => {
-            console.log(err);
+            // console.log(err);
             res.status(401).json({
               error: true,
               data: null,
@@ -101,7 +101,7 @@ router.post("/api/login", (req, res) => {
       }
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
       res.status(500).json({
         error: true,
         data: null,

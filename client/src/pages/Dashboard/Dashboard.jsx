@@ -93,7 +93,7 @@ const Dashboard = () => {
     axios
       .get("/api/users/dashboard")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setUser(res.data);
         setNewProfile(res.data);
       })
