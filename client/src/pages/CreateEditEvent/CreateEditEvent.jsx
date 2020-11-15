@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import ContainerFluid from "../../components/ContainerFluid/ContainerFluid";
 import Container from "../../components/Container/Container";
 import DatePick from "../../components/DatePick/DatePick";
 import TimePick from "../../components/TimePick/TimePick";
@@ -52,7 +51,6 @@ const CreateEditEvent = () => {
   };
   return (
     <>
-      <ContainerFluid className="createEventContainerFluid">
         <Container className="p-5 createEventContainer">
           <Alert />
           <Card className="createEventCard text-white knight-font">
@@ -245,7 +243,6 @@ const CreateEditEvent = () => {
             </Card.Body>
           </Card>
         </Container>
-      </ContainerFluid>
     </>
   );
 };
