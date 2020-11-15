@@ -37,7 +37,7 @@ function EventListing(props) {
       axios
         .get(`/api/events/${id}`)
         .then((results) => {
-          console.log(results.data.data);
+          // console.log(results.data.data);
           if (results.data.data.hostID === results.data.data.userId) {
             setModalMessage({
               title: "Whoops...",
