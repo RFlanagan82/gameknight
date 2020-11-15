@@ -42,11 +42,11 @@ const HostingEventCard = ({
           <u>{event.eventName}</u>
         </Card.Header>
         <Card.Body className="text-center text-white">
-          <Card.Text>
-            <h5>{moment(event.date).format("LL")} at {" "} {moment(event.gameTime).format("LT")}</h5>
+          <Card.Text as="h5">
+            {moment(event.date).format("LL")} at {" "} {moment(event.gameTime).format("LT")}
           </Card.Text>
-          <Card.Text>
-          {event.city && event.state ? <h5>{event.city}{", "}{event.state}</h5> : ""} 
+          <Card.Text as="h5">
+          {event.city && event.state ? <>{event.city}{", "}{event.state}</> : ""} 
           </Card.Text>
           <Card.Text>
             <b>Category:</b> {event.gameCategory}
@@ -83,7 +83,7 @@ const HostingEventCard = ({
           className="maroonbtn"
             onClick={toggleConfirm}
           >
-            <i class="far fa-trash-alt mr-1"></i>Delete
+            <i className="far fa-trash-alt mr-1"></i>Delete
           </Button>
           <Button
             className="ml-2"

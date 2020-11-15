@@ -15,11 +15,12 @@ import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
 
 const Dashboard = () => {
+  // Setup commented out past event hooks for future use
   const history = useHistory();
   const [hosted, setHosted] = useState([]);
-  const [pastHosted, setPastHosted] = useState([]);
+  // const [pastHosted, setPastHosted] = useState([]);
   const [attending, setAttending] = useState([]);
-  const [pastAttending, setPastAttending] = useState([]);
+  // const [pastAttending, setPastAttending] = useState([]);
   const [user, setUser] = useState({});
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [newProfile, setNewProfile] = useState({});
@@ -33,6 +34,7 @@ const Dashboard = () => {
     getHostedEvents();
     getAttendingEvents();
     getUserInfo();
+    // eslint-disable-next-line
   }, []);
 
   const getHostedEvents = function () {
@@ -47,11 +49,11 @@ const Dashboard = () => {
               Date.parse(event.date) - new Date().getTime() >= -86400000
           )
         );
-        setPastHosted(
-          results.data.filter(
-            (event) => Date.parse(event.date) - new Date().getTime() < -86400000
-          )
-        );
+        // setPastHosted(
+        //   results.data.filter(
+        //     (event) => Date.parse(event.date) - new Date().getTime() < -86400000
+        //   )
+        // );
       })
       .catch((err) => {
         setAlert({
@@ -73,11 +75,11 @@ const Dashboard = () => {
               Date.parse(event.date) - new Date().getTime() >= -86400000
           )
         );
-        setPastAttending(
-          results.data.filter(
-            (event) => Date.parse(event.date) - new Date().getTime() < -86400000
-          )
-        );
+        // setPastAttending(
+        //   results.data.filter(
+        //     (event) => Date.parse(event.date) - new Date().getTime() < -86400000
+        //   )
+        // );
       })
       .catch((err) => {
         setAlert({
@@ -190,7 +192,7 @@ const Dashboard = () => {
               variant="warning mx-2"
               onClick={() => history.push("/create-event")}
             >
-              <i class="fas fa-users mr-1"></i>Host An Event
+              <i className="fas fa-users mr-1"></i>Host An Event
             </Button>
             <HostingSlider
               hosted={hosted}
@@ -207,7 +209,7 @@ const Dashboard = () => {
               variant="warning mx-2"
               onClick={() => history.push("/events")}
             >
-              <i class="far fa-eye mr-1"></i>View All Events
+              <i className="far fa-eye mr-1"></i>View All Events
             </Button>
             <AttendingSlider
               attending={attending}

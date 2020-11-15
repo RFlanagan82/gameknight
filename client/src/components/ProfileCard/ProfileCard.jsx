@@ -3,10 +3,8 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
-import { useHistory } from "react-router-dom";
 
 const ProfileCard = ({ user, toggleProfileModal }) => {
-  const history = useHistory();
   return (
     <Card className="mx-auto sticky-top mt-3 bg-secondary knight-font">
       <Card.Header as="h5" className="text-center header">
@@ -28,7 +26,7 @@ const ProfileCard = ({ user, toggleProfileModal }) => {
           <b>Bio:</b> {user.bio}
         </Card.Text>
           <Button variant="warning mx-2" onClick={toggleProfileModal}>
-          <i class="far fa-edit mr-1"></i>Edit
+          <i className="far fa-edit mr-1"></i>Edit
           </Button>
       </Card.Body>
     </Card>

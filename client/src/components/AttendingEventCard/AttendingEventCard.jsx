@@ -90,7 +90,7 @@ const AttendingEventCard = ({ event, getHostedEvents, getAttendingEvents }) => {
             {event.eventLink ? <><b>Event Link:</b> <a href={event.eventLink} target="_blank" id="hosteventlink" rel="noreferrer">{event.eventLink}</a></> : ""}
           </Card.Text>
           <Button className="maroonbtn" onClick={toggleConfirm}>
-          <i class="fas fa-user-times mr-1"></i>Withdraw
+          <i className="fas fa-user-times mr-1"></i>Withdraw
           </Button>
         </Card.Body>
       </Card>

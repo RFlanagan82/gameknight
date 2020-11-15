@@ -14,7 +14,7 @@ import EventJumbo from "../../components/EventJumbo/EventJumbo";
 
 function Events() {
   const [events, setEvents] = useState([]);
-  const [pastEvents, setPastEvents] = useState([]);
+  // const [pastEvents, setPastEvents] = useState([]);
   const { setAlert } = useContext(AlertContext);
   const [search, setSearch] = useState("");
   const [searchCategory, setSearchCategory] = useState("");
@@ -22,6 +22,7 @@ function Events() {
 
   useEffect(() => {
     loadEvents();
+    // eslint-disable-next-line
   }, []);
 
   const getEvents = function () {
@@ -39,11 +40,11 @@ function Events() {
               Date.parse(event.date) - new Date().getTime() >= -86400000
           )
         );
-        setPastEvents(
-          res.data.filter(
-            (event) => Date.parse(event.date) - new Date().getTime() < -86400000
-          )
-        );
+        // setPastEvents(
+        //   res.data.filter(
+        //     (event) => Date.parse(event.date) - new Date().getTime() < -86400000
+        //   )
+        // );
       })
       .catch((err) => {
         setAlert({
@@ -65,8 +66,7 @@ function Events() {
 
   const searchEvents = function (e) {
     e.preventDefault();
-    e.stopPropagation();
-    setEvents(events.filter((event) => event[searchCategory].includes(search)));
+    setEvents(events.filter((event) => event[searchCategory].toLowerCase().includes(search.toLowerCase())));
   };
 
   const resetEvents = function () {
@@ -128,19 +128,16 @@ function Events() {
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group className="text-right">
-                <Button
-                  className="mr-1 maroonbtn"
-                  variant="warning"
-                  onClick={resetEvents}
-                >
-                  Reset
-                </Button>
-                <Button 
-                className="ml-1" 
-                type="submit" 
-                variant="warning">
-                  Search
-                </Button>
+                  <Button
+                    className="mr-1 maroonbtn"
+                    variant="warning"
+                    onClick={resetEvents}
+                  >
+                    Reset
+                  </Button>
+                  <Button className="ml-1" type="submit" variant="warning">
+                    Search
+                  </Button>
                 </Form.Group>
               </Form>
             </Card>
@@ -149,29 +146,27 @@ function Events() {
         <Row>
           <div className="col-sm-9"></div>
           <div className="col-sm-3">
-          <Form className="pr-5 knight-font">
-                <Form.Label className="text-white"></Form.Label>
-                <Form.Control
-                  required
-                  as="select"
-                  custom
-                  value={sortCategory}
-                  onChange={(e) => {
-                    setSortCategory(e.currentTarget.value);
-                    sortEvents(e.currentTarget.value);
-                  }}
-                >
-                  <option value="" className="disabled">
-                    Sort By
-                  </option>
-                  <option value="date asc">Date (earliest to latest)</option>
-                  <option value="date desc">Date (latest to earliest)</option>
-                </Form.Control>
-              </Form>
+            <Form className="pr-5 knight-font">
+              <Form.Label className="text-white"></Form.Label>
+              <Form.Control
+                required
+                as="select"
+                custom
+                value={sortCategory}
+                onChange={(e) => {
+                  setSortCategory(e.currentTarget.value);
+                  sortEvents(e.currentTarget.value);
+                }}
+              >
+                <option value="" className="disabled">
+                  Sort By
+                </option>
+                <option value="date asc">Date (earliest to latest)</option>
+                <option value="date desc">Date (latest to earliest)</option>
+              </Form.Control>
+            </Form>
           </div>
         </Row>
-
-
 
         <Accordion>
           {events.map((eventaroo, index) => (

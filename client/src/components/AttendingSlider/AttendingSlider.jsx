@@ -13,9 +13,8 @@ export default function AttendingSlider({ attending, getAttendingEvents, getHost
   return (
     <Slider className="mx-5" {...settings}>
       {attending.map((event, index) => (
-        <div>
+        <div key={index}>
           <AttendingEventCard
-            key={index}
             event={event}
             getHostedEvents={getHostedEvents}
             getAttendingEvents={getAttendingEvents}
