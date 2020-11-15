@@ -21,7 +21,7 @@ const NotFound = () => {
             <div className="card-body">
               <blockquote className="blockquote mb-0">
                 <p>
-                  "Well, on second thought, let's not go here. It is a silly
+                  "Well, on second thought, let's not go there. 'Tis a silly
                   place."
                 </p>
                 <footer className="blockquote-footer">
