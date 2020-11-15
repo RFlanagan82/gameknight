@@ -99,7 +99,7 @@ function EventListing(props) {
             <u>{props.eventName}</u>
           </h2>
           <h4 className="gameName">
-            <b>Game:</b> {props.gameName}
+            <b>{props.gameName}</b> - {props.category}
           </h4>
           <h6 className="date mb-3">
             {moment(props.date).format("LL")} at{" "}
@@ -115,14 +115,12 @@ function EventListing(props) {
         </Card.Header>
         <Accordion.Collapse eventKey={props.eventKey}>
           <Card.Body className="text-white">
-            <p className="category">Category: {props.category}</p>
-            <p className="description">Description: {props.description}</p>
-            {props.city && props.state ? <p className="location">{props.city}{", "}{props.state}</p> : ""} 
-            <p className="maxAttendees">Max Attendees: {props.maxAttendees}</p>
+          {props.city && props.state ? <p className="location">{props.city}{", "}{props.state}</p> : ""} 
+            <p className="maxAttendees">Max Number of Players: {props.maxAttendees}</p>
             <p className="spotsLeft">
-              Spots Left: {props.maxAttendees - props.attendees.length}
+            Only {props.maxAttendees - props.attendees.length} Spots Left!
             </p>
-            <p className="isVirtual">Virtual or inPerson: {props.isVirtual}</p>
+            <p className="description">Description: {props.description}</p>
             <Button
               disabled={buttonStatus.status}
               variant="warning"
