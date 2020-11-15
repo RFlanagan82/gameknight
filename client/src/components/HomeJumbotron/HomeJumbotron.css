@@ -7,3 +7,9 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+    
+@media only screen and (max-width: 600px){
+    .logo-img {
+        max-width: 300px;
+    }
+}
